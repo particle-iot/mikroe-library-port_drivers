@@ -1,0 +1,53 @@
+[OPTIONS]
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=index.html
+Index file=index.hhk
+Language=0x409 English (United States)
+Title=accurrent
+
+[WINDOWS]
+main="accurrent","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+_r_e_a_d_m_e_8md.html
+accurrent_8h.html
+accurrent_8h_source.html
+annotated.html
+classes.html
+dir_3ddebf21fd61fb92cbb389371343422b.html
+dir_87bb8de878133f06c0bcf9fc6a460fa0.html
+dir_e1d9194e3a3de2ecd9d9d7619adce099.html
+dir_ede9c1d8def1e82540abbf04f086c756.html
+dir_fe920eeb88824750ed5551771de566bd.html
+files.html
+functions.html
+functions_vars.html
+globals.html
+globals_defs.html
+globals_func.html
+group__accurrent.html
+group__error__code.html
+group__macros.html
+group__map__mikrobus.html
+group__public__function.html
+group__type.html
+index.html
+main_8c.html
+modules.html
+structaccurrent__cfg__t.html
+structaccurrent__t.html
+bc_s.png
+bdwn.png
+closed.png
+nav_f.png
+nav_h.png
+open.png
+sync_off.png
+sync_on.png
+tab_a.png
+tab_b.png
+tab_h.png
+tab_s.png
