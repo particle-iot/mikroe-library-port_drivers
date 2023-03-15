@@ -1,0 +1,20 @@
+{
+    "alias": "Click.AcCurrent",
+    "arch": "M4DSP",
+    "binaries": [
+        "lib_accurrent.a"
+    ],
+    "defines": [
+    ],
+    "dependencies": [
+        "MikroC.Core",
+        "MikroSDK.Driver"
+    ],
+    "global_visibility": false,
+    "include_paths": [
+        "include"
+    ],
+    "selector": "(^MK(.+)$)",
+    "toolchain": "mikrocarm",
+    "version": "1.0.0"
+}
