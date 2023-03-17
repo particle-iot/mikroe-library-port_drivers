@@ -11,20 +11,15 @@
 #ifndef _DRV_DIGITAL_IN_H_
 #define _DRV_DIGITAL_IN_H_
 
-#ifdef __cplusplus
-    extern "C"{
-#endif
-
-#include <stdint.h>
 #include "mikro_pins.h"
 
+//addded for library port compatibility
+typedef struct
+{
+    uint8_t pin;     //structure defining pin base and mask
+} digital_in_t;
 
-uint8_t digital_in_init(uint16_t pin, uint8_t mode);
-int32_t digital_in_read(uint16_t pin);
-
-
-#ifdef __cplusplus
-}
-#endif
+int8_t digital_in_init(digital_in_t *in, uint8_t mode);
+int32_t digital_in_read(uint8_t pin);
 
 #endif // _DRV_DIGITAL_IN_H_

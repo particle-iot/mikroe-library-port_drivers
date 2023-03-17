@@ -11,22 +11,18 @@
 #ifndef _DRV_DIGITAL_OUT_H_
 #define _DRV_DIGITAL_OUT_H_
 
-#ifdef __cplusplus
-    extern "C"{
-#endif
-
-#include <stdint.h>
 #include "mikro_pins.h"
 
-uint8_t digital_out_init(uint16_t pin, uint8_t mode);
-void digital_out_high(uint16_t pin);
-void digital_out_low(uint16_t pin);
-void digital_out_toggle(uint16_t pin);
-void digital_out_write(uint16_t pin, uint8_t value);
+//added for library port compatibility
+typedef struct
+{
+    uint16_t pin;    //Structure defining pin base and mask
+} digital_out_t;
 
-
-#ifdef __cplusplus
-}
-#endif
+int8_t digital_out_init(digital_out_t *out, uint8_t mode);
+void digital_out_high(digital_out_t *out);
+void digital_out_low(digital_out_t *out);
+void digital_out_toggle(digital_out_t *out);
+void digital_out_write(digital_out_t *out, uint8_t value);
 
 #endif // _DRV_DIGITAL_OUT_H_
