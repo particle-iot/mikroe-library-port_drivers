@@ -5,3 +5,207 @@ mikroe_port/.DS_Store
 .DS_Store
 mikroe_port/lib/.DS_Store
 source/.DS_Store
+mikroe_port/.DS_Store
+.DS_Store
+mikroe_port/source.zip
+mikroe_port/source/AC Current click/Data/build/nxp/m4dsp/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/nxp/m4dsp/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/nxp/m4dsp/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/nxp/m4ef/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/nxp/m4ef/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/nxp/m4ef/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/nxp/m7/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/nxp/m7/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/nxp/m7/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/pic18/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/pic18/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/pic18/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/pic32/microaptiv_fp/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/pic32/microaptiv_fp/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/pic32/microaptiv_fp/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/pic32/mips32/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/pic32/mips32/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/pic32/mips32/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/stm/m0/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/stm/m0/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/stm/m0/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/stm/m3/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/stm/m3/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/stm/m3/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/stm/m4/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/stm/m4/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/stm/m4/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/stm/m7/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/stm/m7/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/stm/m7/lib_accurrent.a
+mikroe_port/source/AC Current click/Data/build/ti/m4ef/Click.AcCurrent.memake
+mikroe_port/source/AC Current click/Data/build/ti/m4ef/include/accurrent.h
+mikroe_port/source/AC Current click/Data/build/ti/m4ef/lib_accurrent.a
+mikroe_port/source/AC Current click/Examples/example/.vscode/settings.json
+mikroe_port/source/AC Current click/Examples/example/accurrent.c
+mikroe_port/source/AC Current click/Examples/example/accurrent.h
+mikroe_port/source/AC Current click/Examples/example/main.c
+mikroe_port/source/AC Current click/Examples/example/manifest.exm
+mikroe_port/source/AC Current click/Examples/example/memake.txt
+mikroe_port/source/AC Current click/Help/doc/html/_r_e_a_d_m_e_8md.html
+mikroe_port/source/AC Current click/Help/doc/html/accurrent_8h.html
+mikroe_port/source/AC Current click/Help/doc/html/accurrent_8h_source.html
+mikroe_port/source/AC Current click/Help/doc/html/annotated.html
+mikroe_port/source/AC Current click/Help/doc/html/bc_s.png
+mikroe_port/source/AC Current click/Help/doc/html/bdwn.png
+mikroe_port/source/AC Current click/Help/doc/html/classes.html
+mikroe_port/source/AC Current click/Help/doc/html/closed.png
+mikroe_port/source/AC Current click/Help/doc/html/dir_3ddebf21fd61fb92cbb389371343422b.html
+mikroe_port/source/AC Current click/Help/doc/html/dir_87bb8de878133f06c0bcf9fc6a460fa0.html
+mikroe_port/source/AC Current click/Help/doc/html/dir_e1d9194e3a3de2ecd9d9d7619adce099.html
+mikroe_port/source/AC Current click/Help/doc/html/dir_ede9c1d8def1e82540abbf04f086c756.html
+mikroe_port/source/AC Current click/Help/doc/html/dir_fe920eeb88824750ed5551771de566bd.html
+mikroe_port/source/AC Current click/Help/doc/html/doc.png
+mikroe_port/source/AC Current click/Help/doc/html/doxygen.css
+mikroe_port/source/AC Current click/Help/doc/html/doxygen.svg
+mikroe_port/source/AC Current click/Help/doc/html/dynsections.js
+mikroe_port/source/AC Current click/Help/doc/html/files.html
+mikroe_port/source/AC Current click/Help/doc/html/folderclosed.png
+mikroe_port/source/AC Current click/Help/doc/html/folderopen.png
+mikroe_port/source/AC Current click/Help/doc/html/functions.html
+mikroe_port/source/AC Current click/Help/doc/html/functions_vars.html
+mikroe_port/source/AC Current click/Help/doc/html/globals.html
+mikroe_port/source/AC Current click/Help/doc/html/globals_defs.html
+mikroe_port/source/AC Current click/Help/doc/html/globals_func.html
+mikroe_port/source/AC Current click/Help/doc/html/group__accurrent.html
+mikroe_port/source/AC Current click/Help/doc/html/group__error__code.html
+mikroe_port/source/AC Current click/Help/doc/html/group__macros.html
+mikroe_port/source/AC Current click/Help/doc/html/group__map__mikrobus.html
+mikroe_port/source/AC Current click/Help/doc/html/group__public__function.html
+mikroe_port/source/AC Current click/Help/doc/html/group__type.html
+mikroe_port/source/AC Current click/Help/doc/html/index.hhc
+mikroe_port/source/AC Current click/Help/doc/html/index.hhk
+mikroe_port/source/AC Current click/Help/doc/html/index.hhp
+mikroe_port/source/AC Current click/Help/doc/html/index.html
+mikroe_port/source/AC Current click/Help/doc/html/jquery.js
+mikroe_port/source/AC Current click/Help/doc/html/main_8c.html
+mikroe_port/source/AC Current click/Help/doc/html/menu.js
+mikroe_port/source/AC Current click/Help/doc/html/menudata.js
+mikroe_port/source/AC Current click/Help/doc/html/modules.html
+mikroe_port/source/AC Current click/Help/doc/html/nav_f.png
+mikroe_port/source/AC Current click/Help/doc/html/nav_g.png
+mikroe_port/source/AC Current click/Help/doc/html/nav_h.png
+mikroe_port/source/AC Current click/Help/doc/html/open.png
+mikroe_port/source/AC Current click/Help/doc/html/splitbar.png
+mikroe_port/source/AC Current click/Help/doc/html/structaccurrent__cfg__t.html
+mikroe_port/source/AC Current click/Help/doc/html/structaccurrent__t.html
+mikroe_port/source/AC Current click/Help/doc/html/sync_off.png
+mikroe_port/source/AC Current click/Help/doc/html/sync_on.png
+mikroe_port/source/AC Current click/Help/doc/html/tab_a.png
+mikroe_port/source/AC Current click/Help/doc/html/tab_b.png
+mikroe_port/source/AC Current click/Help/doc/html/tab_h.png
+mikroe_port/source/AC Current click/Help/doc/html/tab_s.png
+mikroe_port/source/AC Current click/Help/doc/html/tabs.css
+mikroe_port/source/AC Current click/manifest.json
+mikroe_port/source/AC Current click/Resources/CHANGELOG.md
+mikroe_port/source/AC Current click/Resources/click_icon.png
+mikroe_port/source/AC Current click/Resources/DETAILS.md
+mikroe_port/source/device-os/pinmap_hal.h
+mikroe_port/source/device-os/spark_wiring.cpp
+mikroe_port/source/device-os/spark_wiring.h
+mikroe_port/source/device-os/spark_wiring_spi.cpp
+mikroe_port/source/device-os/spark_wiring_spi.h
+mikroe_port/source/device-os/spi_hal.cpp
+mikroe_port/source/device-os/spi_hal.h
+mikroe_port/source/device-os/spi_hal_compat.h
+mikroe_port/source/mikroE/api/CMakeLists.txt
+mikroe_port/source/mikroE/api/gl/CMakeLists.txt
+mikroe_port/source/mikroE/api/gl/lib/CMakeLists.txt
+mikroe_port/source/mikroE/api/gl/lib/CMakeLists.txt.user
+mikroe_port/source/mikroE/api/gl/lib/include/gl.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_colors.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_image.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_image_format_handlers.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_jpeg_constants.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_jpeg_types.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_shapes.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_text.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_types.h
+mikroe_port/source/mikroE/api/gl/lib/include/gl_utils.h
+mikroe_port/source/mikroE/api/gl/lib/src/gl.c
+mikroe_port/source/mikroE/api/gl/lib/src/gl_image.c
+mikroe_port/source/mikroE/api/gl/lib/src/gl_shapes.c
+mikroe_port/source/mikroE/api/gl/lib/src/gl_text.c
+mikroe_port/source/mikroE/api/gl/lib/utils.cmake
+mikroe_port/source/mikroE/api/log/CMakeLists.txt
+mikroe_port/source/mikroE/api/log/lib/CMakeLists.txt
+mikroe_port/source/mikroE/api/log/lib/include/std_out/log.h
+mikroe_port/source/mikroE/api/log/lib/include/uart/log.h
+mikroe_port/source/mikroE/api/log/lib/src/std_out/log.c
+mikroe_port/source/mikroE/api/log/lib/src/uart/log.c
+mikroe_port/source/mikroE/api/log/lib/src/uart/log_printf_implementation.c
+mikroe_port/source/mikroE/api/log/lib/src/uart/log_printf_implementation.h
+mikroe_port/source/mikroE/api/tp/CMakeLists.txt
+mikroe_port/source/mikroE/api/tp/lib/CMakeLists.txt
+mikroe_port/source/mikroE/api/tp/lib/include/tp/tp.h
+mikroe_port/source/mikroE/api/tp/lib/include/tp_mikroe/tp.h
+mikroe_port/source/mikroE/api/tp/lib/src/tp/tp.c
+mikroe_port/source/mikroE/api/tp/lib/src/tp_mikroe/tp.c
+mikroe_port/source/mikroE/api/vtft/CMakeLists.txt
+mikroe_port/source/mikroE/api/vtft/lib_vtft/CMakeLists.txt
+mikroe_port/source/mikroE/api/vtft/lib_vtft/include/vtft.h
+mikroe_port/source/mikroE/api/vtft/lib_vtft/include/vtft_drawing.h
+mikroe_port/source/mikroE/api/vtft/lib_vtft/include/vtft_types.h
+mikroe_port/source/mikroE/api/vtft/lib_vtft/src/vtft.c
+mikroe_port/source/mikroE/api/vtft/lib_vtft/src/vtft_drawing.c
+mikroe_port/source/mikroE/api/vtft/lib_vtft/src/vtft_touch.c
+mikroe_port/source/mikroE/api/vtft/lib_vtft/src/vtft_touch.h
+mikroe_port/source/mikroE/drv/CMakeLists.txt
+mikroe_port/source/mikroE/drv/include/drv_analog_in.h
+mikroe_port/source/mikroE/drv/include/drv_digital_in.h
+mikroe_port/source/mikroE/drv/include/drv_digital_out.h
+mikroe_port/source/mikroE/drv/include/drv_i2c_master.h
+mikroe_port/source/mikroE/drv/include/drv_name.h
+mikroe_port/source/mikroE/drv/include/drv_one_wire.h
+mikroe_port/source/mikroE/drv/include/drv_port.h
+mikroe_port/source/mikroE/drv/include/drv_pwm.h
+mikroe_port/source/mikroE/drv/include/drv_spi_master.h
+mikroe_port/source/mikroE/drv/include/drv_uart.h
+mikroe_port/source/mikroE/drv/src/lib_drv/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_analog_in/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_analog_in/drv_analog_in.c
+mikroe_port/source/mikroE/drv/src/lib_drv_digital_in/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_digital_in/drv_digital_in.c
+mikroe_port/source/mikroE/drv/src/lib_drv_digital_out/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_digital_out/drv_digital_out.c
+mikroe_port/source/mikroE/drv/src/lib_drv_i2c_master/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_i2c_master/drv_i2c_master.c
+mikroe_port/source/mikroE/drv/src/lib_drv_one_wire/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_one_wire/drv_one_wire.c
+mikroe_port/source/mikroE/drv/src/lib_drv_port/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_port/drv_port.c
+mikroe_port/source/mikroE/drv/src/lib_drv_pwm/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_pwm/drv_pwm.c
+mikroe_port/source/mikroE/drv/src/lib_drv_spi_master/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_spi_master/drv_spi_master.c
+mikroe_port/source/mikroE/drv/src/lib_drv_uart/CMakeLists.txt
+mikroe_port/source/mikroE/drv/src/lib_drv_uart/drv_uart.c
+mikroe_port/source/mikroE/hal/CMakeLists.txt
+mikroe_port/source/mikroE/hal/include/hal_adc.h
+mikroe_port/source/mikroE/hal/include/hal_gpio.h
+mikroe_port/source/mikroE/hal/include/hal_i2c_master.h
+mikroe_port/source/mikroE/hal/include/hal_one_wire.h
+mikroe_port/source/mikroE/hal/include/hal_pwm.h
+mikroe_port/source/mikroE/hal/include/hal_spi_master.h
+mikroe_port/source/mikroE/hal/include/hal_target.h
+mikroe_port/source/mikroE/hal/include/hal_uart.h
+mikroe_port/source/mikroE/hal/src/lib_hal/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_adc/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_adc/hal_adc.c
+mikroe_port/source/mikroE/hal/src/lib_hal_gpio/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_gpio/hal_gpio.c
+mikroe_port/source/mikroE/hal/src/lib_hal_i2c_master/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_i2c_master/hal_i2c_master.c
+mikroe_port/source/mikroE/hal/src/lib_hal_one_wire/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_one_wire/hal_one_wire.c
+mikroe_port/source/mikroE/hal/src/lib_hal_pwm/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_pwm/hal_pwm.c
+mikroe_port/source/mikroE/hal/src/lib_hal_spi_master/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_spi_master/hal_spi_master.c
+mikroe_port/source/mikroE/hal/src/lib_hal_uart/CMakeLists.txt
+mikroe_port/source/mikroE/hal/src/lib_hal_uart/hal_uart.c
