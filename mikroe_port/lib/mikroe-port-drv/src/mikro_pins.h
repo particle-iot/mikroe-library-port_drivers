@@ -22,10 +22,6 @@
 #define HAL_PIN_NC (uint8_t)(0xFFFFFFFF)               //pin error, wrong pin selected
 #define HAL_PORT_NC (uint8_t)(0xFFFFFFFF)              //port error, wrong port selected
 
-//used for success/failure status codes
-#define STATUS_SUCCESS 0
-#define STATUS_FAILURE (-1)
-
 //mikroBUS pin mapping first lookup
 #define MIKROBUS_AN   AN_PIN
 #define MIKROBUS_RST  RST_PIN

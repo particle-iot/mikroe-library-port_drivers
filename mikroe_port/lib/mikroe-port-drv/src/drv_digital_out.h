@@ -13,6 +13,13 @@
 
 #include "mikro_pins.h"
 
+//enum for status codes, added for library compatibility
+typedef enum
+{
+    DIGITAL_OUT_SUCCESS = 0,                //Success
+    DIGITAL_OUT_UNSUPPORTED_PIN = (-1)      //Error
+} digital_out_err_t;
+
 //struc for the various mikroBUS pins, added for library port compatibility
 typedef struct
 {

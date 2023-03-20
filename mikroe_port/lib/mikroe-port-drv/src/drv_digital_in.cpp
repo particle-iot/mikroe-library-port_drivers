@@ -6,11 +6,11 @@ int8_t digital_in_init(digital_in_t *in, uint8_t mode)
     if (mode == INPUT)
     {
         pinMode(in->pin, static_cast<PinMode>(mode));
-        return STATUS_SUCCESS;       //return status
+        return DIGITAL_IN_SUCCESS;      //return status
     }
     else        //mode other than input selected
     {
-        return STATUS_FAILURE;       //return status
+        return DIGITAL_IN_UNSUPPORTED_PIN;      //return status
     }
 }
 
