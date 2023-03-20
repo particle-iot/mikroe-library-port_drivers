@@ -31,23 +31,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
  13 .module_info_crc 00000004  085ffffc  085ffffc  0001fffc  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 14 .debug_info   00136dab  00000000  00000000  00020000  2**0
+ 14 .debug_info   00136e10  00000000  00000000  00020000  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_abbrev 00014bd4  00000000  00000000  00156dab  2**0
+ 15 .debug_abbrev 00014bdc  00000000  00000000  00156e10  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_loc    0003960f  00000000  00000000  0016b97f  2**0
+ 16 .debug_loc    0003959f  00000000  00000000  0016b9ec  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_aranges 00002a08  00000000  00000000  001a4f8e  2**0
+ 17 .debug_aranges 00002a08  00000000  00000000  001a4f8b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_ranges 0000ac78  00000000  00000000  001a7996  2**0
+ 18 .debug_ranges 0000ac78  00000000  00000000  001a7993  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_macro  00028938  00000000  00000000  001b260e  2**0
+ 19 .debug_macro  0002892c  00000000  00000000  001b260b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_line   00045be2  00000000  00000000  001daf46  2**0
+ 20 .debug_line   00045c16  00000000  00000000  001daf37  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_str    000c9de6  00000000  00000000  00220b28  2**0
+ 21 .debug_str    000c9e6a  00000000  00000000  00220b4d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_frame  00007750  00000000  00000000  002ea910  2**2
+ 22 .debug_frame  0000774c  00000000  00000000  002ea9b8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1142,7 +1142,7 @@ inline CloudDisconnectOptions::CloudDisconnectOptions(unsigned flags, system_tic
   eeprom7_cfg_t eeprom7_cfg;  //Click config object
   eeprom7_cfg_setup( &eeprom7_cfg );
  23fdf9a:	a804      	add	r0, sp, #16
- 23fdf9c:	f000 fab4 	bl	23fe508 <_Z17eeprom7_cfg_setupP13eeprom7_cfg_t>
+ 23fdf9c:	f000 f950 	bl	23fe240 <_Z17eeprom7_cfg_setupP13eeprom7_cfg_t>
   EEPROM7_MAP_MIKROBUS( eeprom7_cfg, MIKROBUS_2 );
  23fdfa0:	4b0a      	ldr	r3, [pc, #40]	; (23fdfcc <setup+0x78>)
   eeprom7_init( &eeprom7, &eeprom7_cfg );
@@ -1156,10 +1156,10 @@ inline CloudDisconnectOptions::CloudDisconnectOptions(unsigned flags, system_tic
   EEPROM7_MAP_MIKROBUS( eeprom7_cfg, MIKROBUS_2 );
  23fdfae:	f8ad 3014 	strh.w	r3, [sp, #20]
   eeprom7_init( &eeprom7, &eeprom7_cfg );
- 23fdfb2:	f000 fab5 	bl	23fe520 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t>
+ 23fdfb2:	f000 f951 	bl	23fe258 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t>
   eeprom7_default_cfg ( &eeprom7 );
  23fdfb6:	4620      	mov	r0, r4
- 23fdfb8:	f000 fb7b 	bl	23fe6b2 <_Z19eeprom7_default_cfgP9eeprom7_t>
+ 23fdfb8:	f000 fa17 	bl	23fe3ea <_Z19eeprom7_default_cfgP9eeprom7_t>
 
 }
  23fdfbc:	b008      	add	sp, #32
@@ -1217,7 +1217,7 @@ void eeprom7_main()
   eeprom7_send_cmd( &eeprom7, EEPROM7_OPCODE_STATUS_WREN );
  23fe016:	2106      	movs	r1, #6
  23fe018:	482b      	ldr	r0, [pc, #172]	; (23fe0c8 <_Z12eeprom7_mainv+0xb4>)
- 23fe01a:	f000 fb2a 	bl	23fe672 <_Z16eeprom7_send_cmdP9eeprom7_th>
+ 23fe01a:	f000 f9c6 	bl	23fe3aa <_Z16eeprom7_send_cmdP9eeprom7_th>
   delay(100);
  23fe01e:	2064      	movs	r0, #100	; 0x64
  23fe020:	f000 ff08 	bl	23fee34 <delay>
@@ -1228,7 +1228,7 @@ void eeprom7_main()
  23fe026:	f241 2134 	movw	r1, #4660	; 0x1234
  23fe02a:	4a28      	ldr	r2, [pc, #160]	; (23fe0cc <_Z12eeprom7_mainv+0xb8>)
  23fe02c:	4826      	ldr	r0, [pc, #152]	; (23fe0c8 <_Z12eeprom7_mainv+0xb4>)
- 23fe02e:	f000 fb53 	bl	23fe6d8 <_Z20eeprom7_write_memoryP9eeprom7_tmPhh>
+ 23fe02e:	f000 f9ef 	bl	23fe410 <_Z20eeprom7_write_memoryP9eeprom7_tmPhh>
   delay(100);
  23fe032:	2064      	movs	r0, #100	; 0x64
  23fe034:	f000 fefe 	bl	23fee34 <delay>
@@ -1267,14 +1267,14 @@ void eeprom7_main()
   while ( eeprom7_is_device_ready( &eeprom7 ) == EEPROM7_DEVICE_IS_READY ) {
  23fe066:	4e18      	ldr	r6, [pc, #96]	; (23fe0c8 <_Z12eeprom7_mainv+0xb4>)
  23fe068:	4817      	ldr	r0, [pc, #92]	; (23fe0c8 <_Z12eeprom7_mainv+0xb4>)
- 23fe06a:	f000 fafc 	bl	23fe666 <_Z23eeprom7_is_device_readyP9eeprom7_t>
+ 23fe06a:	f000 f998 	bl	23fe39e <_Z23eeprom7_is_device_readyP9eeprom7_t>
  23fe06e:	2801      	cmp	r0, #1
  23fe070:	4605      	mov	r5, r0
  23fe072:	d107      	bne.n	23fe084 <_Z12eeprom7_mainv+0x70>
       check_status = eeprom7_send_cmd( &eeprom7, EEPROM7_OPCODE_STATUS_WRBP );
  23fe074:	2108      	movs	r1, #8
  23fe076:	4630      	mov	r0, r6
- 23fe078:	f000 fafb 	bl	23fe672 <_Z16eeprom7_send_cmdP9eeprom7_th>
+ 23fe078:	f000 f997 	bl	23fe3aa <_Z16eeprom7_send_cmdP9eeprom7_th>
       delay(1);
  23fe07c:	4628      	mov	r0, r5
  23fe07e:	f000 fed9 	bl	23fee34 <delay>
@@ -1288,7 +1288,7 @@ void eeprom7_main()
  23fe086:	f241 2134 	movw	r1, #4660	; 0x1234
  23fe08a:	4a13      	ldr	r2, [pc, #76]	; (23fe0d8 <_Z12eeprom7_mainv+0xc4>)
  23fe08c:	480e      	ldr	r0, [pc, #56]	; (23fe0c8 <_Z12eeprom7_mainv+0xb4>)
- 23fe08e:	f000 fb3e 	bl	23fe70e <_Z19eeprom7_read_memoryP9eeprom7_tmPhh>
+ 23fe08e:	f000 f9da 	bl	23fe446 <_Z19eeprom7_read_memoryP9eeprom7_tmPhh>
   delay(100);
  23fe092:	2064      	movs	r0, #100	; 0x64
  23fe094:	f000 fece 	bl	23fee34 <delay>
@@ -1432,7 +1432,7 @@ ACCURRENT_RETVAL accurrent_init ( accurrent_t *ctx, accurrent_cfg_t *cfg )
  23fe148:	b085      	sub	sp, #20
     spi_master_configure_default( &spi_cfg );
  23fe14a:	a801      	add	r0, sp, #4
- 23fe14c:	f000 f8f1 	bl	23fe332 <_Z28spi_master_configure_defaultP19spi_master_config_t>
+ 23fe14c:	f000 fa08 	bl	23fe560 <_Z28spi_master_configure_defaultP19spi_master_config_t>
     spi_cfg.speed     = cfg->spi_speed;
  23fe150:	68a3      	ldr	r3, [r4, #8]
 
@@ -1461,7 +1461,7 @@ ACCURRENT_RETVAL accurrent_init ( accurrent_t *ctx, accurrent_cfg_t *cfg )
     spi_cfg.miso      = cfg->miso;
  23fe16c:	f8ad 3006 	strh.w	r3, [sp, #6]
     digital_out_init( &ctx->cs, cfg->cs );
- 23fe170:	f000 f871 	bl	23fe256 <_Z16digital_out_initP13digital_out_th>
+ 23fe170:	f000 f987 	bl	23fe482 <_Z16digital_out_initP13digital_out_th>
     ctx->chip_select = cfg->cs;
  23fe174:	78e3      	ldrb	r3, [r4, #3]
     if ( spi_master_open( &ctx->spi, &spi_cfg ) == SPI_MASTER_ERROR )
@@ -1470,7 +1470,7 @@ ACCURRENT_RETVAL accurrent_init ( accurrent_t *ctx, accurrent_cfg_t *cfg )
  23fe178:	742b      	strb	r3, [r5, #16]
     if ( spi_master_open( &ctx->spi, &spi_cfg ) == SPI_MASTER_ERROR )
  23fe17a:	a901      	add	r1, sp, #4
- 23fe17c:	f000 f8c0 	bl	23fe300 <_Z15spi_master_openP12spi_master_tP19spi_master_config_t>
+ 23fe17c:	f000 f9d6 	bl	23fe52c <_Z15spi_master_openP12spi_master_tP19spi_master_config_t>
  23fe180:	3001      	adds	r0, #1
  23fe182:	d019      	beq.n	23fe1b8 <accurrent_init+0x78>
     {
@@ -1480,26 +1480,26 @@ ACCURRENT_RETVAL accurrent_init ( accurrent_t *ctx, accurrent_cfg_t *cfg )
     spi_master_set_default_write_data( &ctx->spi, ACCURRENT_DUMMY );
  23fe184:	4631      	mov	r1, r6
  23fe186:	4638      	mov	r0, r7
- 23fe188:	f000 f89e 	bl	23fe2c8 <_Z33spi_master_set_default_write_dataP12spi_master_th>
+ 23fe188:	f000 f9b4 	bl	23fe4f4 <_Z33spi_master_set_default_write_dataP12spi_master_th>
     spi_master_set_mode( &ctx->spi, spi_cfg.mode );
  23fe18c:	f89d 100c 	ldrb.w	r1, [sp, #12]
  23fe190:	4638      	mov	r0, r7
- 23fe192:	f000 f8f2 	bl	23fe37a <_Z19spi_master_set_modeP12spi_master_th>
+ 23fe192:	f000 fa09 	bl	23fe5a8 <_Z19spi_master_set_modeP12spi_master_th>
     spi_master_set_speed( &ctx->spi, spi_cfg.speed );
  23fe196:	9902      	ldr	r1, [sp, #8]
  23fe198:	4638      	mov	r0, r7
- 23fe19a:	f000 f8f9 	bl	23fe390 <_Z20spi_master_set_speedP12spi_master_tm>
+ 23fe19a:	f000 fa10 	bl	23fe5be <_Z20spi_master_set_speedP12spi_master_tm>
     spi_master_set_chip_select_polarity( cfg->cs_polarity );
  23fe19e:	7b60      	ldrb	r0, [r4, #13]
- 23fe1a0:	f000 f88a 	bl	23fe2b8 <_Z35spi_master_set_chip_select_polarityh>
+ 23fe1a0:	f000 f9a0 	bl	23fe4e4 <_Z35spi_master_set_chip_select_polarityh>
 
     digital_in_init( &ctx->an, cfg->an );
  23fe1a4:	7921      	ldrb	r1, [r4, #4]
  23fe1a6:	1ca8      	adds	r0, r5, #2
- 23fe1a8:	f000 f84a 	bl	23fe240 <_Z15digital_in_initP12digital_in_th>
+ 23fe1a8:	f000 f960 	bl	23fe46c <_Z15digital_in_initP12digital_in_th>
     spi_master_deselect_device( ctx->chip_select );  
  23fe1ac:	7c28      	ldrb	r0, [r5, #16]
- 23fe1ae:	f000 f871 	bl	23fe294 <_Z26spi_master_deselect_deviceh>
+ 23fe1ae:	f000 f987 	bl	23fe4c0 <_Z26spi_master_deselect_deviceh>
 
     return ACCURRENT_OK;
  23fe1b2:	4630      	mov	r0, r6
@@ -1538,15 +1538,15 @@ float accurrent_get_ma ( accurrent_t *ctx )
  23fe1c6:	1d07      	adds	r7, r0, #4
         spi_master_select_device( ctx->chip_select );
  23fe1c8:	7c30      	ldrb	r0, [r6, #16]
- 23fe1ca:	f000 f853 	bl	23fe274 <_Z24spi_master_select_deviceh>
+ 23fe1ca:	f000 f969 	bl	23fe4a0 <_Z24spi_master_select_deviceh>
         spi_master_read( &ctx->spi, buffer, 2 );
  23fe1ce:	2202      	movs	r2, #2
  23fe1d0:	a901      	add	r1, sp, #4
  23fe1d2:	4638      	mov	r0, r7
- 23fe1d4:	f000 f968 	bl	23fe4a8 <_Z15spi_master_readP12spi_master_tPhj>
+ 23fe1d4:	f000 fa7e 	bl	23fe6d4 <_Z15spi_master_readP12spi_master_tPhj>
         spi_master_deselect_device( ctx->chip_select );
  23fe1d8:	7c30      	ldrb	r0, [r6, #16]
- 23fe1da:	f000 f85b 	bl	23fe294 <_Z26spi_master_deselect_deviceh>
+ 23fe1da:	f000 f971 	bl	23fe4c0 <_Z26spi_master_deselect_deviceh>
         
         // Reading most significant and least significant bytes
         read_msb = buffer[ 0 ] & msb_mask;
@@ -1602,928 +1602,927 @@ float accurrent_get_ma ( accurrent_t *ctx )
  23fe238:	40208000 	.word	0x40208000
  23fe23c:	408f4000 	.word	0x408f4000
 
-023fe240 <_Z15digital_in_initP12digital_in_th>:
-#include "drv_digital_in.h"
-
-//function for setting pin as input
-int8_t digital_in_init(digital_in_t *in, uint8_t mode)
-{
- 23fe240:	b510      	push	{r4, lr}
-    if (mode == INPUT)
- 23fe242:	460c      	mov	r4, r1
- 23fe244:	b921      	cbnz	r1, 23fe250 <_Z15digital_in_initP12digital_in_th+0x10>
-    {
-        pinMode(in->pin, static_cast<PinMode>(mode));
- 23fe246:	7800      	ldrb	r0, [r0, #0]
- 23fe248:	f001 fbcc 	bl	23ff9e4 <pinMode>
-        return STATUS_SUCCESS;       //return status
- 23fe24c:	4620      	mov	r0, r4
-    }
-    else        //mode other than input selected
-    {
-        return STATUS_FAILURE;       //return status
-    }
-}
- 23fe24e:	bd10      	pop	{r4, pc}
-        return STATUS_FAILURE;       //return status
- 23fe250:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
- 23fe254:	e7fb      	b.n	23fe24e <_Z15digital_in_initP12digital_in_th+0xe>
-
-023fe256 <_Z16digital_out_initP13digital_out_th>:
-#include "drv_digital_out.h"
-
-//function for setting pin as output
-int8_t digital_out_init(digital_out_t *out, uint8_t mode)
-{
-    if (mode == OUTPUT)
- 23fe256:	2901      	cmp	r1, #1
-{
- 23fe258:	b508      	push	{r3, lr}
-    if (mode == OUTPUT)
- 23fe25a:	d104      	bne.n	23fe266 <_Z16digital_out_initP13digital_out_th+0x10>
-    {
-        pinMode(out->pin, static_cast<PinMode>(mode));
- 23fe25c:	8800      	ldrh	r0, [r0, #0]
- 23fe25e:	f001 fbc1 	bl	23ff9e4 <pinMode>
-        return STATUS_SUCCESS;       //return status
- 23fe262:	2000      	movs	r0, #0
-    }
-    else
-    {
-        return STATUS_FAILURE;       //return status
-    }
-}
- 23fe264:	bd08      	pop	{r3, pc}
-        return STATUS_FAILURE;       //return status
- 23fe266:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
- 23fe26a:	e7fb      	b.n	23fe264 <_Z16digital_out_initP13digital_out_th+0xe>
-
-023fe26c <_Z17digital_out_writeP13digital_out_th>:
-}
-
-//function for writing pin state
-void digital_out_write(digital_out_t *out, uint8_t value)
-{
-    digitalWrite(out->pin, value);
- 23fe26c:	8800      	ldrh	r0, [r0, #0]
- 23fe26e:	f001 bbca 	b.w	23ffa06 <digitalWrite>
-	...
-
-023fe274 <_Z24spi_master_select_deviceh>:
-    return STATUS_SUCCESS;                          //return status
-}
-
-//Sets digital output individual slave pin to logic 0
-void spi_master_select_device(uint8_t chip_select)
-{
- 23fe274:	b507      	push	{r0, r1, r2, lr}
-    pinMode(chip_select, OUTPUT);               //set function parameter as output
- 23fe276:	2101      	movs	r1, #1
- 23fe278:	9001      	str	r0, [sp, #4]
- 23fe27a:	f001 fbb3 	bl	23ff9e4 <pinMode>
-    digitalWrite(chip_select, cs_polarity);     //assert CS 
- 23fe27e:	4b04      	ldr	r3, [pc, #16]	; (23fe290 <_Z24spi_master_select_deviceh+0x1c>)
- 23fe280:	9801      	ldr	r0, [sp, #4]
- 23fe282:	7819      	ldrb	r1, [r3, #0]
-}
- 23fe284:	b003      	add	sp, #12
- 23fe286:	f85d eb04 	ldr.w	lr, [sp], #4
-    digitalWrite(chip_select, cs_polarity);     //assert CS 
- 23fe28a:	f001 bbbc 	b.w	23ffa06 <digitalWrite>
- 23fe28e:	bf00      	nop
- 23fe290:	1007ae88 	.word	0x1007ae88
-
-023fe294 <_Z26spi_master_deselect_deviceh>:
-
-//Sets digital output individual slave pin to logic 1
-void spi_master_deselect_device(uint8_t chip_select) 
-{
- 23fe294:	b507      	push	{r0, r1, r2, lr}
-    pinMode(chip_select, OUTPUT);                   //set function parameter as output
- 23fe296:	2101      	movs	r1, #1
- 23fe298:	9001      	str	r0, [sp, #4]
- 23fe29a:	f001 fba3 	bl	23ff9e4 <pinMode>
-    digitalWrite(chip_select, !cs_polarity);        //de-assert CS 
- 23fe29e:	4b05      	ldr	r3, [pc, #20]	; (23fe2b4 <_Z26spi_master_deselect_deviceh+0x20>)
- 23fe2a0:	9801      	ldr	r0, [sp, #4]
- 23fe2a2:	7819      	ldrb	r1, [r3, #0]
- 23fe2a4:	fab1 f181 	clz	r1, r1
- 23fe2a8:	0949      	lsrs	r1, r1, #5
-}
- 23fe2aa:	b003      	add	sp, #12
- 23fe2ac:	f85d eb04 	ldr.w	lr, [sp], #4
-    digitalWrite(chip_select, !cs_polarity);        //de-assert CS 
- 23fe2b0:	f001 bba9 	b.w	23ffa06 <digitalWrite>
- 23fe2b4:	1007ae88 	.word	0x1007ae88
-
-023fe2b8 <_Z35spi_master_set_chip_select_polarityh>:
-
-//sets SPI Master chip select polarity either to active low or active high
-void spi_master_set_chip_select_polarity(uint8_t polarity)
-{
-    if ((polarity == LOW) || (polarity == HIGH))        //check for valid function parameter
- 23fe2b8:	2801      	cmp	r0, #1
-    {
-        cs_polarity = polarity;     //set new CS polarity
- 23fe2ba:	bf9c      	itt	ls
- 23fe2bc:	4b01      	ldrls	r3, [pc, #4]	; (23fe2c4 <_Z35spi_master_set_chip_select_polarityh+0xc>)
- 23fe2be:	7018      	strbls	r0, [r3, #0]
-    }
-}
- 23fe2c0:	4770      	bx	lr
- 23fe2c2:	bf00      	nop
- 23fe2c4:	1007ae88 	.word	0x1007ae88
-
-023fe2c8 <_Z33spi_master_set_default_write_dataP12spi_master_th>:
-int8_t spi_master_set_default_write_data(spi_master_t *obj, uint8_t  default_write_data) 
-{
-    //obj->config.default_write_data = default_write_data;
-    #warning spi_master_set_default_write_data() function is not implemented
-    return STATUS_SUCCESS;      //return status
-}
- 23fe2c8:	2000      	movs	r0, #0
- 23fe2ca:	4770      	bx	lr
-
-023fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>:
-namespace particle {
-
-template <hal_spi_interface_t Interface>
-class SpiProxy {
-public:
-    static SPIClass& instance() {
- 23fe2cc:	b513      	push	{r0, r1, r4, lr}
-        static SPIClass instance(Interface);
- 23fe2ce:	4c0a      	ldr	r4, [pc, #40]	; (23fe2f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x2c>)
- 23fe2d0:	e8d4 1f8f 	ldab	r1, [r4]
- 23fe2d4:	f011 0101 	ands.w	r1, r1, #1
- 23fe2d8:	d10b      	bne.n	23fe2f2 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x26>
- 23fe2da:	4620      	mov	r0, r4
- 23fe2dc:	9101      	str	r1, [sp, #4]
- 23fe2de:	f7ff fe30 	bl	23fdf42 <__cxa_guard_acquire>
- 23fe2e2:	9901      	ldr	r1, [sp, #4]
- 23fe2e4:	b128      	cbz	r0, 23fe2f2 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x26>
- 23fe2e6:	4805      	ldr	r0, [pc, #20]	; (23fe2fc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x30>)
- 23fe2e8:	f001 f8cc 	bl	23ff484 <_ZN8SPIClassC1E19hal_spi_interface_t>
- 23fe2ec:	4620      	mov	r0, r4
- 23fe2ee:	f7ff fe2d 	bl	23fdf4c <__cxa_guard_release>
-        return instance;
-    }
- 23fe2f2:	4802      	ldr	r0, [pc, #8]	; (23fe2fc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x30>)
- 23fe2f4:	b002      	add	sp, #8
- 23fe2f6:	bd10      	pop	{r4, pc}
- 23fe2f8:	1007ae7c 	.word	0x1007ae7c
- 23fe2fc:	1007ae80 	.word	0x1007ae80
-
-023fe300 <_Z15spi_master_openP12spi_master_tP19spi_master_config_t>:
-{       
- 23fe300:	b508      	push	{r3, lr}
-    pinMode(SS, OUTPUT);                            //set SS sginal mikroBUS1 as output
- 23fe302:	2101      	movs	r1, #1
- 23fe304:	2012      	movs	r0, #18
- 23fe306:	f001 fb6d 	bl	23ff9e4 <pinMode>
-    pinMode(SS1, OUTPUT);                           //set SS1 sginal mikroBUS2 as output
- 23fe30a:	2101      	movs	r1, #1
- 23fe30c:	2005      	movs	r0, #5
- 23fe30e:	f001 fb69 	bl	23ff9e4 <pinMode>
-    digitalWrite(SS, HIGH);                         //set SS HIGH
- 23fe312:	2101      	movs	r1, #1
- 23fe314:	2012      	movs	r0, #18
- 23fe316:	f001 fb76 	bl	23ffa06 <digitalWrite>
-    digitalWrite(SS1, HIGH);                        //set SS1 HIGH
- 23fe31a:	2101      	movs	r1, #1
- 23fe31c:	2005      	movs	r0, #5
- 23fe31e:	f001 fb72 	bl	23ffa06 <digitalWrite>
-    }
-    void begin(uint16_t ss_pin) {
-        instance().begin(ss_pin);
-    }
-    void begin(hal_spi_mode_t mode, uint16_t ss_pin = SPI_DEFAULT_SS) {
-        instance().begin(mode, ss_pin);
- 23fe322:	f7ff ffd3 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe326:	22ff      	movs	r2, #255	; 0xff
- 23fe328:	2100      	movs	r1, #0
- 23fe32a:	f001 f8b5 	bl	23ff498 <_ZN8SPIClass5beginE14hal_spi_mode_tt>
-}
- 23fe32e:	2000      	movs	r0, #0
- 23fe330:	bd08      	pop	{r3, pc}
-
-023fe332 <_Z28spi_master_configure_defaultP19spi_master_config_t>:
-{
- 23fe332:	b513      	push	{r0, r1, r4, lr}
- 23fe334:	4604      	mov	r4, r0
-    pinMode(SS, OUTPUT);                            //set SS sginal mikroBUS1 as output
- 23fe336:	2101      	movs	r1, #1
- 23fe338:	2012      	movs	r0, #18
- 23fe33a:	f001 fb53 	bl	23ff9e4 <pinMode>
-    pinMode(SS1, OUTPUT);                           //set SS1 sginal mikroBUS2 as output
- 23fe33e:	2101      	movs	r1, #1
- 23fe340:	2005      	movs	r0, #5
- 23fe342:	f001 fb4f 	bl	23ff9e4 <pinMode>
-    digitalWrite(SS, HIGH);                         //set SS HIGH
- 23fe346:	2101      	movs	r1, #1
- 23fe348:	2012      	movs	r0, #18
- 23fe34a:	f001 fb5c 	bl	23ffa06 <digitalWrite>
-    digitalWrite(SS1, HIGH);                        //set SS1 HIGH
- 23fe34e:	2101      	movs	r1, #1
- 23fe350:	2005      	movs	r0, #5
- 23fe352:	f001 fb58 	bl	23ffa06 <digitalWrite>
-    SPI.setDataMode(config->mode);                  //set default spi mode
- 23fe356:	7a21      	ldrb	r1, [r4, #8]
- 23fe358:	9101      	str	r1, [sp, #4]
-    }
-    void setBitOrder(uint8_t order) {
-        instance().setBitOrder(order);
-    }
-    void setDataMode(uint8_t mode) {
-        instance().setDataMode(mode);
- 23fe35a:	f7ff ffb7 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe35e:	9901      	ldr	r1, [sp, #4]
- 23fe360:	f001 f8b1 	bl	23ff4c6 <_ZN8SPIClass11setDataModeEh>
-    SPI.setClockSpeed(config->speed);               //set default speed
- 23fe364:	6861      	ldr	r1, [r4, #4]
- 23fe366:	9101      	str	r1, [sp, #4]
-    }
-    void setClockDivider(uint8_t divider) {
-        instance().setClockDivider(divider);
-    }
-    unsigned setClockSpeed(unsigned value, unsigned scale=HZ) {
-        return instance().setClockSpeed(value, scale);
- 23fe368:	f7ff ffb0 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe36c:	2201      	movs	r2, #1
- 23fe36e:	9901      	ldr	r1, [sp, #4]
-}
- 23fe370:	b002      	add	sp, #8
- 23fe372:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
- 23fe376:	f001 b8d7 	b.w	23ff528 <_ZN8SPIClass13setClockSpeedEjj>
-
-023fe37a <_Z19spi_master_set_modeP12spi_master_th>:
-{
- 23fe37a:	b507      	push	{r0, r1, r2, lr}
- 23fe37c:	9101      	str	r1, [sp, #4]
-        instance().setDataMode(mode);
- 23fe37e:	f7ff ffa5 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe382:	9901      	ldr	r1, [sp, #4]
- 23fe384:	f001 f89f 	bl	23ff4c6 <_ZN8SPIClass11setDataModeEh>
-}
- 23fe388:	2000      	movs	r0, #0
- 23fe38a:	b003      	add	sp, #12
- 23fe38c:	f85d fb04 	ldr.w	pc, [sp], #4
-
-023fe390 <_Z20spi_master_set_speedP12spi_master_tm>:
-{
- 23fe390:	b510      	push	{r4, lr}
- 23fe392:	460c      	mov	r4, r1
-        return instance().setClockSpeed(value, scale);
- 23fe394:	f7ff ff9a 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe398:	2201      	movs	r2, #1
- 23fe39a:	fa24 f102 	lsr.w	r1, r4, r2
- 23fe39e:	f001 f8c3 	bl	23ff528 <_ZN8SPIClass13setClockSpeedEjj>
-}
- 23fe3a2:	1a20      	subs	r0, r4, r0
- 23fe3a4:	bf18      	it	ne
- 23fe3a6:	f04f 30ff 	movne.w	r0, #4294967295	; 0xffffffff
- 23fe3aa:	bd10      	pop	{r4, pc}
-
-023fe3ac <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j>:
-    return STATUS_SUCCESS;                                              //return status
-}
-
-//Writes a sequence of bytes to SPI bus, followed by a corresponding read 
-int8_t spi_master_write_then_read(spi_master_t *obj, uint8_t *write_data_buffer, size_t length_write_data, uint8_t *read_data_buffer, size_t length_read_data)   
-{
- 23fe3ac:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
-    //compiler warning indicating assumption
-    #warning spi_master_write_then_read() assumes the fist element of write_data_buffer is the first byte to be transmitted, IE the opcode/register if required
-
-    //create dummy array size of write fill with zeros
-    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3b0:	2400      	movs	r4, #0
-{
- 23fe3b2:	4615      	mov	r5, r2
- 23fe3b4:	b083      	sub	sp, #12
- 23fe3b6:	4698      	mov	r8, r3
-    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3b8:	1dd3      	adds	r3, r2, #7
- 23fe3ba:	f023 0307 	bic.w	r3, r3, #7
-{
- 23fe3be:	af02      	add	r7, sp, #8
- 23fe3c0:	6abe      	ldr	r6, [r7, #40]	; 0x28
-    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3c2:	ebad 0d03 	sub.w	sp, sp, r3
- 23fe3c6:	42a5      	cmp	r5, r4
- 23fe3c8:	f102 32ff 	add.w	r2, r2, #4294967295	; 0xffffffff
- 23fe3cc:	f10d 0009 	add.w	r0, sp, #9
- 23fe3d0:	bfd8      	it	le
- 23fe3d2:	4622      	movle	r2, r4
-{
- 23fe3d4:	4689      	mov	r9, r1
-    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3d6:	4621      	mov	r1, r4
- 23fe3d8:	f88d 4008 	strb.w	r4, [sp, #8]
- 23fe3dc:	f001 fc41 	bl	23ffc62 <memset>
-
-    //create dummy array size of read fill with zeros
-    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3e0:	1df3      	adds	r3, r6, #7
- 23fe3e2:	f023 0307 	bic.w	r3, r3, #7
- 23fe3e6:	42a6      	cmp	r6, r4
-    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3e8:	f10d 0b08 	add.w	fp, sp, #8
-    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe3ec:	ebad 0d03 	sub.w	sp, sp, r3
- 23fe3f0:	f106 32ff 	add.w	r2, r6, #4294967295	; 0xffffffff
- 23fe3f4:	4621      	mov	r1, r4
- 23fe3f6:	bfd8      	it	le
- 23fe3f8:	4622      	movle	r2, r4
- 23fe3fa:	f10d 0009 	add.w	r0, sp, #9
- 23fe3fe:	f88d 4008 	strb.w	r4, [sp, #8]
- 23fe402:	f001 fc2e 	bl	23ffc62 <memset>
-        return instance().beginTransaction();
- 23fe406:	f7ff ff61 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe40a:	f001 f870 	bl	23ff4ee <_ZN8SPIClass16beginTransactionEv>
-
-    if(SPI.beginTransaction() == STATUS_FAILURE)        //setup fail
- 23fe40e:	1c43      	adds	r3, r0, #1
-    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe410:	f10d 0a08 	add.w	sl, sp, #8
-    if(SPI.beginTransaction() == STATUS_FAILURE)        //setup fail
- 23fe414:	d014      	beq.n	23fe440 <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j+0x94>
-    }
-    byte transfer(byte data) {
-        return instance().transfer(data);
-    }
-    void transfer(const void* tx_buffer, void* rx_buffer, size_t length, wiring_spi_dma_transfercomplete_callback_t user_callback) {
-        instance().transfer(tx_buffer, rx_buffer, length, user_callback);
- 23fe416:	f7ff ff59 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe41a:	462b      	mov	r3, r5
- 23fe41c:	465a      	mov	r2, fp
- 23fe41e:	4649      	mov	r1, r9
- 23fe420:	9400      	str	r4, [sp, #0]
- 23fe422:	f001 f8b3 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
- 23fe426:	f7ff ff51 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe42a:	4633      	mov	r3, r6
- 23fe42c:	4642      	mov	r2, r8
- 23fe42e:	4651      	mov	r1, sl
- 23fe430:	9400      	str	r4, [sp, #0]
- 23fe432:	f001 f8ab 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
-        instance().endTransaction();
- 23fe436:	f7ff ff49 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe43a:	f001 f85b 	bl	23ff4f4 <_ZN8SPIClass14endTransactionEv>
-    }
-    
-    SPI.transfer(write_data_buffer, write_dummy, length_write_data, NULL);      //spi transaction for write (read = NULL)
-    SPI.transfer(read_dummy, read_data_buffer, length_read_data, NULL);         //spi transaction for read (write = NULL)
-    SPI.endTransaction();                                                       //end transaction and release spi peripheral lock
-    return STATUS_SUCCESS;                                                      //return status                                         
- 23fe43e:	4620      	mov	r0, r4
-}                                                           
- 23fe440:	3704      	adds	r7, #4
- 23fe442:	46bd      	mov	sp, r7
- 23fe444:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
-
-023fe448 <_Z16spi_master_writeP12spi_master_tPhj>:
-{
- 23fe448:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size
- 23fe44c:	2500      	movs	r5, #0
-{
- 23fe44e:	4614      	mov	r4, r2
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size
- 23fe450:	1dd3      	adds	r3, r2, #7
- 23fe452:	f023 0307 	bic.w	r3, r3, #7
-{
- 23fe456:	b082      	sub	sp, #8
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size
- 23fe458:	42ac      	cmp	r4, r5
-{
- 23fe45a:	af02      	add	r7, sp, #8
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size
- 23fe45c:	ebad 0d03 	sub.w	sp, sp, r3
- 23fe460:	f102 32ff 	add.w	r2, r2, #4294967295	; 0xffffffff
-{
- 23fe464:	460e      	mov	r6, r1
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size
- 23fe466:	bfd8      	it	le
- 23fe468:	462a      	movle	r2, r5
- 23fe46a:	4629      	mov	r1, r5
- 23fe46c:	f10d 0009 	add.w	r0, sp, #9
- 23fe470:	f88d 5008 	strb.w	r5, [sp, #8]
- 23fe474:	f001 fbf5 	bl	23ffc62 <memset>
-        return instance().beginTransaction();
- 23fe478:	f7ff ff28 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe47c:	f001 f837 	bl	23ff4ee <_ZN8SPIClass16beginTransactionEv>
-    if(SPI.beginTransaction() == STATUS_FAILURE)        //setup fail
- 23fe480:	1c43      	adds	r3, r0, #1
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size
- 23fe482:	f10d 0808 	add.w	r8, sp, #8
-    if(SPI.beginTransaction() == STATUS_FAILURE)        //setup fail
- 23fe486:	d00c      	beq.n	23fe4a2 <_Z16spi_master_writeP12spi_master_tPhj+0x5a>
-        instance().transfer(tx_buffer, rx_buffer, length, user_callback);
- 23fe488:	f7ff ff20 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe48c:	4623      	mov	r3, r4
- 23fe48e:	4642      	mov	r2, r8
- 23fe490:	4631      	mov	r1, r6
- 23fe492:	9500      	str	r5, [sp, #0]
- 23fe494:	f001 f87a 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
-        instance().endTransaction();
- 23fe498:	f7ff ff18 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe49c:	f001 f82a 	bl	23ff4f4 <_ZN8SPIClass14endTransactionEv>
-    return STATUS_SUCCESS;                                              //return status
- 23fe4a0:	4628      	mov	r0, r5
-}
- 23fe4a2:	46bd      	mov	sp, r7
- 23fe4a4:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
-
-023fe4a8 <_Z15spi_master_readP12spi_master_tPhj>:
-{
- 23fe4a8:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
-    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe4ac:	2500      	movs	r5, #0
-{
- 23fe4ae:	4614      	mov	r4, r2
-    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe4b0:	1dd3      	adds	r3, r2, #7
- 23fe4b2:	f023 0307 	bic.w	r3, r3, #7
-{
- 23fe4b6:	b082      	sub	sp, #8
-    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe4b8:	42ac      	cmp	r4, r5
-{
- 23fe4ba:	af02      	add	r7, sp, #8
-    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe4bc:	ebad 0d03 	sub.w	sp, sp, r3
- 23fe4c0:	f102 32ff 	add.w	r2, r2, #4294967295	; 0xffffffff
-{
- 23fe4c4:	460e      	mov	r6, r1
-    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe4c6:	bfd8      	it	le
- 23fe4c8:	462a      	movle	r2, r5
- 23fe4ca:	4629      	mov	r1, r5
- 23fe4cc:	f10d 0009 	add.w	r0, sp, #9
- 23fe4d0:	f88d 5008 	strb.w	r5, [sp, #8]
- 23fe4d4:	f001 fbc5 	bl	23ffc62 <memset>
-        return instance().beginTransaction();
- 23fe4d8:	f7ff fef8 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe4dc:	f001 f807 	bl	23ff4ee <_ZN8SPIClass16beginTransactionEv>
-    if(SPI.beginTransaction() == STATUS_FAILURE)        //setup fail
- 23fe4e0:	1c43      	adds	r3, r0, #1
-    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer   read/write arrays must be of same size  
- 23fe4e2:	f10d 0808 	add.w	r8, sp, #8
-    if(SPI.beginTransaction() == STATUS_FAILURE)        //setup fail
- 23fe4e6:	d00c      	beq.n	23fe502 <_Z15spi_master_readP12spi_master_tPhj+0x5a>
-        instance().transfer(tx_buffer, rx_buffer, length, user_callback);
- 23fe4e8:	f7ff fef0 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe4ec:	4623      	mov	r3, r4
- 23fe4ee:	4632      	mov	r2, r6
- 23fe4f0:	4641      	mov	r1, r8
- 23fe4f2:	9500      	str	r5, [sp, #0]
- 23fe4f4:	f001 f84a 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
-        instance().endTransaction();
- 23fe4f8:	f7ff fee8 	bl	23fe2cc <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
- 23fe4fc:	f000 fffa 	bl	23ff4f4 <_ZN8SPIClass14endTransactionEv>
-    return STATUS_SUCCESS;                                              //return status
- 23fe500:	4628      	mov	r0, r5
-}
- 23fe502:	46bd      	mov	sp, r7
- 23fe504:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
-
-023fe508 <_Z17eeprom7_cfg_setupP13eeprom7_cfg_t>:
+023fe240 <_Z17eeprom7_cfg_setupP13eeprom7_cfg_t>:
  */
 #define DUMMY  0x00
 
 void eeprom7_cfg_setup ( eeprom7_cfg_t *cfg ) {
     cfg->sck  = HAL_PIN_NC;
     cfg->miso = HAL_PIN_NC;
- 23fe508:	f04f 33ff 	mov.w	r3, #4294967295	; 0xffffffff
- 23fe50c:	6003      	str	r3, [r0, #0]
+ 23fe240:	f04f 33ff 	mov.w	r3, #4294967295	; 0xffffffff
+ 23fe244:	6003      	str	r3, [r0, #0]
     cfg->mosi = HAL_PIN_NC;
     cfg->cs   = HAL_PIN_NC;
     cfg->wp = HAL_PIN_NC;
- 23fe50e:	8083      	strh	r3, [r0, #4]
+ 23fe246:	8083      	strh	r3, [r0, #4]
     cfg->hld = HAL_PIN_NC;
 
     cfg->spi_speed   = 100000;
- 23fe510:	4b02      	ldr	r3, [pc, #8]	; (23fe51c <_Z17eeprom7_cfg_setupP13eeprom7_cfg_t+0x14>)
- 23fe512:	6083      	str	r3, [r0, #8]
+ 23fe248:	4b02      	ldr	r3, [pc, #8]	; (23fe254 <_Z17eeprom7_cfg_setupP13eeprom7_cfg_t+0x14>)
+ 23fe24a:	6083      	str	r3, [r0, #8]
     cfg->spi_mode    = SPI_MASTER_MODE_0;
- 23fe514:	2300      	movs	r3, #0
- 23fe516:	8183      	strh	r3, [r0, #12]
+ 23fe24c:	2300      	movs	r3, #0
+ 23fe24e:	8183      	strh	r3, [r0, #12]
     cfg->cs_polarity = SPI_MASTER_CHIP_SELECT_POLARITY_ACTIVE_LOW;
 }
- 23fe518:	4770      	bx	lr
- 23fe51a:	bf00      	nop
- 23fe51c:	000186a0 	.word	0x000186a0
+ 23fe250:	4770      	bx	lr
+ 23fe252:	bf00      	nop
+ 23fe254:	000186a0 	.word	0x000186a0
 
-023fe520 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t>:
+023fe258 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t>:
 
 err_t eeprom7_init ( eeprom7_t *ctx, eeprom7_cfg_t *cfg ) {
- 23fe520:	b57f      	push	{r0, r1, r2, r3, r4, r5, r6, lr}
- 23fe522:	460c      	mov	r4, r1
- 23fe524:	4605      	mov	r5, r0
+ 23fe258:	b57f      	push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 23fe25a:	460c      	mov	r4, r1
+ 23fe25c:	4605      	mov	r5, r0
     spi_master_config_t spi_cfg;
 
     spi_master_configure_default( &spi_cfg );
- 23fe526:	a801      	add	r0, sp, #4
- 23fe528:	f7ff ff03 	bl	23fe332 <_Z28spi_master_configure_defaultP19spi_master_config_t>
+ 23fe25e:	a801      	add	r0, sp, #4
+ 23fe260:	f000 f97e 	bl	23fe560 <_Z28spi_master_configure_defaultP19spi_master_config_t>
 
     spi_cfg.sck  = cfg->sck;
- 23fe52c:	78a3      	ldrb	r3, [r4, #2]
+ 23fe264:	78a3      	ldrb	r3, [r4, #2]
     spi_cfg.miso = cfg->miso;
     spi_cfg.mosi = cfg->mosi;
 
     ctx->chip_select = cfg->cs;
 
     if ( spi_master_open( &ctx->spi, &spi_cfg ) == SPI_MASTER_ERROR ) {
- 23fe52e:	1d2e      	adds	r6, r5, #4
+ 23fe266:	1d2e      	adds	r6, r5, #4
     spi_cfg.sck  = cfg->sck;
- 23fe530:	f88d 3005 	strb.w	r3, [sp, #5]
+ 23fe268:	f88d 3005 	strb.w	r3, [sp, #5]
     spi_cfg.miso = cfg->miso;
- 23fe534:	8823      	ldrh	r3, [r4, #0]
+ 23fe26c:	8823      	ldrh	r3, [r4, #0]
     if ( spi_master_open( &ctx->spi, &spi_cfg ) == SPI_MASTER_ERROR ) {
- 23fe536:	4630      	mov	r0, r6
+ 23fe26e:	4630      	mov	r0, r6
     spi_cfg.miso = cfg->miso;
- 23fe538:	f8ad 3006 	strh.w	r3, [sp, #6]
+ 23fe270:	f8ad 3006 	strh.w	r3, [sp, #6]
     ctx->chip_select = cfg->cs;
- 23fe53c:	78e3      	ldrb	r3, [r4, #3]
+ 23fe274:	78e3      	ldrb	r3, [r4, #3]
     if ( spi_master_open( &ctx->spi, &spi_cfg ) == SPI_MASTER_ERROR ) {
- 23fe53e:	a901      	add	r1, sp, #4
+ 23fe276:	a901      	add	r1, sp, #4
     ctx->chip_select = cfg->cs;
- 23fe540:	742b      	strb	r3, [r5, #16]
+ 23fe278:	742b      	strb	r3, [r5, #16]
     if ( spi_master_open( &ctx->spi, &spi_cfg ) == SPI_MASTER_ERROR ) {
- 23fe542:	f7ff fedd 	bl	23fe300 <_Z15spi_master_openP12spi_master_tP19spi_master_config_t>
- 23fe546:	3001      	adds	r0, #1
- 23fe548:	d103      	bne.n	23fe552 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x32>
+ 23fe27a:	f000 f957 	bl	23fe52c <_Z15spi_master_openP12spi_master_tP19spi_master_config_t>
+ 23fe27e:	3001      	adds	r0, #1
+ 23fe280:	d103      	bne.n	23fe28a <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x32>
         return SPI_MASTER_ERROR;
- 23fe54a:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
+ 23fe282:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
 
     digital_out_init( &ctx->wp, cfg->wp );
     digital_out_init( &ctx->hld, cfg->hld );
     
     return SPI_MASTER_SUCCESS;
 }
- 23fe54e:	b004      	add	sp, #16
- 23fe550:	bd70      	pop	{r4, r5, r6, pc}
+ 23fe286:	b004      	add	sp, #16
+ 23fe288:	bd70      	pop	{r4, r5, r6, pc}
     if ( spi_master_set_default_write_data( &ctx->spi, DUMMY ) == SPI_MASTER_ERROR ) {
- 23fe552:	2100      	movs	r1, #0
- 23fe554:	4630      	mov	r0, r6
- 23fe556:	f7ff feb7 	bl	23fe2c8 <_Z33spi_master_set_default_write_dataP12spi_master_th>
- 23fe55a:	3001      	adds	r0, #1
- 23fe55c:	d0f5      	beq.n	23fe54a <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2a>
+ 23fe28a:	2100      	movs	r1, #0
+ 23fe28c:	4630      	mov	r0, r6
+ 23fe28e:	f000 f931 	bl	23fe4f4 <_Z33spi_master_set_default_write_dataP12spi_master_th>
+ 23fe292:	3001      	adds	r0, #1
+ 23fe294:	d0f5      	beq.n	23fe282 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2a>
     if ( spi_master_set_mode( &ctx->spi, cfg->spi_mode ) == SPI_MASTER_ERROR ) {
- 23fe55e:	4630      	mov	r0, r6
- 23fe560:	7b21      	ldrb	r1, [r4, #12]
- 23fe562:	f7ff ff0a 	bl	23fe37a <_Z19spi_master_set_modeP12spi_master_th>
- 23fe566:	3001      	adds	r0, #1
- 23fe568:	d0ef      	beq.n	23fe54a <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2a>
+ 23fe296:	4630      	mov	r0, r6
+ 23fe298:	7b21      	ldrb	r1, [r4, #12]
+ 23fe29a:	f000 f985 	bl	23fe5a8 <_Z19spi_master_set_modeP12spi_master_th>
+ 23fe29e:	3001      	adds	r0, #1
+ 23fe2a0:	d0ef      	beq.n	23fe282 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2a>
     if ( spi_master_set_speed( &ctx->spi, cfg->spi_speed ) == SPI_MASTER_ERROR ) {
- 23fe56a:	4630      	mov	r0, r6
- 23fe56c:	68a1      	ldr	r1, [r4, #8]
- 23fe56e:	f7ff ff0f 	bl	23fe390 <_Z20spi_master_set_speedP12spi_master_tm>
- 23fe572:	3001      	adds	r0, #1
- 23fe574:	d0e9      	beq.n	23fe54a <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2a>
+ 23fe2a2:	4630      	mov	r0, r6
+ 23fe2a4:	68a1      	ldr	r1, [r4, #8]
+ 23fe2a6:	f000 f98a 	bl	23fe5be <_Z20spi_master_set_speedP12spi_master_tm>
+ 23fe2aa:	3001      	adds	r0, #1
+ 23fe2ac:	d0e9      	beq.n	23fe282 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2a>
     spi_master_set_chip_select_polarity( cfg->cs_polarity );
- 23fe576:	7b60      	ldrb	r0, [r4, #13]
- 23fe578:	f7ff fe9e 	bl	23fe2b8 <_Z35spi_master_set_chip_select_polarityh>
+ 23fe2ae:	7b60      	ldrb	r0, [r4, #13]
+ 23fe2b0:	f000 f918 	bl	23fe4e4 <_Z35spi_master_set_chip_select_polarityh>
     spi_master_deselect_device( ctx->chip_select );
- 23fe57c:	7c28      	ldrb	r0, [r5, #16]
- 23fe57e:	f7ff fe89 	bl	23fe294 <_Z26spi_master_deselect_deviceh>
+ 23fe2b4:	7c28      	ldrb	r0, [r5, #16]
+ 23fe2b6:	f000 f903 	bl	23fe4c0 <_Z26spi_master_deselect_deviceh>
     digital_out_init( &ctx->wp, cfg->wp );
- 23fe582:	7921      	ldrb	r1, [r4, #4]
- 23fe584:	4628      	mov	r0, r5
- 23fe586:	f7ff fe66 	bl	23fe256 <_Z16digital_out_initP13digital_out_th>
+ 23fe2ba:	7921      	ldrb	r1, [r4, #4]
+ 23fe2bc:	4628      	mov	r0, r5
+ 23fe2be:	f000 f8e0 	bl	23fe482 <_Z16digital_out_initP13digital_out_th>
     digital_out_init( &ctx->hld, cfg->hld );
- 23fe58a:	7961      	ldrb	r1, [r4, #5]
- 23fe58c:	1ca8      	adds	r0, r5, #2
- 23fe58e:	f7ff fe62 	bl	23fe256 <_Z16digital_out_initP13digital_out_th>
+ 23fe2c2:	7961      	ldrb	r1, [r4, #5]
+ 23fe2c4:	1ca8      	adds	r0, r5, #2
+ 23fe2c6:	f000 f8dc 	bl	23fe482 <_Z16digital_out_initP13digital_out_th>
     return SPI_MASTER_SUCCESS;
- 23fe592:	2000      	movs	r0, #0
- 23fe594:	e7db      	b.n	23fe54e <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2e>
+ 23fe2ca:	2000      	movs	r0, #0
+ 23fe2cc:	e7db      	b.n	23fe286 <_Z12eeprom7_initP9eeprom7_tP13eeprom7_cfg_t+0x2e>
 
-023fe596 <_Z21eeprom7_generic_writeP9eeprom7_thPhh>:
+023fe2ce <_Z21eeprom7_generic_writeP9eeprom7_thPhh>:
     eeprom7_set_status( ctx, 0x00 );
     eeprom7_enable_hold_operation( ctx, 1 );
     return EEPROM7_OK;
 }
 
 err_t eeprom7_generic_write ( eeprom7_t *ctx, uint8_t reg, uint8_t *data_in, uint8_t len ) {
- 23fe596:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
- 23fe59a:	4688      	mov	r8, r1
+ 23fe2ce:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 23fe2d2:	4688      	mov	r8, r1
     uint8_t tx_buf[ 257 ] = { 0 };
- 23fe59c:	2100      	movs	r1, #0
+ 23fe2d4:	2100      	movs	r1, #0
 err_t eeprom7_generic_write ( eeprom7_t *ctx, uint8_t reg, uint8_t *data_in, uint8_t len ) {
- 23fe59e:	b0c2      	sub	sp, #264	; 0x108
- 23fe5a0:	4604      	mov	r4, r0
- 23fe5a2:	4617      	mov	r7, r2
+ 23fe2d6:	b0c2      	sub	sp, #264	; 0x108
+ 23fe2d8:	4604      	mov	r4, r0
+ 23fe2da:	4617      	mov	r7, r2
     uint8_t tx_buf[ 257 ] = { 0 };
- 23fe5a4:	a802      	add	r0, sp, #8
- 23fe5a6:	22fd      	movs	r2, #253	; 0xfd
- 23fe5a8:	9101      	str	r1, [sp, #4]
+ 23fe2dc:	a802      	add	r0, sp, #8
+ 23fe2de:	22fd      	movs	r2, #253	; 0xfd
+ 23fe2e0:	9101      	str	r1, [sp, #4]
 err_t eeprom7_generic_write ( eeprom7_t *ctx, uint8_t reg, uint8_t *data_in, uint8_t len ) {
- 23fe5aa:	461e      	mov	r6, r3
+ 23fe2e2:	461e      	mov	r6, r3
     uint8_t tx_buf[ 257 ] = { 0 };
- 23fe5ac:	f001 fb59 	bl	23ffc62 <memset>
+ 23fe2e4:	f001 fcbd 	bl	23ffc62 <memset>
     uint8_t cnt;
 
     tx_buf[ 0 ] = reg;
     for ( cnt = 1; cnt <= len; cnt++ ) {
- 23fe5b0:	2101      	movs	r1, #1
+ 23fe2e8:	2101      	movs	r1, #1
     uint8_t tx_buf[ 257 ] = { 0 };
- 23fe5b2:	ad01      	add	r5, sp, #4
+ 23fe2ea:	ad01      	add	r5, sp, #4
     tx_buf[ 0 ] = reg;
- 23fe5b4:	f885 8000 	strb.w	r8, [r5]
+ 23fe2ec:	f885 8000 	strb.w	r8, [r5]
     for ( cnt = 1; cnt <= len; cnt++ ) {
- 23fe5b8:	42b1      	cmp	r1, r6
- 23fe5ba:	d806      	bhi.n	23fe5ca <_Z21eeprom7_generic_writeP9eeprom7_thPhh+0x34>
+ 23fe2f0:	42b1      	cmp	r1, r6
+ 23fe2f2:	d806      	bhi.n	23fe302 <_Z21eeprom7_generic_writeP9eeprom7_thPhh+0x34>
         tx_buf[ cnt ] = data_in[ cnt - 1 ];
- 23fe5bc:	187b      	adds	r3, r7, r1
- 23fe5be:	f813 3c01 	ldrb.w	r3, [r3, #-1]
- 23fe5c2:	546b      	strb	r3, [r5, r1]
+ 23fe2f4:	187b      	adds	r3, r7, r1
+ 23fe2f6:	f813 3c01 	ldrb.w	r3, [r3, #-1]
+ 23fe2fa:	546b      	strb	r3, [r5, r1]
     for ( cnt = 1; cnt <= len; cnt++ ) {
- 23fe5c4:	3101      	adds	r1, #1
- 23fe5c6:	b2c9      	uxtb	r1, r1
- 23fe5c8:	e7f6      	b.n	23fe5b8 <_Z21eeprom7_generic_writeP9eeprom7_thPhh+0x22>
+ 23fe2fc:	3101      	adds	r1, #1
+ 23fe2fe:	b2c9      	uxtb	r1, r1
+ 23fe300:	e7f6      	b.n	23fe2f0 <_Z21eeprom7_generic_writeP9eeprom7_thPhh+0x22>
     }
 
     spi_master_select_device( ctx->chip_select );
- 23fe5ca:	7c20      	ldrb	r0, [r4, #16]
- 23fe5cc:	f7ff fe52 	bl	23fe274 <_Z24spi_master_select_deviceh>
+ 23fe302:	7c20      	ldrb	r0, [r4, #16]
+ 23fe304:	f000 f8cc 	bl	23fe4a0 <_Z24spi_master_select_deviceh>
     err_t error_flag = spi_master_write( &ctx->spi, tx_buf, len + 1 );
- 23fe5d0:	4629      	mov	r1, r5
- 23fe5d2:	1c72      	adds	r2, r6, #1
- 23fe5d4:	1d20      	adds	r0, r4, #4
- 23fe5d6:	f7ff ff37 	bl	23fe448 <_Z16spi_master_writeP12spi_master_tPhj>
- 23fe5da:	4605      	mov	r5, r0
+ 23fe308:	4629      	mov	r1, r5
+ 23fe30a:	1c72      	adds	r2, r6, #1
+ 23fe30c:	1d20      	adds	r0, r4, #4
+ 23fe30e:	f000 f9b1 	bl	23fe674 <_Z16spi_master_writeP12spi_master_tPhj>
+ 23fe312:	4605      	mov	r5, r0
     spi_master_deselect_device( ctx->chip_select );
- 23fe5dc:	7c20      	ldrb	r0, [r4, #16]
- 23fe5de:	f7ff fe59 	bl	23fe294 <_Z26spi_master_deselect_deviceh>
+ 23fe314:	7c20      	ldrb	r0, [r4, #16]
+ 23fe316:	f000 f8d3 	bl	23fe4c0 <_Z26spi_master_deselect_deviceh>
 
     return error_flag;
 }
- 23fe5e2:	4628      	mov	r0, r5
- 23fe5e4:	b042      	add	sp, #264	; 0x108
- 23fe5e6:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 23fe31a:	4628      	mov	r0, r5
+ 23fe31c:	b042      	add	sp, #264	; 0x108
+ 23fe31e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
 
-023fe5ea <_Z20eeprom7_generic_readP9eeprom7_thPhh>:
+023fe322 <_Z20eeprom7_generic_readP9eeprom7_thPhh>:
 
 err_t eeprom7_generic_read ( eeprom7_t *ctx, uint8_t reg, uint8_t *data_out, uint8_t len ) {
- 23fe5ea:	b57f      	push	{r0, r1, r2, r3, r4, r5, r6, lr}
- 23fe5ec:	4604      	mov	r4, r0
- 23fe5ee:	4615      	mov	r5, r2
- 23fe5f0:	461e      	mov	r6, r3
+ 23fe322:	b57f      	push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 23fe324:	4604      	mov	r4, r0
+ 23fe326:	4615      	mov	r5, r2
+ 23fe328:	461e      	mov	r6, r3
     spi_master_select_device( ctx->chip_select );
- 23fe5f2:	7c00      	ldrb	r0, [r0, #16]
+ 23fe32a:	7c00      	ldrb	r0, [r0, #16]
 err_t eeprom7_generic_read ( eeprom7_t *ctx, uint8_t reg, uint8_t *data_out, uint8_t len ) {
- 23fe5f4:	f88d 100f 	strb.w	r1, [sp, #15]
+ 23fe32c:	f88d 100f 	strb.w	r1, [sp, #15]
     spi_master_select_device( ctx->chip_select );
- 23fe5f8:	f7ff fe3c 	bl	23fe274 <_Z24spi_master_select_deviceh>
+ 23fe330:	f000 f8b6 	bl	23fe4a0 <_Z24spi_master_select_deviceh>
     err_t error_flag = spi_master_write_then_read( &ctx->spi, &reg, 1, data_out, len );
- 23fe5fc:	462b      	mov	r3, r5
- 23fe5fe:	2201      	movs	r2, #1
- 23fe600:	f10d 010f 	add.w	r1, sp, #15
- 23fe604:	9600      	str	r6, [sp, #0]
- 23fe606:	1d20      	adds	r0, r4, #4
- 23fe608:	f7ff fed0 	bl	23fe3ac <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j>
- 23fe60c:	4605      	mov	r5, r0
+ 23fe334:	462b      	mov	r3, r5
+ 23fe336:	2201      	movs	r2, #1
+ 23fe338:	f10d 010f 	add.w	r1, sp, #15
+ 23fe33c:	9600      	str	r6, [sp, #0]
+ 23fe33e:	1d20      	adds	r0, r4, #4
+ 23fe340:	f000 f94a 	bl	23fe5d8 <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j>
+ 23fe344:	4605      	mov	r5, r0
     spi_master_deselect_device( ctx->chip_select );
- 23fe60e:	7c20      	ldrb	r0, [r4, #16]
- 23fe610:	f7ff fe40 	bl	23fe294 <_Z26spi_master_deselect_deviceh>
+ 23fe346:	7c20      	ldrb	r0, [r4, #16]
+ 23fe348:	f000 f8ba 	bl	23fe4c0 <_Z26spi_master_deselect_deviceh>
 
     return error_flag;
 }
- 23fe614:	4628      	mov	r0, r5
- 23fe616:	b004      	add	sp, #16
- 23fe618:	bd70      	pop	{r4, r5, r6, pc}
+ 23fe34c:	4628      	mov	r0, r5
+ 23fe34e:	b004      	add	sp, #16
+ 23fe350:	bd70      	pop	{r4, r5, r6, pc}
 
-023fe61a <_Z31eeprom7_generic_write_then_readP9eeprom7_tPhhS1_h>:
+023fe352 <_Z31eeprom7_generic_write_then_readP9eeprom7_tPhhS1_h>:
 
 err_t eeprom7_generic_write_then_read ( eeprom7_t *ctx, uint8_t *data_in, uint8_t len_in, uint8_t *data_out, uint8_t len_out ) {
- 23fe61a:	b530      	push	{r4, r5, lr}
- 23fe61c:	4604      	mov	r4, r0
- 23fe61e:	b087      	sub	sp, #28
+ 23fe352:	b530      	push	{r4, r5, lr}
+ 23fe354:	4604      	mov	r4, r0
+ 23fe356:	b087      	sub	sp, #28
     spi_master_select_device( ctx->chip_select );
- 23fe620:	7c00      	ldrb	r0, [r0, #16]
+ 23fe358:	7c00      	ldrb	r0, [r0, #16]
 err_t eeprom7_generic_write_then_read ( eeprom7_t *ctx, uint8_t *data_in, uint8_t len_in, uint8_t *data_out, uint8_t len_out ) {
- 23fe622:	e9cd 2104 	strd	r2, r1, [sp, #16]
- 23fe626:	9303      	str	r3, [sp, #12]
+ 23fe35a:	e9cd 2104 	strd	r2, r1, [sp, #16]
+ 23fe35e:	9303      	str	r3, [sp, #12]
     spi_master_select_device( ctx->chip_select );
- 23fe628:	f7ff fe24 	bl	23fe274 <_Z24spi_master_select_deviceh>
+ 23fe360:	f000 f89e 	bl	23fe4a0 <_Z24spi_master_select_deviceh>
     err_t error_flag = spi_master_write_then_read( &ctx->spi, data_in, len_in, data_out, len_out );
- 23fe62c:	e9dd 3203 	ldrd	r3, r2, [sp, #12]
- 23fe630:	f89d 0028 	ldrb.w	r0, [sp, #40]	; 0x28
- 23fe634:	9905      	ldr	r1, [sp, #20]
- 23fe636:	9000      	str	r0, [sp, #0]
- 23fe638:	1d20      	adds	r0, r4, #4
- 23fe63a:	f7ff feb7 	bl	23fe3ac <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j>
- 23fe63e:	4605      	mov	r5, r0
+ 23fe364:	e9dd 3203 	ldrd	r3, r2, [sp, #12]
+ 23fe368:	f89d 0028 	ldrb.w	r0, [sp, #40]	; 0x28
+ 23fe36c:	9905      	ldr	r1, [sp, #20]
+ 23fe36e:	9000      	str	r0, [sp, #0]
+ 23fe370:	1d20      	adds	r0, r4, #4
+ 23fe372:	f000 f931 	bl	23fe5d8 <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j>
+ 23fe376:	4605      	mov	r5, r0
     spi_master_deselect_device( ctx->chip_select );
- 23fe640:	7c20      	ldrb	r0, [r4, #16]
- 23fe642:	f7ff fe27 	bl	23fe294 <_Z26spi_master_deselect_deviceh>
+ 23fe378:	7c20      	ldrb	r0, [r4, #16]
+ 23fe37a:	f000 f8a1 	bl	23fe4c0 <_Z26spi_master_deselect_deviceh>
 
     return error_flag;
 }
- 23fe646:	4628      	mov	r0, r5
- 23fe648:	b007      	add	sp, #28
- 23fe64a:	bd30      	pop	{r4, r5, pc}
+ 23fe37e:	4628      	mov	r0, r5
+ 23fe380:	b007      	add	sp, #28
+ 23fe382:	bd30      	pop	{r4, r5, pc}
 
-023fe64c <_Z19eeprom7_read_statusP9eeprom7_t>:
+023fe384 <_Z19eeprom7_read_statusP9eeprom7_t>:
     }
     
     eeprom7_generic_write( ctx, tx_data, NULL, 0 );
 }
 
 uint16_t eeprom7_read_status ( eeprom7_t *ctx ) {
- 23fe64c:	b507      	push	{r0, r1, r2, lr}
+ 23fe384:	b507      	push	{r0, r1, r2, lr}
     uint8_t rx_buf[ 2 ];
     uint16_t status;
     
     eeprom7_generic_read( ctx, EEPROM7_OPCODE_STATUS_RDSR, rx_buf, 2 );
- 23fe64e:	2302      	movs	r3, #2
- 23fe650:	2105      	movs	r1, #5
- 23fe652:	aa01      	add	r2, sp, #4
- 23fe654:	f7ff ffc9 	bl	23fe5ea <_Z20eeprom7_generic_readP9eeprom7_thPhh>
+ 23fe386:	2302      	movs	r3, #2
+ 23fe388:	2105      	movs	r1, #5
+ 23fe38a:	aa01      	add	r2, sp, #4
+ 23fe38c:	f7ff ffc9 	bl	23fe322 <_Z20eeprom7_generic_readP9eeprom7_thPhh>
     
     status = rx_buf[ 0 ];
     status <<= 8;
     status |= rx_buf[ 1 ];
     
     return status;
- 23fe658:	f8bd 0004 	ldrh.w	r0, [sp, #4]
- 23fe65c:	ba40      	rev16	r0, r0
+ 23fe390:	f8bd 0004 	ldrh.w	r0, [sp, #4]
+ 23fe394:	ba40      	rev16	r0, r0
 }
- 23fe65e:	b280      	uxth	r0, r0
- 23fe660:	b003      	add	sp, #12
- 23fe662:	f85d fb04 	ldr.w	pc, [sp], #4
+ 23fe396:	b280      	uxth	r0, r0
+ 23fe398:	b003      	add	sp, #12
+ 23fe39a:	f85d fb04 	ldr.w	pc, [sp], #4
 
-023fe666 <_Z23eeprom7_is_device_readyP9eeprom7_t>:
+023fe39e <_Z23eeprom7_is_device_readyP9eeprom7_t>:
 
 uint8_t eeprom7_is_device_ready ( eeprom7_t *ctx ) {
- 23fe666:	b508      	push	{r3, lr}
+ 23fe39e:	b508      	push	{r3, lr}
     uint16_t status;
     uint8_t is_ready;
     
     status = eeprom7_read_status( ctx );
- 23fe668:	f7ff fff0 	bl	23fe64c <_Z19eeprom7_read_statusP9eeprom7_t>
+ 23fe3a0:	f7ff fff0 	bl	23fe384 <_Z19eeprom7_read_statusP9eeprom7_t>
     
     is_ready = ( ( uint8_t ) status ) & 0x01;
     
     return is_ready;
 }
- 23fe66c:	f000 0001 	and.w	r0, r0, #1
- 23fe670:	bd08      	pop	{r3, pc}
+ 23fe3a4:	f000 0001 	and.w	r0, r0, #1
+ 23fe3a8:	bd08      	pop	{r3, pc}
 
-023fe672 <_Z16eeprom7_send_cmdP9eeprom7_th>:
+023fe3aa <_Z16eeprom7_send_cmdP9eeprom7_th>:
 
 err_t eeprom7_send_cmd ( eeprom7_t *ctx, uint8_t cmd ) {
     uint8_t rx_buf[ 2 ] = { 0 };
- 23fe672:	2300      	movs	r3, #0
+ 23fe3aa:	2300      	movs	r3, #0
 err_t eeprom7_send_cmd ( eeprom7_t *ctx, uint8_t cmd ) {
- 23fe674:	b507      	push	{r0, r1, r2, lr}
+ 23fe3ac:	b507      	push	{r0, r1, r2, lr}
     
     if ( cmd == EEPROM7_OPCODE_STATUS_WRBP ) {        
- 23fe676:	2908      	cmp	r1, #8
+ 23fe3ae:	2908      	cmp	r1, #8
     uint8_t rx_buf[ 2 ] = { 0 };
- 23fe678:	f8ad 3004 	strh.w	r3, [sp, #4]
+ 23fe3b0:	f8ad 3004 	strh.w	r3, [sp, #4]
     if ( cmd == EEPROM7_OPCODE_STATUS_WRBP ) {        
- 23fe67c:	d108      	bne.n	23fe690 <_Z16eeprom7_send_cmdP9eeprom7_th+0x1e>
+ 23fe3b4:	d108      	bne.n	23fe3c8 <_Z16eeprom7_send_cmdP9eeprom7_th+0x1e>
         eeprom7_generic_read( ctx, cmd, rx_buf, 1 );
- 23fe67e:	2301      	movs	r3, #1
- 23fe680:	aa01      	add	r2, sp, #4
- 23fe682:	f7ff ffb2 	bl	23fe5ea <_Z20eeprom7_generic_readP9eeprom7_thPhh>
+ 23fe3b6:	2301      	movs	r3, #1
+ 23fe3b8:	aa01      	add	r2, sp, #4
+ 23fe3ba:	f7ff ffb2 	bl	23fe322 <_Z20eeprom7_generic_readP9eeprom7_thPhh>
 
         return rx_buf[ 0 ];
- 23fe686:	f99d 0004 	ldrsb.w	r0, [sp, #4]
+ 23fe3be:	f99d 0004 	ldrsb.w	r0, [sp, #4]
     } else {        
         eeprom7_generic_write( ctx, cmd, NULL, 0 );
 
         return EEPROM7_STATUS_SUCCESS;
     }
 }
- 23fe68a:	b003      	add	sp, #12
- 23fe68c:	f85d fb04 	ldr.w	pc, [sp], #4
+ 23fe3c2:	b003      	add	sp, #12
+ 23fe3c4:	f85d fb04 	ldr.w	pc, [sp], #4
         eeprom7_generic_write( ctx, cmd, NULL, 0 );
- 23fe690:	461a      	mov	r2, r3
- 23fe692:	f7ff ff80 	bl	23fe596 <_Z21eeprom7_generic_writeP9eeprom7_thPhh>
- 23fe696:	2001      	movs	r0, #1
- 23fe698:	e7f7      	b.n	23fe68a <_Z16eeprom7_send_cmdP9eeprom7_th+0x18>
+ 23fe3c8:	461a      	mov	r2, r3
+ 23fe3ca:	f7ff ff80 	bl	23fe2ce <_Z21eeprom7_generic_writeP9eeprom7_thPhh>
+ 23fe3ce:	2001      	movs	r0, #1
+ 23fe3d0:	e7f7      	b.n	23fe3c2 <_Z16eeprom7_send_cmdP9eeprom7_th+0x18>
 
-023fe69a <_Z18eeprom7_set_statusP9eeprom7_th>:
+023fe3d2 <_Z18eeprom7_set_statusP9eeprom7_th>:
 void eeprom7_sw_reset ( eeprom7_t *ctx ) {
     eeprom7_send_cmd( ctx, EEPROM7_OPCODE_SW_RESET_SRST );
 }
 
 void eeprom7_set_status ( eeprom7_t *ctx, uint8_t status ) {    
     eeprom7_generic_write( ctx, EEPROM7_OPCODE_STATUS_WRSR, &status, 1 );
- 23fe69a:	2301      	movs	r3, #1
+ 23fe3d2:	2301      	movs	r3, #1
 void eeprom7_set_status ( eeprom7_t *ctx, uint8_t status ) {    
- 23fe69c:	b507      	push	{r0, r1, r2, lr}
- 23fe69e:	f88d 1007 	strb.w	r1, [sp, #7]
+ 23fe3d4:	b507      	push	{r0, r1, r2, lr}
+ 23fe3d6:	f88d 1007 	strb.w	r1, [sp, #7]
     eeprom7_generic_write( ctx, EEPROM7_OPCODE_STATUS_WRSR, &status, 1 );
- 23fe6a2:	f10d 0207 	add.w	r2, sp, #7
- 23fe6a6:	4619      	mov	r1, r3
- 23fe6a8:	f7ff ff75 	bl	23fe596 <_Z21eeprom7_generic_writeP9eeprom7_thPhh>
+ 23fe3da:	f10d 0207 	add.w	r2, sp, #7
+ 23fe3de:	4619      	mov	r1, r3
+ 23fe3e0:	f7ff ff75 	bl	23fe2ce <_Z21eeprom7_generic_writeP9eeprom7_thPhh>
 }
- 23fe6ac:	b003      	add	sp, #12
- 23fe6ae:	f85d fb04 	ldr.w	pc, [sp], #4
+ 23fe3e4:	b003      	add	sp, #12
+ 23fe3e6:	f85d fb04 	ldr.w	pc, [sp], #4
 
-023fe6b2 <_Z19eeprom7_default_cfgP9eeprom7_t>:
+023fe3ea <_Z19eeprom7_default_cfgP9eeprom7_t>:
 err_t eeprom7_default_cfg ( eeprom7_t *ctx ) {
- 23fe6b2:	b510      	push	{r4, lr}
- 23fe6b4:	4604      	mov	r4, r0
+ 23fe3ea:	b510      	push	{r4, lr}
+ 23fe3ec:	4604      	mov	r4, r0
     digital_out_write( &ctx->wp, en_write_protect );
- 23fe6b6:	2101      	movs	r1, #1
- 23fe6b8:	f7ff fdd8 	bl	23fe26c <_Z17digital_out_writeP13digital_out_th>
+ 23fe3ee:	2101      	movs	r1, #1
+ 23fe3f0:	f000 f852 	bl	23fe498 <_Z17digital_out_writeP13digital_out_th>
     eeprom7_send_cmd( ctx, EEPROM7_OPCODE_STATUS_WREN );
- 23fe6bc:	2106      	movs	r1, #6
- 23fe6be:	4620      	mov	r0, r4
- 23fe6c0:	f7ff ffd7 	bl	23fe672 <_Z16eeprom7_send_cmdP9eeprom7_th>
+ 23fe3f4:	2106      	movs	r1, #6
+ 23fe3f6:	4620      	mov	r0, r4
+ 23fe3f8:	f7ff ffd7 	bl	23fe3aa <_Z16eeprom7_send_cmdP9eeprom7_th>
     eeprom7_set_status( ctx, 0x00 );
- 23fe6c4:	4620      	mov	r0, r4
- 23fe6c6:	2100      	movs	r1, #0
- 23fe6c8:	f7ff ffe7 	bl	23fe69a <_Z18eeprom7_set_statusP9eeprom7_th>
+ 23fe3fc:	4620      	mov	r0, r4
+ 23fe3fe:	2100      	movs	r1, #0
+ 23fe400:	f7ff ffe7 	bl	23fe3d2 <_Z18eeprom7_set_statusP9eeprom7_th>
     digital_out_write( &ctx->hld, en_hold );
- 23fe6cc:	1ca0      	adds	r0, r4, #2
- 23fe6ce:	2101      	movs	r1, #1
- 23fe6d0:	f7ff fdcc 	bl	23fe26c <_Z17digital_out_writeP13digital_out_th>
+ 23fe404:	1ca0      	adds	r0, r4, #2
+ 23fe406:	2101      	movs	r1, #1
+ 23fe408:	f000 f846 	bl	23fe498 <_Z17digital_out_writeP13digital_out_th>
 }
- 23fe6d4:	2000      	movs	r0, #0
- 23fe6d6:	bd10      	pop	{r4, pc}
+ 23fe40c:	2000      	movs	r0, #0
+ 23fe40e:	bd10      	pop	{r4, pc}
 
-023fe6d8 <_Z20eeprom7_write_memoryP9eeprom7_tmPhh>:
+023fe410 <_Z20eeprom7_write_memoryP9eeprom7_tmPhh>:
     eeprom7_generic_read( ctx, EEPROM7_OPCODE_STATUS_RDSR, rx_buf, 1 );
 
     return rx_buf[ 0 ];
 }
 
 void eeprom7_write_memory ( eeprom7_t *ctx, uint32_t addr, uint8_t *p_tx_data, uint8_t n_bytes ) {
- 23fe6d8:	b530      	push	{r4, r5, lr}
- 23fe6da:	461c      	mov	r4, r3
- 23fe6dc:	4605      	mov	r5, r0
- 23fe6de:	4608      	mov	r0, r1
+ 23fe410:	b530      	push	{r4, r5, lr}
+ 23fe412:	461c      	mov	r4, r3
+ 23fe414:	4605      	mov	r5, r0
+ 23fe416:	4608      	mov	r0, r1
     uint8_t tx_buf[ 256 ];
     uint8_t n_cnt;
 
     tx_buf[ 0 ] = ( uint8_t ) addr >> 16;
- 23fe6e0:	2300      	movs	r3, #0
+ 23fe418:	2300      	movs	r3, #0
 void eeprom7_write_memory ( eeprom7_t *ctx, uint32_t addr, uint8_t *p_tx_data, uint8_t n_bytes ) {
- 23fe6e2:	b0c1      	sub	sp, #260	; 0x104
- 23fe6e4:	4611      	mov	r1, r2
+ 23fe41a:	b0c1      	sub	sp, #260	; 0x104
+ 23fe41c:	4611      	mov	r1, r2
     tx_buf[ 0 ] = ( uint8_t ) addr >> 16;
- 23fe6e6:	f88d 0002 	strb.w	r0, [sp, #2]
+ 23fe41e:	f88d 0002 	strb.w	r0, [sp, #2]
     tx_buf[ 1 ] = ( uint8_t ) addr >> 8;
     tx_buf[ 2 ] = ( uint8_t ) addr;
     
     for ( n_cnt = 0; n_cnt < n_bytes; n_cnt++ ) {
         tx_buf[ n_cnt + 3 ] = p_tx_data[ n_cnt ];
- 23fe6ea:	4622      	mov	r2, r4
- 23fe6ec:	f10d 0003 	add.w	r0, sp, #3
+ 23fe422:	4622      	mov	r2, r4
+ 23fe424:	f10d 0003 	add.w	r0, sp, #3
     tx_buf[ 0 ] = ( uint8_t ) addr >> 16;
- 23fe6f0:	f88d 3000 	strb.w	r3, [sp]
+ 23fe428:	f88d 3000 	strb.w	r3, [sp]
     tx_buf[ 1 ] = ( uint8_t ) addr >> 8;
- 23fe6f4:	f88d 3001 	strb.w	r3, [sp, #1]
+ 23fe42c:	f88d 3001 	strb.w	r3, [sp, #1]
         tx_buf[ n_cnt + 3 ] = p_tx_data[ n_cnt ];
- 23fe6f8:	f001 faa6 	bl	23ffc48 <memcpy>
+ 23fe430:	f001 fc0a 	bl	23ffc48 <memcpy>
     }
     
     eeprom7_generic_write( ctx, EEPROM7_OPCODE_EEPROM_SECURITY_WRITE, tx_buf, n_bytes + 3 );
- 23fe6fc:	1ce3      	adds	r3, r4, #3
- 23fe6fe:	466a      	mov	r2, sp
- 23fe700:	2102      	movs	r1, #2
- 23fe702:	4628      	mov	r0, r5
- 23fe704:	b2db      	uxtb	r3, r3
- 23fe706:	f7ff ff46 	bl	23fe596 <_Z21eeprom7_generic_writeP9eeprom7_thPhh>
+ 23fe434:	1ce3      	adds	r3, r4, #3
+ 23fe436:	466a      	mov	r2, sp
+ 23fe438:	2102      	movs	r1, #2
+ 23fe43a:	4628      	mov	r0, r5
+ 23fe43c:	b2db      	uxtb	r3, r3
+ 23fe43e:	f7ff ff46 	bl	23fe2ce <_Z21eeprom7_generic_writeP9eeprom7_thPhh>
 }
- 23fe70a:	b041      	add	sp, #260	; 0x104
- 23fe70c:	bd30      	pop	{r4, r5, pc}
+ 23fe442:	b041      	add	sp, #260	; 0x104
+ 23fe444:	bd30      	pop	{r4, r5, pc}
 
-023fe70e <_Z19eeprom7_read_memoryP9eeprom7_tmPhh>:
+023fe446 <_Z19eeprom7_read_memoryP9eeprom7_tmPhh>:
 
 void eeprom7_read_memory ( eeprom7_t *ctx, uint32_t addr, uint8_t *p_rx_data, uint8_t n_bytes) {
- 23fe70e:	b51f      	push	{r0, r1, r2, r3, r4, lr}
+ 23fe446:	b51f      	push	{r0, r1, r2, r3, r4, lr}
     uint8_t tx_buf[ 4 ];
 
     tx_buf[ 0 ] = EEPROM7_OPCODE_EEPROM_SECURITY_READ;
- 23fe710:	2403      	movs	r4, #3
- 23fe712:	f88d 400c 	strb.w	r4, [sp, #12]
+ 23fe448:	2403      	movs	r4, #3
+ 23fe44a:	f88d 400c 	strb.w	r4, [sp, #12]
     tx_buf[ 1 ] = ( uint8_t ) addr >> 16;
- 23fe716:	2400      	movs	r4, #0
- 23fe718:	f88d 100f 	strb.w	r1, [sp, #15]
+ 23fe44e:	2400      	movs	r4, #0
+ 23fe450:	f88d 100f 	strb.w	r1, [sp, #15]
     tx_buf[ 2 ] = ( uint8_t ) addr >> 8;
     tx_buf[ 3 ] = ( uint8_t ) addr;
     
     eeprom7_generic_write_then_read( ctx, tx_buf, 4, p_rx_data, n_bytes );
- 23fe71c:	9300      	str	r3, [sp, #0]
- 23fe71e:	a903      	add	r1, sp, #12
- 23fe720:	4613      	mov	r3, r2
- 23fe722:	2204      	movs	r2, #4
+ 23fe454:	9300      	str	r3, [sp, #0]
+ 23fe456:	a903      	add	r1, sp, #12
+ 23fe458:	4613      	mov	r3, r2
+ 23fe45a:	2204      	movs	r2, #4
     tx_buf[ 1 ] = ( uint8_t ) addr >> 16;
- 23fe724:	f88d 400d 	strb.w	r4, [sp, #13]
+ 23fe45c:	f88d 400d 	strb.w	r4, [sp, #13]
     tx_buf[ 2 ] = ( uint8_t ) addr >> 8;
- 23fe728:	f88d 400e 	strb.w	r4, [sp, #14]
+ 23fe460:	f88d 400e 	strb.w	r4, [sp, #14]
     eeprom7_generic_write_then_read( ctx, tx_buf, 4, p_rx_data, n_bytes );
- 23fe72c:	f7ff ff75 	bl	23fe61a <_Z31eeprom7_generic_write_then_readP9eeprom7_tPhhS1_h>
+ 23fe464:	f7ff ff75 	bl	23fe352 <_Z31eeprom7_generic_write_then_readP9eeprom7_tPhhS1_h>
 }
- 23fe730:	b004      	add	sp, #16
- 23fe732:	bd10      	pop	{r4, pc}
+ 23fe468:	b004      	add	sp, #16
+ 23fe46a:	bd10      	pop	{r4, pc}
+
+023fe46c <_Z15digital_in_initP12digital_in_th>:
+#include "drv_digital_in.h"
+
+//function for setting pin as input
+int8_t digital_in_init(digital_in_t *in, uint8_t mode)
+{
+ 23fe46c:	b510      	push	{r4, lr}
+    if (mode == INPUT)
+ 23fe46e:	460c      	mov	r4, r1
+ 23fe470:	b921      	cbnz	r1, 23fe47c <_Z15digital_in_initP12digital_in_th+0x10>
+    {
+        pinMode(in->pin, static_cast<PinMode>(mode));
+ 23fe472:	7800      	ldrb	r0, [r0, #0]
+ 23fe474:	f001 fab6 	bl	23ff9e4 <pinMode>
+        return DIGITAL_IN_SUCCESS;      //return status
+ 23fe478:	4620      	mov	r0, r4
+    }
+    else        //mode other than input selected
+    {
+        return DIGITAL_IN_UNSUPPORTED_PIN;      //return status
+    }
+}
+ 23fe47a:	bd10      	pop	{r4, pc}
+        return DIGITAL_IN_UNSUPPORTED_PIN;      //return status
+ 23fe47c:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
+ 23fe480:	e7fb      	b.n	23fe47a <_Z15digital_in_initP12digital_in_th+0xe>
+
+023fe482 <_Z16digital_out_initP13digital_out_th>:
+#include "drv_digital_out.h"
+
+//function for setting pin as output
+int8_t digital_out_init(digital_out_t *out, uint8_t mode)
+{
+    if (mode == OUTPUT)
+ 23fe482:	2901      	cmp	r1, #1
+{
+ 23fe484:	b508      	push	{r3, lr}
+    if (mode == OUTPUT)
+ 23fe486:	d104      	bne.n	23fe492 <_Z16digital_out_initP13digital_out_th+0x10>
+    {
+        pinMode(out->pin, static_cast<PinMode>(mode));
+ 23fe488:	8800      	ldrh	r0, [r0, #0]
+ 23fe48a:	f001 faab 	bl	23ff9e4 <pinMode>
+        return DIGITAL_OUT_SUCCESS;     //return status
+ 23fe48e:	2000      	movs	r0, #0
+    }
+    else
+    {
+        return DIGITAL_OUT_UNSUPPORTED_PIN;       //return status
+    }
+}
+ 23fe490:	bd08      	pop	{r3, pc}
+        return DIGITAL_OUT_UNSUPPORTED_PIN;       //return status
+ 23fe492:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
+ 23fe496:	e7fb      	b.n	23fe490 <_Z16digital_out_initP13digital_out_th+0xe>
+
+023fe498 <_Z17digital_out_writeP13digital_out_th>:
+}
+
+//function for writing pin state
+void digital_out_write(digital_out_t *out, uint8_t value)
+{
+    digitalWrite(out->pin, value);
+ 23fe498:	8800      	ldrh	r0, [r0, #0]
+ 23fe49a:	f001 bab4 	b.w	23ffa06 <digitalWrite>
+	...
+
+023fe4a0 <_Z24spi_master_select_deviceh>:
+    return SPI_MASTER_SUCCESS;                      //return status
+}
+
+//assert chip select
+void spi_master_select_device(uint8_t chip_select)
+{
+ 23fe4a0:	b507      	push	{r0, r1, r2, lr}
+    pinMode(chip_select, OUTPUT);               //set function parameter as output
+ 23fe4a2:	2101      	movs	r1, #1
+ 23fe4a4:	9001      	str	r0, [sp, #4]
+ 23fe4a6:	f001 fa9d 	bl	23ff9e4 <pinMode>
+    digitalWrite(chip_select, cs_polarity);     //assert CS 
+ 23fe4aa:	4b04      	ldr	r3, [pc, #16]	; (23fe4bc <_Z24spi_master_select_deviceh+0x1c>)
+ 23fe4ac:	9801      	ldr	r0, [sp, #4]
+ 23fe4ae:	7819      	ldrb	r1, [r3, #0]
+}
+ 23fe4b0:	b003      	add	sp, #12
+ 23fe4b2:	f85d eb04 	ldr.w	lr, [sp], #4
+    digitalWrite(chip_select, cs_polarity);     //assert CS 
+ 23fe4b6:	f001 baa6 	b.w	23ffa06 <digitalWrite>
+ 23fe4ba:	bf00      	nop
+ 23fe4bc:	1007ae88 	.word	0x1007ae88
+
+023fe4c0 <_Z26spi_master_deselect_deviceh>:
+
+//de-assert chip select
+void spi_master_deselect_device(uint8_t chip_select) 
+{
+ 23fe4c0:	b507      	push	{r0, r1, r2, lr}
+    pinMode(chip_select, OUTPUT);                   //set function parameter as output
+ 23fe4c2:	2101      	movs	r1, #1
+ 23fe4c4:	9001      	str	r0, [sp, #4]
+ 23fe4c6:	f001 fa8d 	bl	23ff9e4 <pinMode>
+    digitalWrite(chip_select, !cs_polarity);        //de-assert CS 
+ 23fe4ca:	4b05      	ldr	r3, [pc, #20]	; (23fe4e0 <_Z26spi_master_deselect_deviceh+0x20>)
+ 23fe4cc:	9801      	ldr	r0, [sp, #4]
+ 23fe4ce:	7819      	ldrb	r1, [r3, #0]
+ 23fe4d0:	fab1 f181 	clz	r1, r1
+ 23fe4d4:	0949      	lsrs	r1, r1, #5
+}
+ 23fe4d6:	b003      	add	sp, #12
+ 23fe4d8:	f85d eb04 	ldr.w	lr, [sp], #4
+    digitalWrite(chip_select, !cs_polarity);        //de-assert CS 
+ 23fe4dc:	f001 ba93 	b.w	23ffa06 <digitalWrite>
+ 23fe4e0:	1007ae88 	.word	0x1007ae88
+
+023fe4e4 <_Z35spi_master_set_chip_select_polarityh>:
+
+//sets chip select polarity
+void spi_master_set_chip_select_polarity(uint8_t polarity)
+{
+    if ((polarity == LOW) || (polarity == HIGH))        //check for valid function parameter
+ 23fe4e4:	2801      	cmp	r0, #1
+    {
+        cs_polarity = polarity;     //set new CS polarity
+ 23fe4e6:	bf9c      	itt	ls
+ 23fe4e8:	4b01      	ldrls	r3, [pc, #4]	; (23fe4f0 <_Z35spi_master_set_chip_select_polarityh+0xc>)
+ 23fe4ea:	7018      	strbls	r0, [r3, #0]
+    }
+}
+ 23fe4ec:	4770      	bx	lr
+ 23fe4ee:	bf00      	nop
+ 23fe4f0:	1007ae88 	.word	0x1007ae88
+
+023fe4f4 <_Z33spi_master_set_default_write_dataP12spi_master_th>:
+//sets SPI default value, not implemented
+int8_t spi_master_set_default_write_data(spi_master_t *obj, uint8_t  default_write_data) 
+{
+    #warning spi_master_set_default_write_data() function is not implemented
+    return SPI_MASTER_SUCCESS;      //return status
+}
+ 23fe4f4:	2000      	movs	r0, #0
+ 23fe4f6:	4770      	bx	lr
+
+023fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>:
+namespace particle {
+
+template <hal_spi_interface_t Interface>
+class SpiProxy {
+public:
+    static SPIClass& instance() {
+ 23fe4f8:	b513      	push	{r0, r1, r4, lr}
+        static SPIClass instance(Interface);
+ 23fe4fa:	4c0a      	ldr	r4, [pc, #40]	; (23fe524 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x2c>)
+ 23fe4fc:	e8d4 1f8f 	ldab	r1, [r4]
+ 23fe500:	f011 0101 	ands.w	r1, r1, #1
+ 23fe504:	d10b      	bne.n	23fe51e <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x26>
+ 23fe506:	4620      	mov	r0, r4
+ 23fe508:	9101      	str	r1, [sp, #4]
+ 23fe50a:	f7ff fd1a 	bl	23fdf42 <__cxa_guard_acquire>
+ 23fe50e:	9901      	ldr	r1, [sp, #4]
+ 23fe510:	b128      	cbz	r0, 23fe51e <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x26>
+ 23fe512:	4805      	ldr	r0, [pc, #20]	; (23fe528 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x30>)
+ 23fe514:	f000 ffb6 	bl	23ff484 <_ZN8SPIClassC1E19hal_spi_interface_t>
+ 23fe518:	4620      	mov	r0, r4
+ 23fe51a:	f7ff fd17 	bl	23fdf4c <__cxa_guard_release>
+        return instance;
+    }
+ 23fe51e:	4802      	ldr	r0, [pc, #8]	; (23fe528 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv+0x30>)
+ 23fe520:	b002      	add	sp, #8
+ 23fe522:	bd10      	pop	{r4, pc}
+ 23fe524:	1007ae7c 	.word	0x1007ae7c
+ 23fe528:	1007ae80 	.word	0x1007ae80
+
+023fe52c <_Z15spi_master_openP12spi_master_tP19spi_master_config_t>:
+{       
+ 23fe52c:	b508      	push	{r3, lr}
+    pinMode(SS, OUTPUT);                            //set SS sginal mikroBUS1 as output
+ 23fe52e:	2101      	movs	r1, #1
+ 23fe530:	2012      	movs	r0, #18
+ 23fe532:	f001 fa57 	bl	23ff9e4 <pinMode>
+    pinMode(SS1, OUTPUT);                           //set SS1 sginal mikroBUS2 as output
+ 23fe536:	2101      	movs	r1, #1
+ 23fe538:	2005      	movs	r0, #5
+ 23fe53a:	f001 fa53 	bl	23ff9e4 <pinMode>
+    digitalWrite(SS, HIGH);                         //set SS HIGH
+ 23fe53e:	2101      	movs	r1, #1
+ 23fe540:	2012      	movs	r0, #18
+ 23fe542:	f001 fa60 	bl	23ffa06 <digitalWrite>
+    digitalWrite(SS1, HIGH);                        //set SS1 HIGH
+ 23fe546:	2101      	movs	r1, #1
+ 23fe548:	2005      	movs	r0, #5
+ 23fe54a:	f001 fa5c 	bl	23ffa06 <digitalWrite>
+    }
+    void begin(uint16_t ss_pin) {
+        instance().begin(ss_pin);
+    }
+    void begin(hal_spi_mode_t mode, uint16_t ss_pin = SPI_DEFAULT_SS) {
+        instance().begin(mode, ss_pin);
+ 23fe54e:	f7ff ffd3 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe552:	22ff      	movs	r2, #255	; 0xff
+ 23fe554:	2100      	movs	r1, #0
+ 23fe556:	f000 ff9f 	bl	23ff498 <_ZN8SPIClass5beginE14hal_spi_mode_tt>
+}
+ 23fe55a:	2000      	movs	r0, #0
+ 23fe55c:	bd08      	pop	{r3, pc}
+	...
+
+023fe560 <_Z28spi_master_configure_defaultP19spi_master_config_t>:
+{
+ 23fe560:	b510      	push	{r4, lr}
+    cs_polarity = LOW;              //set CS active low          
+ 23fe562:	2400      	movs	r4, #0
+    pinMode(SS, OUTPUT);            //set SS sginal mikroBUS1 as output
+ 23fe564:	2101      	movs	r1, #1
+ 23fe566:	2012      	movs	r0, #18
+ 23fe568:	f001 fa3c 	bl	23ff9e4 <pinMode>
+    pinMode(SS1, OUTPUT);           //set SS1 sginal mikroBUS2 as output
+ 23fe56c:	2101      	movs	r1, #1
+ 23fe56e:	2005      	movs	r0, #5
+ 23fe570:	f001 fa38 	bl	23ff9e4 <pinMode>
+    digitalWrite(SS, HIGH);         //set SS HIGH
+ 23fe574:	2101      	movs	r1, #1
+ 23fe576:	2012      	movs	r0, #18
+ 23fe578:	f001 fa45 	bl	23ffa06 <digitalWrite>
+    digitalWrite(SS1, HIGH);        //set SS1 HIGH
+ 23fe57c:	2101      	movs	r1, #1
+ 23fe57e:	2005      	movs	r0, #5
+ 23fe580:	f001 fa41 	bl	23ffa06 <digitalWrite>
+    cs_polarity = LOW;              //set CS active low          
+ 23fe584:	4b07      	ldr	r3, [pc, #28]	; (23fe5a4 <_Z28spi_master_configure_defaultP19spi_master_config_t+0x44>)
+ 23fe586:	701c      	strb	r4, [r3, #0]
+    }
+    void setBitOrder(uint8_t order) {
+        instance().setBitOrder(order);
+    }
+    void setDataMode(uint8_t mode) {
+        instance().setDataMode(mode);
+ 23fe588:	f7ff ffb6 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe58c:	4621      	mov	r1, r4
+ 23fe58e:	f000 ff9a 	bl	23ff4c6 <_ZN8SPIClass11setDataModeEh>
+    }
+    void setClockDivider(uint8_t divider) {
+        instance().setClockDivider(divider);
+    }
+    unsigned setClockSpeed(unsigned value, unsigned scale=HZ) {
+        return instance().setClockSpeed(value, scale);
+ 23fe592:	f7ff ffb1 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+}
+ 23fe596:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 23fe59a:	f44f 727a 	mov.w	r2, #1000	; 0x3e8
+ 23fe59e:	2164      	movs	r1, #100	; 0x64
+ 23fe5a0:	f000 bfc2 	b.w	23ff528 <_ZN8SPIClass13setClockSpeedEjj>
+ 23fe5a4:	1007ae88 	.word	0x1007ae88
+
+023fe5a8 <_Z19spi_master_set_modeP12spi_master_th>:
+{
+ 23fe5a8:	b507      	push	{r0, r1, r2, lr}
+ 23fe5aa:	9101      	str	r1, [sp, #4]
+        instance().setDataMode(mode);
+ 23fe5ac:	f7ff ffa4 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe5b0:	9901      	ldr	r1, [sp, #4]
+ 23fe5b2:	f000 ff88 	bl	23ff4c6 <_ZN8SPIClass11setDataModeEh>
+}
+ 23fe5b6:	2000      	movs	r0, #0
+ 23fe5b8:	b003      	add	sp, #12
+ 23fe5ba:	f85d fb04 	ldr.w	pc, [sp], #4
+
+023fe5be <_Z20spi_master_set_speedP12spi_master_tm>:
+{
+ 23fe5be:	b510      	push	{r4, lr}
+ 23fe5c0:	460c      	mov	r4, r1
+        return instance().setClockSpeed(value, scale);
+ 23fe5c2:	f7ff ff99 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe5c6:	2201      	movs	r2, #1
+ 23fe5c8:	4621      	mov	r1, r4
+ 23fe5ca:	f000 ffad 	bl	23ff528 <_ZN8SPIClass13setClockSpeedEjj>
+}
+ 23fe5ce:	1a20      	subs	r0, r4, r0
+ 23fe5d0:	bf18      	it	ne
+ 23fe5d2:	f04f 30ff 	movne.w	r0, #4294967295	; 0xffffffff
+ 23fe5d6:	bd10      	pop	{r4, pc}
+
+023fe5d8 <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j>:
+    return SPI_MASTER_SUCCESS;                                              //return status
+}
+
+//write a sequence of byte(s) to SPI bus followed by read
+int8_t spi_master_write_then_read(spi_master_t *obj, uint8_t *write_data_buffer, size_t length_write_data, uint8_t *read_data_buffer, size_t length_read_data)   
+{
+ 23fe5d8:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    //compiler warning indicating assumption
+    #warning spi_master_write_then_read() assumes the fist element of write_data_buffer is the first byte to be transmitted, IE the opcode/register if required
+
+    //create dummy array size of write fill with zeros
+    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe5dc:	2400      	movs	r4, #0
+{
+ 23fe5de:	4615      	mov	r5, r2
+ 23fe5e0:	b083      	sub	sp, #12
+ 23fe5e2:	4698      	mov	r8, r3
+    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe5e4:	1dd3      	adds	r3, r2, #7
+ 23fe5e6:	f023 0307 	bic.w	r3, r3, #7
+{
+ 23fe5ea:	af02      	add	r7, sp, #8
+ 23fe5ec:	6abe      	ldr	r6, [r7, #40]	; 0x28
+    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe5ee:	ebad 0d03 	sub.w	sp, sp, r3
+ 23fe5f2:	42a5      	cmp	r5, r4
+ 23fe5f4:	f102 32ff 	add.w	r2, r2, #4294967295	; 0xffffffff
+ 23fe5f8:	f10d 0009 	add.w	r0, sp, #9
+ 23fe5fc:	bfd8      	it	le
+ 23fe5fe:	4622      	movle	r2, r4
+{
+ 23fe600:	4689      	mov	r9, r1
+    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe602:	4621      	mov	r1, r4
+ 23fe604:	f88d 4008 	strb.w	r4, [sp, #8]
+ 23fe608:	f001 fb2b 	bl	23ffc62 <memset>
+
+    //create dummy array size of read fill with zeros
+    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe60c:	1df3      	adds	r3, r6, #7
+ 23fe60e:	f023 0307 	bic.w	r3, r3, #7
+ 23fe612:	42a6      	cmp	r6, r4
+    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe614:	f10d 0b08 	add.w	fp, sp, #8
+    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe618:	ebad 0d03 	sub.w	sp, sp, r3
+ 23fe61c:	f106 32ff 	add.w	r2, r6, #4294967295	; 0xffffffff
+ 23fe620:	4621      	mov	r1, r4
+ 23fe622:	bfd8      	it	le
+ 23fe624:	4622      	movle	r2, r4
+ 23fe626:	f10d 0009 	add.w	r0, sp, #9
+ 23fe62a:	f88d 4008 	strb.w	r4, [sp, #8]
+ 23fe62e:	f001 fb18 	bl	23ffc62 <memset>
+        return instance().beginTransaction();
+ 23fe632:	f7ff ff61 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe636:	f000 ff5a 	bl	23ff4ee <_ZN8SPIClass16beginTransactionEv>
+
+    if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
+ 23fe63a:	1c43      	adds	r3, r0, #1
+    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe63c:	f10d 0a08 	add.w	sl, sp, #8
+    if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
+ 23fe640:	d014      	beq.n	23fe66c <_Z26spi_master_write_then_readP12spi_master_tPhjS1_j+0x94>
+    }
+    byte transfer(byte data) {
+        return instance().transfer(data);
+    }
+    void transfer(const void* tx_buffer, void* rx_buffer, size_t length, wiring_spi_dma_transfercomplete_callback_t user_callback) {
+        instance().transfer(tx_buffer, rx_buffer, length, user_callback);
+ 23fe642:	f7ff ff59 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe646:	462b      	mov	r3, r5
+ 23fe648:	465a      	mov	r2, fp
+ 23fe64a:	4649      	mov	r1, r9
+ 23fe64c:	9400      	str	r4, [sp, #0]
+ 23fe64e:	f000 ff9d 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
+ 23fe652:	f7ff ff51 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe656:	4633      	mov	r3, r6
+ 23fe658:	4642      	mov	r2, r8
+ 23fe65a:	4651      	mov	r1, sl
+ 23fe65c:	9400      	str	r4, [sp, #0]
+ 23fe65e:	f000 ff95 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
+        instance().endTransaction();
+ 23fe662:	f7ff ff49 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe666:	f000 ff45 	bl	23ff4f4 <_ZN8SPIClass14endTransactionEv>
+    }
+    
+    SPI.transfer(write_data_buffer, write_dummy, length_write_data, NULL);      //spi transaction for write (read = NULL)
+    SPI.transfer(read_dummy, read_data_buffer, length_read_data, NULL);         //spi transaction for read (write = NULL)
+    SPI.endTransaction();                                                       //end transaction and release spi peripheral lock
+    return SPI_MASTER_SUCCESS;                                                  //return status                                         
+ 23fe66a:	4620      	mov	r0, r4
+}                                                           
+ 23fe66c:	3704      	adds	r7, #4
+ 23fe66e:	46bd      	mov	sp, r7
+ 23fe670:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+
+023fe674 <_Z16spi_master_writeP12spi_master_tPhj>:
+{
+ 23fe674:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+ 23fe678:	2500      	movs	r5, #0
+{
+ 23fe67a:	4614      	mov	r4, r2
+    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+ 23fe67c:	1dd3      	adds	r3, r2, #7
+ 23fe67e:	f023 0307 	bic.w	r3, r3, #7
+{
+ 23fe682:	b082      	sub	sp, #8
+    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+ 23fe684:	42ac      	cmp	r4, r5
+{
+ 23fe686:	af02      	add	r7, sp, #8
+    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+ 23fe688:	ebad 0d03 	sub.w	sp, sp, r3
+ 23fe68c:	f102 32ff 	add.w	r2, r2, #4294967295	; 0xffffffff
+{
+ 23fe690:	460e      	mov	r6, r1
+    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+ 23fe692:	bfd8      	it	le
+ 23fe694:	462a      	movle	r2, r5
+ 23fe696:	4629      	mov	r1, r5
+ 23fe698:	f10d 0009 	add.w	r0, sp, #9
+ 23fe69c:	f88d 5008 	strb.w	r5, [sp, #8]
+ 23fe6a0:	f001 fadf 	bl	23ffc62 <memset>
+        return instance().beginTransaction();
+ 23fe6a4:	f7ff ff28 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe6a8:	f000 ff21 	bl	23ff4ee <_ZN8SPIClass16beginTransactionEv>
+    if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
+ 23fe6ac:	1c43      	adds	r3, r0, #1
+    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+ 23fe6ae:	f10d 0808 	add.w	r8, sp, #8
+    if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
+ 23fe6b2:	d00c      	beq.n	23fe6ce <_Z16spi_master_writeP12spi_master_tPhj+0x5a>
+        instance().transfer(tx_buffer, rx_buffer, length, user_callback);
+ 23fe6b4:	f7ff ff20 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe6b8:	4623      	mov	r3, r4
+ 23fe6ba:	4642      	mov	r2, r8
+ 23fe6bc:	4631      	mov	r1, r6
+ 23fe6be:	9500      	str	r5, [sp, #0]
+ 23fe6c0:	f000 ff64 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
+        instance().endTransaction();
+ 23fe6c4:	f7ff ff18 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe6c8:	f000 ff14 	bl	23ff4f4 <_ZN8SPIClass14endTransactionEv>
+    return SPI_MASTER_SUCCESS;                                                  //return status
+ 23fe6cc:	4628      	mov	r0, r5
+}
+ 23fe6ce:	46bd      	mov	sp, r7
+ 23fe6d0:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+
+023fe6d4 <_Z15spi_master_readP12spi_master_tPhj>:
+{
+ 23fe6d4:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe6d8:	2500      	movs	r5, #0
+{
+ 23fe6da:	4614      	mov	r4, r2
+    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe6dc:	1dd3      	adds	r3, r2, #7
+ 23fe6de:	f023 0307 	bic.w	r3, r3, #7
+{
+ 23fe6e2:	b082      	sub	sp, #8
+    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe6e4:	42ac      	cmp	r4, r5
+{
+ 23fe6e6:	af02      	add	r7, sp, #8
+    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe6e8:	ebad 0d03 	sub.w	sp, sp, r3
+ 23fe6ec:	f102 32ff 	add.w	r2, r2, #4294967295	; 0xffffffff
+{
+ 23fe6f0:	460e      	mov	r6, r1
+    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe6f2:	bfd8      	it	le
+ 23fe6f4:	462a      	movle	r2, r5
+ 23fe6f6:	4629      	mov	r1, r5
+ 23fe6f8:	f10d 0009 	add.w	r0, sp, #9
+ 23fe6fc:	f88d 5008 	strb.w	r5, [sp, #8]
+ 23fe700:	f001 faaf 	bl	23ffc62 <memset>
+        return instance().beginTransaction();
+ 23fe704:	f7ff fef8 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe708:	f000 fef1 	bl	23ff4ee <_ZN8SPIClass16beginTransactionEv>
+    if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
+ 23fe70c:	1c43      	adds	r3, r0, #1
+    uint8_t read_dummy[read_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+ 23fe70e:	f10d 0808 	add.w	r8, sp, #8
+    if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
+ 23fe712:	d00c      	beq.n	23fe72e <_Z15spi_master_readP12spi_master_tPhj+0x5a>
+        instance().transfer(tx_buffer, rx_buffer, length, user_callback);
+ 23fe714:	f7ff fef0 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe718:	4623      	mov	r3, r4
+ 23fe71a:	4632      	mov	r2, r6
+ 23fe71c:	4641      	mov	r1, r8
+ 23fe71e:	9500      	str	r5, [sp, #0]
+ 23fe720:	f000 ff34 	bl	23ff58c <_ZN8SPIClass8transferEPKvPvjPFvvE>
+        instance().endTransaction();
+ 23fe724:	f7ff fee8 	bl	23fe4f8 <_ZN8particle8SpiProxyIL19hal_spi_interface_t0EE8instanceEv>
+ 23fe728:	f000 fee4 	bl	23ff4f4 <_ZN8SPIClass14endTransactionEv>
+    return SPI_MASTER_SUCCESS;                                              //return status
+ 23fe72c:	4628      	mov	r0, r5
+}
+ 23fe72e:	46bd      	mov	sp, r7
+ 23fe730:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
 
 023fe734 <os_mutex_recursive_create>:
 DYNALIB_FN(13, hal_concurrent, os_mutex_destroy, int(os_mutex_t))

@@ -1,7 +1,7 @@
 #include "drv_spi_master.h"
 
 //spi global variables
-uint8_t cs_polarity = LOW;        //CS polarity variable, active low by default
+static uint8_t cs_polarity;        //CS polarity variable, static as previous value should be retained
 
 //todo, create object that holds all the values for SPI, IE hal translation layer
 
@@ -9,22 +9,23 @@ uint8_t cs_polarity = LOW;        //CS polarity variable, active low by default
 void spi_master_configure_default(spi_master_config_t *config) 
 {
     //set default values for pins (CS)
-    pinMode(SS, OUTPUT);                            //set SS sginal mikroBUS1 as output
-    pinMode(SS1, OUTPUT);                           //set SS1 sginal mikroBUS2 as output
-    digitalWrite(SS, HIGH);                         //set SS HIGH
-    digitalWrite(SS1, HIGH);                        //set SS1 HIGH
+    pinMode(SS, OUTPUT);            //set SS sginal mikroBUS1 as output
+    pinMode(SS1, OUTPUT);           //set SS1 sginal mikroBUS2 as output
+    digitalWrite(SS, HIGH);         //set SS HIGH
+    digitalWrite(SS1, HIGH);        //set SS1 HIGH
+    cs_polarity = LOW;              //set CS active low          
 
     //set default values for spi mode and speed
-    SPI.setDataMode(config->mode);                  //set default spi mode
-    SPI.setClockSpeed(config->speed);               //set default speed
+    SPI.setDataMode(SPI_MASTER_MODE_0);     //set default spi mode
+    SPI.setClockSpeed(100, KHZ);            //set default speed, 100kHz
 
 }
 
-//Opens the SPI Master driver object on selected pins
+//open SPI peripheral
 int8_t spi_master_open(spi_master_t *obj, spi_master_config_t *config) 
 {       
     //compiler warning indicating assumption
-    #warning spi_master_open() assumes SPI peripheral will not get stolen by otrher threads
+    #warning spi_master_open() assumes SPI peripheral will not get stolen by other threads
 
     //todo, add thread check protection
 
@@ -36,21 +37,21 @@ int8_t spi_master_open(spi_master_t *obj, spi_master_config_t *config)
     return SPI_MASTER_SUCCESS;                      //return status
 }
 
-//Sets digital output individual slave pin to logic 0
+//assert chip select
 void spi_master_select_device(uint8_t chip_select)
 {
     pinMode(chip_select, OUTPUT);               //set function parameter as output
     digitalWrite(chip_select, cs_polarity);     //assert CS 
 }
 
-//Sets digital output individual slave pin to logic 1
+//de-assert chip select
 void spi_master_deselect_device(uint8_t chip_select) 
 {
     pinMode(chip_select, OUTPUT);                   //set function parameter as output
     digitalWrite(chip_select, !cs_polarity);        //de-assert CS 
 }
 
-//sets SPI Master chip select polarity either to active low or active high
+//sets chip select polarity
 void spi_master_set_chip_select_polarity(uint8_t polarity)
 {
     if ((polarity == LOW) || (polarity == HIGH))        //check for valid function parameter
@@ -59,17 +60,17 @@ void spi_master_set_chip_select_polarity(uint8_t polarity)
     }
 }
 
-//Default write data is sent by driver when the data transmit buffer is shorter than data receive buffer
+//set SPI clock speed
 int8_t spi_master_set_speed(spi_master_t *obj, uint32_t speed)  
 {
-    if(SPI.setClockSpeed(speed/2) == speed)       //set clock speed to function parameter and check to confirm it is set
+    if(SPI.setClockSpeed(speed) == speed)       //set clock speed to function parameter and check to confirm it is set
     {
         return SPI_MASTER_SUCCESS;      //return status
     }
     return SPI_MASTER_ERROR;        //return status
 }
 
-//Sets SPI Master module speed to passed value if possible
+//Sets SPI Mode
 int8_t spi_master_set_mode(spi_master_t *obj, uint8_t mode)
 {
     if((mode >= SPI_MODE0) || (mode <= SPI_MODE3))      //check that paramter input is valid
@@ -80,15 +81,14 @@ int8_t spi_master_set_mode(spi_master_t *obj, uint8_t mode)
     return SPI_MASTER_ERROR;        //return status
 }
 
-//Sets SPI Master module mode to passed value if possible
+//sets SPI default value, not implemented
 int8_t spi_master_set_default_write_data(spi_master_t *obj, uint8_t  default_write_data) 
 {
-    //obj->config.default_write_data = default_write_data;
     #warning spi_master_set_default_write_data() function is not implemented
     return SPI_MASTER_SUCCESS;      //return status
 }
 
-//Writes byte to SPI bus in blocking mode
+//write byte(s) to SPI bus
 int8_t spi_master_write(spi_master_t *obj, uint8_t *write_data_buffer, size_t write_data_length)
 {
     //compiler warning indicating assumption
@@ -107,7 +107,7 @@ int8_t spi_master_write(spi_master_t *obj, uint8_t *write_data_buffer, size_t wr
     return SPI_MASTER_SUCCESS;                                                  //return status
 }
 
-//Reads byte from SPI bus in blocking mode
+//Reads byte(s) from SPI bus
 int8_t spi_master_read(spi_master_t *obj, uint8_t *read_data_buffer, size_t read_data_length)  
 {
     //compiler warning indicating assumption
@@ -126,7 +126,7 @@ int8_t spi_master_read(spi_master_t *obj, uint8_t *read_data_buffer, size_t read
     return SPI_MASTER_SUCCESS;                                              //return status
 }
 
-//Writes a sequence of bytes to SPI bus, followed by a corresponding read 
+//write a sequence of byte(s) to SPI bus followed by read
 int8_t spi_master_write_then_read(spi_master_t *obj, uint8_t *write_data_buffer, size_t length_write_data, uint8_t *read_data_buffer, size_t length_read_data)   
 {
     //compiler warning indicating assumption
@@ -149,7 +149,7 @@ int8_t spi_master_write_then_read(spi_master_t *obj, uint8_t *write_data_buffer,
     return SPI_MASTER_SUCCESS;                                                  //return status                                         
 }                                                           
                                                              
-//Closes SPI Master Driver context object
+//close SPI peripheral
 void spi_master_close(spi_master_t *obj) 
 {
     SPI.end();      //close spi peripheral

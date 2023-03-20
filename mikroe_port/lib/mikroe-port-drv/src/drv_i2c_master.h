@@ -12,8 +12,11 @@
 #ifndef _DRV_I2C_MASTER_H_
 #define _DRV_I2C_MASTER_H_
 
-#include "drv_name.h"
+#include "mikro_pins.h"
+//todo, confirm these aren't needed
+//#include "drv_name.h"
 //#include "hal_i2c_master.h"
+
 
 //enum for status codes, added for library compatibility
 typedef enum
@@ -51,7 +54,7 @@ typedef struct
 void i2c_master_configure_default(i2c_master_config_t *config);
 int8_t i2c_master_open(i2c_master_t *obj, i2c_master_config_t *config);
 int8_t i2c_master_set_speed(i2c_master_t *obj, uint32_t speed );
-int8_t i2c_master_set_timeout( 2c_master_t *obj, uint16_t timeout_pass_count);
+int8_t i2c_master_set_timeout(i2c_master_t *obj, uint16_t timeout_pass_count);
 int8_t i2c_master_set_slave_address(i2c_master_t *obj, uint8_t address );
 int8_t i2c_master_write(i2c_master_t *obj, uint8_t *write_data_buf, size_t len_write_data);
 int8_t i2c_master_read(i2c_master_t *obj, uint8_t *read_data_buf, size_t len_read_data);

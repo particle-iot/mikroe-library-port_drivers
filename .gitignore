@@ -410,3 +410,4 @@ source/mikroE/hal/src/lib_hal_spi_master/CMakeLists.txt
 source/mikroE/hal/src/lib_hal_spi_master/hal_spi_master.c
 source/mikroE/hal/src/lib_hal_uart/CMakeLists.txt
 source/mikroE/hal/src/lib_hal_uart/hal_uart.c
+mikroe_port/.vscode/settings.json
