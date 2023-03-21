@@ -11,7 +11,7 @@
 #ifndef _DRV_DIGITAL_OUT_H_
 #define _DRV_DIGITAL_OUT_H_
 
-#include "mikro_pins.h"
+#include "mikro_port.h"
 
 //enum for status codes, added for library compatibility
 typedef enum

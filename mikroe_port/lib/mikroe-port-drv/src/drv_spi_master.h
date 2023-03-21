@@ -11,7 +11,7 @@
 #ifndef _DRV_SPI_MASTER_H_
 #define _DRV_SPI_MASTER_H_
 
-#include "mikro_pins.h"
+#include "mikro_port.h"
 
 //struct for SPI configuration
 typedef struct
