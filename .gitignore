@@ -706,3 +706,11 @@ source/CLICK Libs/TempHum 13 click/manifest.json
 source/CLICK Libs/TempHum 13 click/Resources/CHANGELOG.md
 source/CLICK Libs/TempHum 13 click/Resources/click_icon.png
 source/CLICK Libs/TempHum 13 click/Resources/DETAILS.md
+mikroe_port/target/5.3.0/p2/memory_platform_user.ld
+mikroe_port/target/5.3.0/p2/mikroe_port.bin
+mikroe_port/target/5.3.0/p2/mikroe_port.bin.no_crc
+mikroe_port/target/5.3.0/p2/mikroe_port.dfu
+mikroe_port/target/5.3.0/p2/mikroe_port.elf
+mikroe_port/target/5.3.0/p2/mikroe_port.hex
+mikroe_port/target/5.3.0/p2/mikroe_port.lst
+mikroe_port/target/5.3.0/p2/mikroe_port.map

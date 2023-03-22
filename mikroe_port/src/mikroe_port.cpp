@@ -58,7 +58,7 @@ void setup()
 //from temphum13
   temphum13_cfg_t temphum13_cfg;
   temphum13_cfg_setup( &temphum13_cfg );
-  TEMPHUM13_MAP_MIKROBUS( temphum13_cfg, MIKROBUS_1 );
+  TEMPHUM13_MAP_MIKROBUS( temphum13_cfg, MIKROBUS_2 );
   temphum13_init( &temphum13, &temphum13_cfg );   
   temphum13_default_cfg( &temphum13 );
 
@@ -67,13 +67,13 @@ void setup()
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
   // The core of your code will likely live here.
-/*
+
   ACcurrent_main();
   delay(1s);
 
-  eeprom7_main();
-  delay(3s);
-*/
+//commented out as BUS2 is used by temphum13
+//  eeprom7_main();
+//  delay(3s);
 
   temphum13_main();
   delay (500);
@@ -85,7 +85,7 @@ void ACcurrent_main()
 {
   float ac_current;
   ac_current = accurrent_get_ma( &accurrent );
-  Serial.print("value: ");
+  Serial.print("Current value = ");
 	Serial.print(ac_current, DEC); 
 	Serial.println("");
 }
