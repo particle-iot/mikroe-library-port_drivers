@@ -714,3 +714,208 @@ mikroe_port/target/5.3.0/p2/mikroe_port.elf
 mikroe_port/target/5.3.0/p2/mikroe_port.hex
 mikroe_port/target/5.3.0/p2/mikroe_port.lst
 mikroe_port/target/5.3.0/p2/mikroe_port.map
+mikroe_port/.DS_Store
+mikroe_port/.vscode/settings.json
+mikroe_port/lib/.DS_Store
+source/CLICK Libs/RS232 click/Data/lib_rs232/CMakeLists.txt
+source/CLICK Libs/RS232 click/Data/lib_rs232/include/Click.Rs232
+source/CLICK Libs/RS232 click/Data/lib_rs232/include/rs232.h
+source/CLICK Libs/RS232 click/Data/lib_rs232/src/rs232.c
+source/CLICK Libs/RS232 click/Examples/example/CMakeLists.txt
+source/CLICK Libs/RS232 click/Examples/example/lib_rs232/CMakeLists.txt
+source/CLICK Libs/RS232 click/Examples/example/lib_rs232/include/Click.Rs232
+source/CLICK Libs/RS232 click/Examples/example/lib_rs232/include/rs232.h
+source/CLICK Libs/RS232 click/Examples/example/lib_rs232/src/rs232.c
+source/CLICK Libs/RS232 click/Examples/example/main.c
+source/CLICK Libs/RS232 click/Examples/example/manifest.exm
+source/CLICK Libs/RS232 click/Help/doc/html/_r_e_a_d_m_e_8md.html
+source/CLICK Libs/RS232 click/Help/doc/html/annotated.html
+source/CLICK Libs/RS232 click/Help/doc/html/bc_s.png
+source/CLICK Libs/RS232 click/Help/doc/html/bdwn.png
+source/CLICK Libs/RS232 click/Help/doc/html/classes.html
+source/CLICK Libs/RS232 click/Help/doc/html/closed.png
+source/CLICK Libs/RS232 click/Help/doc/html/dir_2b460fa872d744b49475c8ccbdd91592.html
+source/CLICK Libs/RS232 click/Help/doc/html/dir_52303ebaa84693d175fb8ab1a99ba0a2.html
+source/CLICK Libs/RS232 click/Help/doc/html/dir_547ab82565d83bd50f25031834d51aaf.html
+source/CLICK Libs/RS232 click/Help/doc/html/dir_a5bdbfbbaa7895161d62825676df7980.html
+source/CLICK Libs/RS232 click/Help/doc/html/dir_fb648de45e8450ce2640cdaf48fff963.html
+source/CLICK Libs/RS232 click/Help/doc/html/doc.png
+source/CLICK Libs/RS232 click/Help/doc/html/doxygen.css
+source/CLICK Libs/RS232 click/Help/doc/html/doxygen.svg
+source/CLICK Libs/RS232 click/Help/doc/html/dynsections.js
+source/CLICK Libs/RS232 click/Help/doc/html/files.html
+source/CLICK Libs/RS232 click/Help/doc/html/folderclosed.png
+source/CLICK Libs/RS232 click/Help/doc/html/folderopen.png
+source/CLICK Libs/RS232 click/Help/doc/html/functions.html
+source/CLICK Libs/RS232 click/Help/doc/html/functions_vars.html
+source/CLICK Libs/RS232 click/Help/doc/html/globals.html
+source/CLICK Libs/RS232 click/Help/doc/html/globals_defs.html
+source/CLICK Libs/RS232 click/Help/doc/html/globals_func.html
+source/CLICK Libs/RS232 click/Help/doc/html/globals_type.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__driver.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__error__code.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__macros.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__map__mikrobus.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__public__function.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__rs232.html
+source/CLICK Libs/RS232 click/Help/doc/html/group__type.html
+source/CLICK Libs/RS232 click/Help/doc/html/index.hhc
+source/CLICK Libs/RS232 click/Help/doc/html/index.hhk
+source/CLICK Libs/RS232 click/Help/doc/html/index.hhp
+source/CLICK Libs/RS232 click/Help/doc/html/index.html
+source/CLICK Libs/RS232 click/Help/doc/html/jquery.js
+source/CLICK Libs/RS232 click/Help/doc/html/main_8c.html
+source/CLICK Libs/RS232 click/Help/doc/html/menu.js
+source/CLICK Libs/RS232 click/Help/doc/html/menudata.js
+source/CLICK Libs/RS232 click/Help/doc/html/modules.html
+source/CLICK Libs/RS232 click/Help/doc/html/nav_f.png
+source/CLICK Libs/RS232 click/Help/doc/html/nav_g.png
+source/CLICK Libs/RS232 click/Help/doc/html/nav_h.png
+source/CLICK Libs/RS232 click/Help/doc/html/open.png
+source/CLICK Libs/RS232 click/Help/doc/html/rs232_8h.html
+source/CLICK Libs/RS232 click/Help/doc/html/rs232_8h_source.html
+source/CLICK Libs/RS232 click/Help/doc/html/splitbar.png
+source/CLICK Libs/RS232 click/Help/doc/html/structrs232__cfg__t.html
+source/CLICK Libs/RS232 click/Help/doc/html/structrs232__t.html
+source/CLICK Libs/RS232 click/Help/doc/html/sync_off.png
+source/CLICK Libs/RS232 click/Help/doc/html/sync_on.png
+source/CLICK Libs/RS232 click/Help/doc/html/tab_a.png
+source/CLICK Libs/RS232 click/Help/doc/html/tab_b.png
+source/CLICK Libs/RS232 click/Help/doc/html/tab_h.png
+source/CLICK Libs/RS232 click/Help/doc/html/tab_s.png
+source/CLICK Libs/RS232 click/Help/doc/html/tabs.css
+source/CLICK Libs/RS232 click/manifest.json
+source/CLICK Libs/RS232 click/Resources/CHANGELOG.md
+source/CLICK Libs/RS232 click/Resources/click_icon.png
+source/CLICK Libs/RS232 click/Resources/DETAILS.md
+source/CLICK Libs/RS485 3V3 click/Data/lib_rs4853v3/CMakeLists.txt
+source/CLICK Libs/RS485 3V3 click/Data/lib_rs4853v3/include/Click.RS4853V3
+source/CLICK Libs/RS485 3V3 click/Data/lib_rs4853v3/include/rs4853v3.h
+source/CLICK Libs/RS485 3V3 click/Data/lib_rs4853v3/src/rs4853v3.c
+source/CLICK Libs/RS485 3V3 click/Examples/example/CMakeLists.txt
+source/CLICK Libs/RS485 3V3 click/Examples/example/lib_rs4853v3/CMakeLists.txt
+source/CLICK Libs/RS485 3V3 click/Examples/example/lib_rs4853v3/include/Click.RS4853V3
+source/CLICK Libs/RS485 3V3 click/Examples/example/lib_rs4853v3/include/rs4853v3.h
+source/CLICK Libs/RS485 3V3 click/Examples/example/lib_rs4853v3/src/rs4853v3.c
+source/CLICK Libs/RS485 3V3 click/Examples/example/main.c
+source/CLICK Libs/RS485 3V3 click/Examples/example/manifest.exm
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/_r_e_a_d_m_e_8md.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/annotated.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/bc_s.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/bdwn.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/classes.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/closed.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/dir_14cd21f7b3eddc1f0d97ba963f4fda69.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/dir_a5bdbfbbaa7895161d62825676df7980.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/dir_c638c0350292d6391613f0eed495f292.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/dir_e46e1910720795908f664584bbee7572.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/dir_efe13bbf73fa691c3c9da9535a7641dd.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/doc.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/doxygen.css
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/doxygen.svg
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/dynsections.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/files.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/folderclosed.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/folderopen.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/functions.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/functions_vars.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/globals.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/globals_defs.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/globals_enum.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/globals_eval.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/globals_func.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/globals_vars.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/group__rs4853v3.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/group__rs4853v3__map.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/group__rs4853v3__set.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/index.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/jquery.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/main_8c.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/menu.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/menudata.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/modules.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/nav_f.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/nav_g.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/nav_h.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/open.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/rs4853v3_8h.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/rs4853v3_8h_source.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_1.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_1.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_2.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_2.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_3.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_3.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_4.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_4.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_5.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_5.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_6.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_6.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_7.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_7.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_8.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/all_8.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/classes_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/classes_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/close.svg
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/defines_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/defines_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/defines_1.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/defines_1.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/enums_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/enums_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/enumvalues_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/enumvalues_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/files_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/files_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/files_1.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/files_1.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/functions_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/functions_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/functions_1.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/functions_1.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/functions_2.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/functions_2.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/groups_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/groups_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/mag_sel.svg
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/nomatches.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/pages_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/pages_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/search.css
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/search.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/search_l.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/search_m.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/search_r.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/searchdata.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_0.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_0.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_1.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_1.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_2.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_2.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_3.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_3.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_4.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_4.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_5.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_5.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_6.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/search/variables_6.js
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/splitbar.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/structrs4853v3__cfg__t.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/structrs4853v3__t.html
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/sync_off.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/sync_on.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/tab_a.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/tab_b.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/tab_h.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/tab_s.png
+source/CLICK Libs/RS485 3V3 click/Help/doc/html/tabs.css
+source/CLICK Libs/RS485 3V3 click/manifest.json
+source/CLICK Libs/RS485 3V3 click/Resources/CHANGELOG.md
+source/CLICK Libs/RS485 3V3 click/Resources/click_icon.png
+source/CLICK Libs/RS485 3V3 click/Resources/DETAILS.md
