@@ -28,6 +28,6 @@ typedef struct
 
 //digital out functions
 int8_t digital_in_init(digital_in_t *in, uint8_t mode);
-int32_t digital_in_read(uint8_t pin);
+int32_t digital_in_read(digital_in_t *in);
 
 #endif // _DRV_DIGITAL_IN_H_

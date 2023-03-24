@@ -23,7 +23,10 @@
 #define HAL_PORT_NC (uint8_t)(0xFFFFFFFF)              //port error, wrong port selected
 
 //function for mikroE delays for libray port compability
+inline void Delay_1ms( ) {delay(1);}
+inline void Delay_10ms( ) {delay(10);}
 inline void Delay_100ms( ) {delay(100);}
+inline void Delay_1000ms( ) {delay(1000);}
 inline void Delay_ms(unsigned long ms) {delay(ms);}
 
 

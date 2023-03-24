@@ -3,7 +3,7 @@
  * @file    drv_i2c_master.h
  * @authors Erik Fasnacht
  * @version V1.0.0
- * @date    20-Mar-2023
+ * @date    22-Mar-2023
  * @brief   I2C Master driver layer to interface with MikroE CLICK libraries
  ******************************************************************************
  **/
@@ -13,10 +13,6 @@
 #define _DRV_I2C_MASTER_H_
 
 #include "mikro_port.h"
-//todo, confirm these aren't needed
-//#include "drv_name.h"
-//#include "hal_i2c_master.h"
-
 
 //enum for status codes, added for library compatibility
 typedef enum
@@ -46,7 +42,6 @@ typedef struct
 //struc for i2c master configuration
 typedef struct
 {
- //   handle_t handle; //I2C Master handle
     i2c_master_config_t config;     //I2C configuration structure
 } i2c_master_t;
 
