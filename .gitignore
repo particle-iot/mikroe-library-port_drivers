@@ -919,3 +919,5 @@ source/CLICK Libs/RS485 3V3 click/manifest.json
 source/CLICK Libs/RS485 3V3 click/Resources/CHANGELOG.md
 source/CLICK Libs/RS485 3V3 click/Resources/click_icon.png
 source/CLICK Libs/RS485 3V3 click/Resources/DETAILS.md
+mikroe_port/lib/.DS_Store
+mikroe_port/.DS_Store

@@ -11,10 +11,6 @@
 #ifndef _DRV_UART_H_
 #define _DRV_UART_H_
 
-//todo, confirm these are not needed
-//#include "drv_name.h"
-//#include "hal_uart.h"
-//#include "ring.h"
 #include "mikro_port.h"
 
 //enum for status codes, added for library compatibility
@@ -53,17 +49,6 @@ typedef enum
     UART_STOP_BITS_DEFAULT = UART_STOP_BITS_ONE     //Default (one stop bit)
 } uart_stop_bits_t;
 
-/*
-typedef struct
-{
-    uint8_t *buffer;
-    size_t capacity;
-    volatile size_t size;
-    volatile size_t head;
-    volatile size_t tail;
-} ring_buf8_t;
-*/
-
 //struc for UART configuration
 typedef struct
 {
@@ -75,9 +60,6 @@ typedef struct
     uart_parity_t parity;           //Parity bits
     uart_stop_bits_t stop_bits;     //Stop bits
 
-//    ring_buf8_t tx_buf;             //Tx buffer
-//    ring_buf8_t rx_buf;             //Rx buffer
-
     size_t tx_ring_size;            //Tx ring size
     size_t rx_ring_size;            //Rx ring size
 } uart_config_t;
@@ -86,13 +68,8 @@ typedef struct
 //struct for various UART function parameters
 typedef struct
 {
-    //todo, confirm this isn,t needed
- //   handle_t handle;                //UART handle
-
     uart_config_t config;           //UART configuration structure
 
- //   uint8_t *tx_ring_buffer;        //Pointer to Tx ring buffer
- //   uint8_t *rx_ring_buffer;        //Pointer to Rx ring buffer
     char *tx_ring_buffer;        //Pointer to Tx ring buffer
     char *rx_ring_buffer;        //Pointer to Rx ring buffer
 

@@ -2,7 +2,7 @@
  ******************************************************************************
  * @authors Erik Fasnacht
  * @version V1.0.0
- * @date    17-Mar-2023
+ * @date    24-Mar-2023
  * @brief   ino file for CLICK library testing
  ******************************************************************************
  **/
@@ -11,7 +11,6 @@
 #include "eeprom7.h"
 #include "temphum13.h"
 #include "rs232.h"
-
 
 
 SYSTEM_MODE(AUTOMATIC);
@@ -26,9 +25,6 @@ static rs232_t rs232;           //from rs232 main.c
 //defines from rs232 main.c
 #define PROCESS_RX_BUFFER_SIZE 500
 #define RS232_TRANSMITTER
-
-//variables from rs232 main.c
-
 
 void setup() 
 {
@@ -167,41 +163,6 @@ void temphum13_main()
   } 
 }
 
-/*
-//uart test
-void uart_test()
-{
-  
-  uart_read(NULL,rx_message, 1);
-  
-  if(rx_message[0] == tx_AA[0])
-  {
-    Serial.print(" AA message ACK'd, data =  ");
-    Serial.print(rx_message[0],HEX); 
-	  Serial.println("");
-    rx_message[0] = {0x00};
-    delay(1000);
-    uart_println(NULL, tx_55);
-  }
-  else if(rx_message[0] == tx_55[0])
-  {
-    Serial.print(" 55 message ACK'd, data =  ");
-    Serial.print(rx_message[0],HEX); 
-	  Serial.println("");
-    rx_message[0] = {0x00};
-    delay(1000);
-    uart_println(NULL, tx_AA);
-  }
-  else
-  {
-    Serial.print("Error, data =  ");
-    Serial.print(rx_message[0],HEX); 
-	  Serial.println("");
-   //uart_write(NULL, tx_AA, 1);
-  }
-}
-*/
-
 //rs232 m,ain.c example
 void rs232_main()
 {
@@ -212,5 +173,4 @@ void rs232_main()
 
   rs232_generic_write( &rs232, message, strlen( message ) );
   Delay_ms( 1000 );
-
 }
