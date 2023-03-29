@@ -921,3 +921,22 @@ source/CLICK Libs/RS485 3V3 click/Resources/click_icon.png
 source/CLICK Libs/RS485 3V3 click/Resources/DETAILS.md
 mikroe_port/lib/.DS_Store
 mikroe_port/.DS_Store
+mikroe_port/lib/.DS_Store
+mikroe_port/.vscode/tasks.json
+mikroe_port/.vscode/settings.json
+mikroe_port/.DS_Store
+.DS_Store
+mikroe_port/target/4.0.2/argon/platform_user_ram.ld
+mikroe_port/target/5.3.0/argon/platform_user_ram.ld
+mikroe_port/target/5.3.0/p2/memory_platform_user.ld
+mikroe_port/target/5.3.0/p2/mikroe_port.bin
+mikroe_port/target/5.3.0/p2/mikroe_port.bin.no_crc
+mikroe_port/target/5.3.0/p2/mikroe_port.dfu
+mikroe_port/target/5.3.0/p2/mikroe_port.elf
+mikroe_port/target/5.3.0/p2/mikroe_port.hex
+mikroe_port/target/5.3.0/p2/mikroe_port.lst
+mikroe_port/target/5.3.0/p2/mikroe_port.map
+mikroe_port/target/5.3.0/p2/obj/src/module_info.o
+mikroe_port/target/5.3.0/p2/obj/src/newlib_stubs.o
+mikroe_port/target/5.3.0/p2/obj/src/user_export.o
+mikroe_port/target/5.3.0/p2/obj/src/user_module.o

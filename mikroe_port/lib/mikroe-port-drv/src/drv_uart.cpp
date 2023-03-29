@@ -154,8 +154,10 @@ int8_t uart_write(uart_t *obj, char *buffer, size_t size)
 
     //temp = Serial1.write(buffer,size);      //write bytes over uart. returns # of bytes written
     //temp = Serial1.write((uint8_t *)buffer,size);      //write bytes over uart. returns # of bytes written
-    //temp = Serial1.write(reinterpret_cast<uint8_t *>(buffer),size);      //write bytes over uart. returns # of bytes written
-    temp = Serial1.write(reinterpret_cast<uint8_t *>(static_cast<char *>(buffer)),size);      //write bytes over uart. returns # of bytes written
+    temp = Serial1.write(reinterpret_cast<uint8_t *>(buffer),size);      //write bytes over uart. returns # of bytes written
+    //temp = Serial1.write(reinterpret_cast<uint8_t *>(static_cast<char *>(buffer)),size);      //write bytes over uart. returns # of bytes written
+
+
 
     if(temp == size)
     {
@@ -165,8 +167,8 @@ int8_t uart_write(uart_t *obj, char *buffer, size_t size)
 }
 
 //function for uart read
-//int8_t uart_read(uart_t *obj, uint8_t *buffer, size_t size)
-int8_t uart_read(uart_t *obj, char *buffer, size_t size)
+int8_t uart_read(uart_t *obj, uint8_t *buffer, size_t size)
+//int8_t uart_read(uart_t *obj, char *buffer, size_t size)
 {
     if (Serial1.available() > 0) 
     {

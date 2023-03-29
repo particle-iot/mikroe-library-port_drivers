@@ -11,6 +11,7 @@
 #include "eeprom7.h"
 #include "temphum13.h"
 #include "rs232.h"
+#include "pwmdriver.h"
 
 
 SYSTEM_MODE(AUTOMATIC);
@@ -21,6 +22,7 @@ static accurrent_t accurrent;   //from accurrent main.c
 static eeprom7_t eeprom7;       //from eeprom7 main.c
 static temphum13_t temphum13;   //from temphum13 main.c
 static rs232_t rs232;           //from rs232 main.c
+static pwmdriver_t pwmdriver;   //from pwmdriver main.c
 
 //defines from rs232 main.c
 #define PROCESS_RX_BUFFER_SIZE 500
@@ -59,10 +61,20 @@ void setup()
   temphum13_default_cfg( &temphum13 );
 
   //from rs232
+/*
   rs232_cfg_t rs232_cfg;
   rs232_cfg_setup( &rs232_cfg );
   RS232_MAP_MIKROBUS( rs232_cfg, MIKROBUS_1 );
   rs232_init( &rs232, &rs232_cfg );   //includes uart config
+*/
+
+  //from pwmdriver
+  pwmdriver_cfg_t pwmdriver_cfg;
+  pwmdriver_cfg_setup( &pwmdriver_cfg );
+  PWMDRIVER_MAP_MIKROBUS( pwmdriver_cfg, MIKROBUS_1 );
+  pwmdriver_init( &pwmdriver, &pwmdriver_cfg );   //inlcudes pwm default config
+  pwmdriver_set_duty_cycle( &pwmdriver, 0.0 );
+  pwmdriver_pwm_start( &pwmdriver );
 
 }
 
@@ -80,8 +92,11 @@ void loop() {
 //  temphum13_main();
 //  delay (500);
 
-rs232_main();
-delay(500);
+//rs232_main();
+//delay(500);
+
+pwmdriver_main();
+//delay(1000);
 
 
 }
@@ -173,4 +188,29 @@ void rs232_main()
 
   rs232_generic_write( &rs232, message, strlen( message ) );
   Delay_ms( 1000 );
+}
+
+//pwm testing
+void pwmdriver_main()
+{
+  static int8_t duty_cnt = 1;
+  static int8_t duty_inc = 1;
+  float duty = duty_cnt / 10.0;
+
+
+
+  pwmdriver_set_duty_cycle ( &pwmdriver, duty );
+  pwmdriver_pwm_start( &pwmdriver );    //must include to pass new duty cycle value
+  Delay_ms( 500 );
+    
+  if (10 == duty_cnt) 
+  {
+    duty_inc = -1;
+  }
+  else if (0 == duty_cnt) 
+  {
+    duty_inc = 1;
+  }
+  duty_cnt += duty_inc;
+
 }

@@ -79,8 +79,6 @@ typedef struct
     bool is_blocking;               //boolean Is blocking
 } uart_t;
 
-
-
 //UART functions
 void uart_configure_default(uart_config_t *config);
 int8_t uart_open(uart_t *obj, uart_config_t *config);

@@ -3,7 +3,7 @@
  * @file    mikro_pins.h
  * @authors Erik Fasnacht
  * @version V1.0.0
- * @date    16-Mar-2023
+ * @date    28-Mar-2023
  * @brief   maps mikroBUS pins to Particle pinmap_defines.h values
  ******************************************************************************
  **/
@@ -13,6 +13,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <math.h>
 #include "pinmap_defines.h"
 #include "Particle.h"
 
@@ -29,8 +30,6 @@ inline void Delay_100ms( ) {delay(100);}
 inline void Delay_1000ms( ) {delay(1000);}
 inline void Delay_ms(unsigned long ms) {delay(ms);}
 
-
-
 //mikroBUS pin mapping first lookup
 #define MIKROBUS_AN   AN_PIN
 #define MIKROBUS_RST  RST_PIN
@@ -45,35 +44,107 @@ inline void Delay_ms(unsigned long ms) {delay(ms);}
 #define MIKROBUS_SCL  SCL_PIN
 #define MIKROBUS_SDA  SDA_PIN
 
-//mikroBUS pin mapping for actual pin lookup using BUS1
-#define MIKROBUS_1          1
-#define MIKROBUS_1_AN_PIN   A0
-#define MIKROBUS_1_RST_PIN  A2
-#define MIKROBUS_1_CS_PIN   SS
-#define MIKROBUS_1_SCK_PIN  SCK
-#define MIKROBUS_1_MISO_PIN MISO
-#define MIKROBUS_1_MOSI_PIN MOSI
-#define MIKROBUS_1_PWM_PIN  A5
-#define MIKROBUS_1_INT_PIN  S4
-#define MIKROBUS_1_RX_PIN   RX
-#define MIKROBUS_1_TX_PIN   TX
-#define MIKROBUS_1_SCL_PIN  SCL
-#define MIKROBUS_1_SDA_PIN  SDA
+//M.2 format SKUs, same pinout for B404/402, B404X, and B524
+#if PLATFORM_ID == PLATFORM_BSOM || PLATFORM_ID == PLATFORM_B5SOM        
+    //mikroBUS pin mapping for actual pin lookup using BUS1
+    #define MIKROBUS_1          1
+    #define MIKROBUS_1_AN_PIN   A1          //D18
+    #define MIKROBUS_1_RST_PIN  D7
+    #define MIKROBUS_1_CS_PIN   SS          //D8
+    #define MIKROBUS_1_SCK_PIN  SCK         //D13
+    #define MIKROBUS_1_MISO_PIN MISO        //D11
+    #define MIKROBUS_1_MOSI_PIN MOSI        //D12
+    #define MIKROBUS_1_PWM_PIN  D5
+    #define MIKROBUS_1_INT_PIN  D22
+    #define MIKROBUS_1_RX_PIN   RX          //D9
+    #define MIKROBUS_1_TX_PIN   TX          //D10
+    #define MIKROBUS_1_SCL_PIN  SCL         //D1
+    #define MIKROBUS_1_SDA_PIN  SDA         //D0
 
-//mikroBUS pin mapping for actual pin lookup using BUS2
-#define MIKROBUS_2          2
-#define MIKROBUS_2_AN_PIN   A1
-#define MIKROBUS_2_RST_PIN  D7
-#define MIKROBUS_2_CS_PIN   SS1
-#define MIKROBUS_2_SCK_PIN  SCK
-#define MIKROBUS_2_MISO_PIN MISO
-#define MIKROBUS_2_MOSI_PIN MOSI
-#define MIKROBUS_2_PWM_PIN  D10
-#define MIKROBUS_2_INT_PIN  D6
-#define MIKROBUS_2_RX_PIN   RX
-#define MIKROBUS_2_TX_PIN   TX
-#define MIKROBUS_2_SCL_PIN  SCL
-#define MIKROBUS_2_SDA_PIN  SDA
+    //mikroBUS pin mapping for actual pin lookup using BUS2
+    #define MIKROBUS_2          2
+    #define MIKROBUS_2_AN_PIN   A2          //D17
+    #define MIKROBUS_2_RST_PIN  D19
+    #define MIKROBUS_2_CS_PIN   D4
+    #define MIKROBUS_2_SCK_PIN  SCK         //D13
+    #define MIKROBUS_2_MISO_PIN MISO        //D11
+    #define MIKROBUS_2_MOSI_PIN MOSI        //D12
+    #define MIKROBUS_2_PWM_PIN  D6
+    #define MIKROBUS_2_INT_PIN  D23
+    #define MIKROBUS_2_RX_PIN   RX          //D9
+    #define MIKROBUS_2_TX_PIN   TX          //D10
+    #define MIKROBUS_2_SCL_PIN  SCL         //D1
+    #define MIKROBUS_2_SDA_PIN  SDA         //D0
+
+//Feather format SKUs, Argon and Boron, same pinout for Argon, BRN404/402, and BRN404X
+#elif PLATFORM_ID == PLATFORM_ARGON || PLATFORM_ID == PLATFORM_BORON
+     //mikroBUS pin mapping for actual pin lookup using BUS1
+    #define MIKROBUS_1          1
+    #define MIKROBUS_1_AN_PIN   A0          //D19
+    #define MIKROBUS_1_RST_PIN  A2          //D17
+    #define MIKROBUS_1_CS_PIN   SS          //A5/D14
+    #define MIKROBUS_1_SCK_PIN  SCK         //D17  
+    #define MIKROBUS_1_MISO_PIN MISO        //D16
+    #define MIKROBUS_1_MOSI_PIN MOSI        //D15
+    #define MIKROBUS_1_PWM_PIN  A3          //D16
+    #define MIKROBUS_1_INT_PIN  A4          //D15
+    #define MIKROBUS_1_RX_PIN   RX          //D9
+    #define MIKROBUS_1_TX_PIN   TX          //D8
+    #define MIKROBUS_1_SCL_PIN  SCL         //D1
+    #define MIKROBUS_1_SDA_PIN  SDA         //D0
+
+    //mikroBUS pin mapping for actual pin lookup using BUS2
+    #define MIKROBUS_2          2
+    #define MIKROBUS_2_AN_PIN   A1          //D18
+    #define MIKROBUS_2_RST_PIN  D7
+    #define MIKROBUS_2_CS_PIN   D5
+    #define MIKROBUS_2_SCK_PIN  SCK         //D17  
+    #define MIKROBUS_2_MISO_PIN MISO        //D16
+    #define MIKROBUS_2_MOSI_PIN MOSI        //D15
+    #define MIKROBUS_2_PWM_PIN  D8
+    #define MIKROBUS_2_INT_PIN  D6
+    #define MIKROBUS_2_RX_PIN   RX          //D9
+    #define MIKROBUS_2_TX_PIN   TX          //D8
+    #define MIKROBUS_2_SCL_PIN  SCL         //D1
+    #define MIKROBUS_2_SDA_PIN  SDA         //D0
+
+//Feather format SKUs, Photon 2 pinout
+#elif PLATFORM_ID == PLATFORM_P2    
+    //mikroBUS pin mapping for actual pin lookup using BUS1
+    #define MIKROBUS_1          1
+    #define MIKROBUS_1_AN_PIN   A0          //D11
+    #define MIKROBUS_1_RST_PIN  A2          //D13
+    #define MIKROBUS_1_CS_PIN   SS          //S3/D18
+    #define MIKROBUS_1_SCK_PIN  SCK         //D17  
+    #define MIKROBUS_1_MISO_PIN MISO        //D16
+    #define MIKROBUS_1_MOSI_PIN MOSI        //D15
+    #define MIKROBUS_1_PWM_PIN  A5          //D14
+    #define MIKROBUS_1_INT_PIN  S4          //D19
+    #define MIKROBUS_1_RX_PIN   RX          //D9
+    #define MIKROBUS_1_TX_PIN   TX          //D8
+    #define MIKROBUS_1_SCL_PIN  SCL         //D1
+    #define MIKROBUS_1_SDA_PIN  SDA         //D0
+
+    //mikroBUS pin mapping for actual pin lookup using BUS2
+    #define MIKROBUS_2          2
+    #define MIKROBUS_2_AN_PIN   A1          //D12
+    #define MIKROBUS_2_RST_PIN  D7
+    #define MIKROBUS_2_CS_PIN   SS1         //D5
+    #define MIKROBUS_2_SCK_PIN  SCK         //D17  
+    #define MIKROBUS_2_MISO_PIN MISO        //D16
+    #define MIKROBUS_2_MOSI_PIN MOSI        //D15
+    #define MIKROBUS_2_PWM_PIN  D10         //warning, not a valid PWM pin
+    #define MIKROBUS_2_INT_PIN  D6
+    #define MIKROBUS_2_RX_PIN   RX          //D9
+    #define MIKROBUS_2_TX_PIN   TX          //D8
+    #define MIKROBUS_2_SCL_PIN  SCL         //D1
+    #define MIKROBUS_2_SDA_PIN  SDA         //D0
+
+//undefined, need to add pinout for platform
+#else
+    //INSERT PLATFORM PINOUT HERE
+
+#endif
 
 //used to define which mikroBUS is used
 #define MIKROBUS(index, pinout) MIKROBUS_IMPL(index, pinout)

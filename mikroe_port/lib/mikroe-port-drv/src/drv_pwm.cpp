@@ -1,148 +1,77 @@
-/****************************************************************************
-**
-** Copyright (C) 2023 MikroElektronika d.o.o.
-** Contact: https://www.mikroe.com/contact
-**
-** This file is part of the mikroSDK package
-**
-** Commercial License Usage
-**
-** Licensees holding valid commercial NECTO compilers AI licenses may use this
-** file in accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and The MikroElektronika Company.
-** For licensing terms and conditions see
-** https://www.mikroe.com/legal/software-license-agreement.
-** For further information use the contact form at
-** https://www.mikroe.com/contact.
-**
-**
-** GNU Lesser General Public License Usage
-**
-** Alternatively, this file may be used for
-** non-commercial projects under the terms of the GNU Lesser
-** General Public License version 3 as published by the Free Software
-** Foundation: https://www.gnu.org/licenses/lgpl-3.0.html.
-**
-** The above copyright notice and this permission notice shall be
-** included in all copies or substantial portions of the Software.
-**
-** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-** OF MERCHANTABILITY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-** TO THE WARRANTIES FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
-** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
-** OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-**
-****************************************************************************/
-/*!
- * @file  drv_pwm.c
- * @brief PWM driver implementation.
- */
 
 #include "drv_pwm.h"
 
-static pwm_t *_owner = NULL;
+//global variables
+static uint32_t frequency;      //global variable for the set frequency   
+static uint32_t duty_cycle;     //global variable for the duty cycle     
+static uint16_t pin;            //global variable for the selected pin  
 
-static err_t _acquire( pwm_t *obj, bool obj_open_state )
+//configures structure and default values of PWM
+void pwm_configure_default(pwm_config_t *config)
 {
-    err_t status = ACQUIRE_SUCCESS;
+    frequency = 0;              //set frequency to 0
+    duty_cycle = 0;             //set duty cycle to OFF
+    pin = config->pin;          //set global variable to parameter
+    pinMode(pin, OUTPUT);       //set pin as output
+}
 
-    if ( obj_open_state == true && _owner == obj )
+//opens PWM driver on selected pin
+int8_t pwm_open(pwm_t *obj, pwm_config_t *config)
+{  
+    pin = config->pin;                  //set global variable to parameter
+    pinMode(config->pin, OUTPUT);       //added as a check in case default function isn't called before
+    analogWrite(pin, LOW);              //set pin to analog write, LOW = 0 (always OFF)
+    return PWM_SUCCESS;                 //return status
+}
+
+//Set PWM frequency in Hertz
+int8_t pwm_set_freq(pwm_t *obj, uint32_t freq_hz)
+{
+    //local variables
+    uint32_t maxFreq;                           //local variable for the max frequency
+    maxFreq = analogWriteMaxFrequency(pin);     //returns max frequency for the pin
+
+    if(freq_hz <= maxFreq)      //check to make sure frequency is less than the max value for a pin
     {
-        return ACQUIRE_FAIL;
+        frequency = freq_hz;        //set new global variable value to function parameter
+        return PWM_SUCCESS;         //return status
     }
 
-    if ( _owner != obj )
-    {
-        status = hal_pwm_open( &obj->handle, obj_open_state );
+    return PWM_ERROR;     //return status
+}
 
-        if ( status != ACQUIRE_FAIL )
-        {
-            _owner = obj;
-        }
+
+//Set PWM duty cycle as a percentage
+int8_t pwm_set_duty(pwm_t *obj, float duty_ratio)
+{
+    //local variables
+    uint32_t temp = (int)(pow(2,analogWriteResolution(pin)) + 1e-9) - 1;      //set max value for conversion (default is 8-bit, 255)
+
+    if((duty_ratio >= 0) || (duty_ratio <= 1))      //check for valid percentage passed
+    {
+        duty_cycle = duty_ratio * temp;     //convert from float % to uint32_t value (for analogWrite() function)   
+        return PWM_SUCCESS;                 //return status
     }
 
-    return status;
+    return PWM_ERROR;       //return status
 }
 
-void pwm_configure_default( pwm_config_t *config )
+//start PWM module
+int8_t pwm_start(pwm_t *obj)
 {
-    config->pin = 0xFFFFFFFF;
-    config->freq_hz = 0;
+    analogWrite(pin, duty_cycle, frequency);        //set duty cycle and frequency and start PWM
+    return PWM_SUCCESS;                             //return status
 }
 
-err_t pwm_open( pwm_t *obj, pwm_config_t *config )
+//stop PWM module
+int8_t pwm_stop(pwm_t *obj)
 {
-    pwm_config_t *p_config = &obj->config;
-    memcpy( p_config, config, sizeof( pwm_config_t ) );
-
-    return _acquire( obj, true );
+    analogWrite(pin, LOW);      //set pin to analog write, LOW = 0 (always OFF)
+    return PWM_SUCCESS;         //return status
 }
 
-err_t pwm_start( pwm_t *obj )
+//closes PWM driver
+void pwm_close(pwm_t *obj)
 {
-    if( _acquire( obj, false ) != ACQUIRE_FAIL )
-    {
-        return hal_pwm_start( &obj->handle );
-    } else {
-        return PWM_ERROR;
-    }
+    pinMode(pin, INPUT);        //set pin to be input, clear/close PWM
 }
-
-err_t pwm_stop( pwm_t *obj )
-{
-    if( _acquire( obj, false ) != ACQUIRE_FAIL )
-    {
-        return hal_pwm_stop( &obj->handle );
-    } else {
-        return PWM_ERROR;
-    }
-}
-
-err_t pwm_set_duty( pwm_t *obj, float duty_ratio )
-{
-    if( _acquire( obj, false ) != ACQUIRE_FAIL )
-    {
-        return hal_pwm_set_duty( &obj->handle, duty_ratio );
-    } else {
-        return PWM_ERROR;
-    }
-}
-
-err_t pwm_set_freq( pwm_t *obj, uint32_t freq_hz )
-{
-    err_t drv_freq_status;
-
-    if( _acquire( obj, false ) != ACQUIRE_FAIL )
-    {
-        obj->config.freq_hz = freq_hz;
-
-        drv_freq_status = hal_pwm_set_freq( &obj->handle, &obj->config );
-
-        if ( drv_freq_status == PWM_ERROR )
-        {
-            return PWM_ERROR;
-        } else {
-            return PWM_SUCCESS;
-        }
-    } else {
-        return PWM_ERROR;
-    }
-}
-
-void pwm_close( pwm_t *obj )
-{
-    err_t drv_status;
-
-    drv_status = hal_pwm_close( &obj->handle );
-
-    if( drv_status == PWM_SUCCESS )
-    {
-        obj->handle = NULL;
-        _owner = NULL;
-    }
-}
-
-// ------------------------------------------------------------------------- END
