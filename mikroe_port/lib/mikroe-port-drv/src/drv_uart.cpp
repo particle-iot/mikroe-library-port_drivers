@@ -10,6 +10,24 @@ static uint32_t global_baud;           //baud rate variable
 //function for setting uart default configuration
 void uart_configure_default(uart_config_t *config)
 {
+    //original from MikroE
+    /*
+    config->tx_pin = 0xFFFFFFFF;
+    config->rx_pin = 0xFFFFFFFF;
+
+    config->baud = 115200;
+    config->data_bits = UART_DATA_BITS_DEFAULT;
+    config->parity = UART_PARITY_DEFAULT;
+    config->stop_bits = UART_STOP_BITS_DEFAULT;
+
+    memset( &config->tx_buf, 0x00, sizeof( ring_buf8_t ) );
+    memset( &config->rx_buf, 0x00, sizeof( ring_buf8_t ) );
+
+    config->tx_ring_size = 0;
+    config->rx_ring_size = 0;
+    */
+    
+
     global_baud = 115200;
     global_data_bits = UART_DATA_BITS_DEFAULT;
     global_parity = SERIAL_PARITY_NO;
@@ -21,6 +39,15 @@ void uart_configure_default(uart_config_t *config)
 ////function for opening uart port
 int8_t uart_open(uart_t *obj, uart_config_t *config)
 {
+    //original from MikroE
+    /*
+    uart_config_t *p_config = &obj->config;
+    memcpy( p_config, config, sizeof( uart_config_t ) );
+
+    return _acquire( obj, true );
+    */
+    
+
     Serial1.begin(global_baud,(uint32_t)(global_data_bits|global_parity|global_stop_bits));
     return UART_SUCCESS;        //return status
 }
@@ -28,6 +55,18 @@ int8_t uart_open(uart_t *obj, uart_config_t *config)
 //function for setting uart baud rate
 int8_t uart_set_baud(uart_t *obj, uint32_t baud)
 {
+    //original from MikroE
+    /*
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        obj->config.baud = baud;
+        return hal_uart_set_baud( &obj->handle, &obj->config );
+    } else {
+        return UART_ERROR;
+    }
+    */
+    
+
     switch (baud)
     {
         //valid inputs
@@ -59,6 +98,18 @@ int8_t uart_set_baud(uart_t *obj, uint32_t baud)
 //function for setting uart parity bits
 int8_t uart_set_parity(uart_t *obj, uart_parity_t parity)
 {
+    //original from MikroE
+    /*
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        obj->config.parity = parity;
+        return hal_uart_set_parity( &obj->handle, &obj->config );
+    } else {
+        return UART_ERROR;
+    }
+    */
+    
+
     switch (parity)
     {
         case UART_PARITY_EVEN:
@@ -85,6 +136,18 @@ int8_t uart_set_parity(uart_t *obj, uart_parity_t parity)
 //function for setting uart stop bits
 int8_t uart_set_stop_bits(uart_t *obj, uart_stop_bits_t stop)
 {
+    //original from MikroE
+    /*
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        obj->config.stop_bits = stop;
+        return hal_uart_set_stop_bits( &obj->handle, &obj->config );
+    } else {
+        return UART_ERROR;
+    }
+    */
+    
+
     switch (stop)
     {
         case UART_STOP_BITS_HALF:
@@ -115,6 +178,18 @@ int8_t uart_set_stop_bits(uart_t *obj, uart_stop_bits_t stop)
 //function for setting uart data bits
 int8_t uart_set_data_bits(uart_t *obj, uart_data_bits_t bits)
 {
+    //original from MikroE
+    /*
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        obj->config.data_bits = bits;
+        return hal_uart_set_data_bits( &obj->handle, &obj->config );
+    } else {
+        return UART_ERROR;
+    }
+    */
+
+    
     switch (bits)
     {
         case UART_DATA_BITS_7:
@@ -141,23 +216,32 @@ int8_t uart_set_data_bits(uart_t *obj, uart_data_bits_t bits)
 //function for setting blocking, not implemented
 void uart_set_blocking(uart_t *obj, bool blocking)
 {
-//    hal_uart_set_blocking( &obj->handle, blocking );
+    //original from MikroE
+    //hal_uart_set_blocking( &obj->handle, blocking );
+
     #warning uart_set_blocking() function is not implemented since uart is always non-blocking
 }
 
 //function for uart write
-//int8_t uart_write(uart_t *obj, uint8_t *buffer, size_t size)
 int8_t uart_write(uart_t *obj, char *buffer, size_t size)
 {
-    //local variables
+    //original from MikroE
+    /*
+    size_t data_written = 0;
+
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        data_written = hal_uart_write( &obj->handle, buffer, size );
+        return data_written;
+    } else {
+        return UART_ERROR;
+    }
+    */
+   
+
+
     uint32_t temp = 0;      //temp variable for # of bytes to be written
-
-    //temp = Serial1.write(buffer,size);      //write bytes over uart. returns # of bytes written
-    //temp = Serial1.write((uint8_t *)buffer,size);      //write bytes over uart. returns # of bytes written
     temp = Serial1.write(reinterpret_cast<uint8_t *>(buffer),size);      //write bytes over uart. returns # of bytes written
-    //temp = Serial1.write(reinterpret_cast<uint8_t *>(static_cast<char *>(buffer)),size);      //write bytes over uart. returns # of bytes written
-
-
 
     if(temp == size)
     {
@@ -168,8 +252,21 @@ int8_t uart_write(uart_t *obj, char *buffer, size_t size)
 
 //function for uart read
 int8_t uart_read(uart_t *obj, uint8_t *buffer, size_t size)
-//int8_t uart_read(uart_t *obj, char *buffer, size_t size)
 {
+    //original from MikroE
+    /*
+    size_t data_read = 0;
+
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        data_read = hal_uart_read( &obj->handle, buffer, size );
+        return data_read;
+    } else {
+        return UART_ERROR;
+    }
+    */
+   
+
     if (Serial1.available() > 0) 
     {
         for (uint32_t ii = 0; ii < size; ii++)
@@ -186,9 +283,21 @@ int8_t uart_read(uart_t *obj, uint8_t *buffer, size_t size)
 //function for uart print
 int8_t uart_print(uart_t *obj, char *text)
 {
-    //local variable
-    size_t temp= sizeof(text);
+    //original from MikroE
+    /*
+    size_t data_written = 0;
 
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        data_written = hal_uart_print( &obj->handle, text );
+        return data_written;
+    } else {
+        return UART_ERROR;
+    }
+    */
+   
+
+    size_t temp= sizeof(text);
     if(temp == Serial1.print(text))     //check to make sure all bytes were written
     {
         return UART_SUCCESS;        //return status
@@ -199,9 +308,21 @@ int8_t uart_print(uart_t *obj, char *text)
 //function for uart print line
 int8_t uart_println(uart_t *obj, char *text)
 {
-    //local variable
-    size_t temp= sizeof(text);
+    //original from MikroE
+    /*
+    size_t data_written = 0;
 
+    if ( _acquire( obj, false ) != ACQUIRE_FAIL )
+    {
+        data_written = hal_uart_println( &obj->handle, text );
+        return data_written;
+    } else {
+        return UART_ERROR;
+    }
+    */
+   
+
+    size_t temp= sizeof(text);
     if(temp == Serial1.println(text))      //check to make sure all bytes were written
     {
         return UART_SUCCESS;        //return status
@@ -212,17 +333,43 @@ int8_t uart_println(uart_t *obj, char *text)
 //function for returning available bytes to be read
 size_t uart_bytes_available(uart_t *obj)
 {
+    //original from MikroE
+    /*
+    return hal_uart_bytes_available( obj );
+    */
+   
+
     return Serial1.available();     //return number of bytes available for reading
 }
 
 //function for clearing/flushing uart buffers
 void uart_clear(uart_t *obj)
 {
+    //original from MikroE
+    /*
+    hal_uart_clear( obj );
+    */
+   
+
     Serial1.flush();        //flush buffers
 }
 
 //function for closing uart peripheral
 void uart_close(uart_t *obj)
 {
+    //original from MikroE
+    /*
+    err_t drv_status;
+
+    drv_status = hal_uart_close( &obj->handle );
+
+    if ( drv_status == UART_SUCCESS )
+    {
+        obj->handle = NULL;
+        _owner = NULL;
+    }
+    */
+   
+
     Serial1.end();      //close uart peripheral
 }
