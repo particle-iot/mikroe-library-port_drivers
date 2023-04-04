@@ -31,23 +31,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
  13 .module_info_crc 00000004  085ffffc  085ffffc  0001fffc  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 14 .debug_info   0013fc04  00000000  00000000  00020000  2**0
+ 14 .debug_info   0013fc09  00000000  00000000  00020000  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_abbrev 00014e81  00000000  00000000  0015fc04  2**0
+ 15 .debug_abbrev 00014ea8  00000000  00000000  0015fc09  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_loc    000396ff  00000000  00000000  00174a85  2**0
+ 16 .debug_loc    000396ff  00000000  00000000  00174ab1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_aranges 00002a50  00000000  00000000  001ae184  2**0
+ 17 .debug_aranges 00002a50  00000000  00000000  001ae1b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_ranges 0000acc0  00000000  00000000  001b0bd4  2**0
+ 18 .debug_ranges 0000acc0  00000000  00000000  001b0c00  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_macro  000291ae  00000000  00000000  001bb894  2**0
+ 19 .debug_macro  000291ae  00000000  00000000  001bb8c0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_line   000468d7  00000000  00000000  001e4a42  2**0
+ 20 .debug_line   000469ab  00000000  00000000  001e4a6e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_str    000ca5d9  00000000  00000000  0022b319  2**0
+ 21 .debug_str    000ca5d9  00000000  00000000  0022b419  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_frame  00007a54  00000000  00000000  002f58f4  2**2
+ 22 .debug_frame  00007a54  00000000  00000000  002f59f4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1266,6 +1266,11 @@ static uint8_t addr;            //7-bit cleint address variable, status as previ
 void i2c_master_configure_default(i2c_master_config_t *config)
 {
  23fd5ac:	b510      	push	{r4, lr}
+    config->speed = I2C_MASTER_SPEED_STANDARD;
+    config->timeout_pass_count = 10000;
+    */
+    
+    
     addr = 0x00;                                    //set client address to 0x00
  23fd5ae:	2400      	movs	r4, #0
  23fd5b0:	4b05      	ldr	r3, [pc, #20]	; (23fd5c8 <_Z28i2c_master_configure_defaultP19i2c_master_config_t+0x1c>)
@@ -1290,6 +1295,11 @@ void i2c_master_configure_default(i2c_master_config_t *config)
 int8_t i2c_master_open(i2c_master_t *obj, i2c_master_config_t *config)
 {
  23fd5d0:	b508      	push	{r3, lr}
+
+    return _acquire( obj, true );
+    */
+
+    
     Wire.setSpeed(set_speed);       //set speed, must be done before Wire.begin() and set to whatever the static global variable is set to
  23fd5d2:	f001 f9eb 	bl	23fe9ac <_Z19__fetch_global_Wirev>
  23fd5d6:	4b05      	ldr	r3, [pc, #20]	; (23fd5ec <_Z15i2c_master_openP12i2c_master_tP19i2c_master_config_t+0x1c>)
@@ -1312,6 +1322,11 @@ int8_t i2c_master_set_speed(i2c_master_t *obj, uint32_t speed)
 {
  23fd5f0:	b510      	push	{r4, lr}
  23fd5f2:	460c      	mov	r4, r1
+        return I2C_MASTER_ERROR;
+    }
+    */
+
+    
     set_speed = speed;              //set static global variable to new speed value
  23fd5f4:	4b04      	ldr	r3, [pc, #16]	; (23fd608 <_Z20i2c_master_set_speedP12i2c_master_tm+0x18>)
  23fd5f6:	6019      	str	r1, [r3, #0]
@@ -1327,11 +1342,11 @@ int8_t i2c_master_set_speed(i2c_master_t *obj, uint32_t speed)
  23fd608:	1007ae70 	.word	0x1007ae70
 
 023fd60c <_Z28i2c_master_set_slave_addressP12i2c_master_th>:
-}
+        return I2C_MASTER_ERROR;
+    }
+    */
 
-//set 7-bit client address
-int8_t i2c_master_set_slave_address(i2c_master_t *obj, uint8_t address)
-{
+    
     addr = address;                 //set function parameter to global variable
  23fd60c:	4b01      	ldr	r3, [pc, #4]	; (23fd614 <_Z28i2c_master_set_slave_addressP12i2c_master_th+0x8>)
     return I2C_MASTER_SUCCESS;      //return status
@@ -1351,6 +1366,11 @@ int8_t i2c_master_write(i2c_master_t *obj, uint8_t *write_data_buf, size_t len_w
  23fd618:	b513      	push	{r0, r1, r4, lr}
  23fd61a:	460c      	mov	r4, r1
  23fd61c:	9201      	str	r2, [sp, #4]
+        return I2C_MASTER_ERROR;
+    }
+    */
+
+    
     Wire.beginTransmission(addr);                       //send device address byte using 7-bit client address
  23fd61e:	f001 f9c5 	bl	23fe9ac <_Z19__fetch_global_Wirev>
  23fd622:	4b0b      	ldr	r3, [pc, #44]	; (23fd650 <_Z16i2c_master_writeP12i2c_master_tPhj+0x38>)
@@ -1381,11 +1401,11 @@ int8_t i2c_master_write(i2c_master_t *obj, uint8_t *write_data_buf, size_t len_w
  23fd650:	1007ae6c 	.word	0x1007ae6c
 
 023fd654 <_Z21pwm_configure_defaultP12pwm_config_t>:
-static uint16_t pin;            //global variable for the selected pin  
+    config->pin = 0xFFFFFFFF;
+    config->freq_hz = 0;
+    */
 
-//configures structure and default values of PWM
-void pwm_configure_default(pwm_config_t *config)
-{
+    
     frequency = 0;              //set frequency to 0
  23fd654:	2300      	movs	r3, #0
  23fd656:	4a05      	ldr	r2, [pc, #20]	; (23fd66c <_Z21pwm_configure_defaultP12pwm_config_t+0x18>)
@@ -1417,6 +1437,11 @@ void pwm_configure_default(pwm_config_t *config)
 int8_t pwm_open(pwm_t *obj, pwm_config_t *config)
 {  
  23fd678:	b510      	push	{r4, lr}
+
+    return _acquire( obj, true );
+    */
+
+
     pin = config->pin;                  //set global variable to parameter
  23fd67a:	4c06      	ldr	r4, [pc, #24]	; (23fd694 <_Z8pwm_openP5pwm_tP12pwm_config_t+0x1c>)
  23fd67c:	7808      	ldrb	r0, [r1, #0]
@@ -1443,7 +1468,10 @@ int8_t pwm_open(pwm_t *obj, pwm_config_t *config)
 int8_t pwm_set_freq(pwm_t *obj, uint32_t freq_hz)
 {
  23fd698:	b510      	push	{r4, lr}
-    //local variables
+    }
+    */
+
+
     uint32_t maxFreq;                           //local variable for the max frequency
     maxFreq = analogWriteMaxFrequency(pin);     //returns max frequency for the pin
  23fd69a:	4b06      	ldr	r3, [pc, #24]	; (23fd6b4 <_Z12pwm_set_freqP5pwm_tm+0x1c>)
@@ -1481,7 +1509,11 @@ int8_t pwm_set_duty(pwm_t *obj, float duty_ratio)
 {
  23fd6c0:	b508      	push	{r3, lr}
  23fd6c2:	ed2d 8b02 	vpush	{d8}
-    //local variables
+        return PWM_ERROR;
+    }
+    */
+
+
     uint32_t temp = (int)(pow(2,analogWriteResolution(pin)) + 1e-9) - 1;      //set max value for conversion (default is 8-bit, 255)
  23fd6c6:	4b20      	ldr	r3, [pc, #128]	; (23fd748 <_Z12pwm_set_dutyP5pwm_tf+0x88>)
 {
@@ -1504,7 +1536,6 @@ int8_t pwm_set_duty(pwm_t *obj, float duty_ratio)
  23fd6e8:	ec51 0b10 	vmov	r0, r1, d0
  23fd6ec:	f7ff f9c6 	bl	23fca7c <__adddf3>
  23fd6f0:	f7ff fe2a 	bl	23fd348 <__aeabi_d2iz>
-
     if((duty_ratio >= 0) || (duty_ratio <= 1))      //check for valid percentage passed
  23fd6f4:	eeb5 8ac0 	vcmpe.f32	s16, #0.0
  23fd6f8:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
@@ -1550,6 +1581,11 @@ int8_t pwm_set_duty(pwm_t *obj, float duty_ratio)
 int8_t pwm_start(pwm_t *obj)
 {
  23fd750:	b508      	push	{r3, lr}
+        return PWM_ERROR;
+    }
+    */
+
+
     analogWrite(pin, duty_cycle, frequency);        //set duty cycle and frequency and start PWM
  23fd752:	4b05      	ldr	r3, [pc, #20]	; (23fd768 <_Z9pwm_startP5pwm_t+0x18>)
  23fd754:	681a      	ldr	r2, [r3, #0]
