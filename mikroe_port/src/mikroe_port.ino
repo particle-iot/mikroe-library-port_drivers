@@ -1,11 +1,3 @@
-/**
- ******************************************************************************
- * @authors Erik Fasnacht
- * @version V1.0.0
- * @date    10-April-2023
- * @brief   ino file for CLICK library testing
- ******************************************************************************
- **/
 
 #include "accurrent.h"
 #include "eeprom7.h"

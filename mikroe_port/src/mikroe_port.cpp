@@ -4,14 +4,6 @@
 
 #include "Particle.h"
 #line 1 "/Users/Erik-Home/Documents/GitHub/mikroe_port/mikroe_port/src/mikroe_port.ino"
-/**
- ******************************************************************************
- * @authors Erik Fasnacht
- * @version V1.0.0
- * @date    24-Mar-2023
- * @brief   ino file for CLICK library testing
- ******************************************************************************
- **/
 
 #include "accurrent.h"
 #include "eeprom7.h"
@@ -29,7 +21,7 @@ void temphum13_main();
 void rs232_main();
 void pwmdriver_main();
 void current4_main();
-#line 18 "/Users/Erik-Home/Documents/GitHub/mikroe_port/mikroe_port/src/mikroe_port.ino"
+#line 10 "/Users/Erik-Home/Documents/GitHub/mikroe_port/mikroe_port/src/mikroe_port.ino"
 SYSTEM_MODE(AUTOMATIC);
 SYSTEM_THREAD(ENABLED);
 
@@ -247,7 +239,7 @@ void current4_main()
 {
   float current4_load_voltage = 0;
   current4_read_an_pin_voltage ( &current4, &current4_load_voltage );
-  Serial.print("voltage ");
+  Serial.print("voltage = ");
 	Serial.print(current4_load_voltage, 2); 
 	Serial.println("");
 
