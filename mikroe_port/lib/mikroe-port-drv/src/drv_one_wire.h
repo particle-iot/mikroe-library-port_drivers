@@ -18,6 +18,7 @@
 #define _DRV_ONE_WIRE_H_
 
 #include "mikro_port.h"
+#include "OneWire.h"
 
 //todo, remove
 //#include "hal_one_wire.h"
