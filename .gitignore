@@ -940,3 +940,9 @@ mikroe_port/target/5.3.0/p2/obj/src/module_info.o
 mikroe_port/target/5.3.0/p2/obj/src/newlib_stubs.o
 mikroe_port/target/5.3.0/p2/obj/src/user_export.o
 mikroe_port/target/5.3.0/p2/obj/src/user_module.o
+.DS_Store
+mikroe_port/.DS_Store
+mikroe_port/lib/.DS_Store
+mikroe_port/target/5.3.0/p2/memory_platform_user.ld
+mikroe_port/target/5.3.0/p2/mikroe_port.bin
+mikroe_port/target/5.3.0/p2/mikroe_port.bin.no_crc
