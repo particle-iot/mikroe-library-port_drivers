@@ -69,11 +69,11 @@ int8_t one_wire_reset(one_wire_t *obj)
     */
 
 
-   if(oneWire_reset() == TRUE)     //function returns a 1 if device is present, 0 otherwise
+   if(oneWire_reset() == TRUE)          //function returns a 1 if device is present, 0 otherwise
    {
-        return ONE_WIRE_SUCCESS;     //return status
+        return ONE_WIRE_SUCCESS;        //return status
    }
-   return ONE_WIRE_ERROR;     //return status
+   return ONE_WIRE_ERROR;               //return status
 }
 
 //1-wire write operation
@@ -89,11 +89,11 @@ int8_t one_wire_write_byte(one_wire_t *obj, uint8_t *write_data_buffer, size_t w
     */
 
 
-    for (uint16_t ii = 0 ; ii < write_data_length ; ii++)
+    for (uint16_t ii = 0 ; ii < write_data_length ; ii++)       //iterate through buffer array
     {
-        oneWire_write(write_data_buffer[ii]);       //write rom bytes
+        oneWire_write(write_data_buffer[ii]);                   //write rom bytes
     }
-    return ONE_WIRE_SUCCESS;                        //return status
+    return ONE_WIRE_SUCCESS;                                    //return status
 }
 
 //1-wire read operation
@@ -109,11 +109,11 @@ int8_t one_wire_read_byte(one_wire_t *obj, uint8_t *read_data_buffer, size_t rea
     */
 
 
-    for (uint16_t ii = 0 ; ii < read_data_length; ii++)
+    for (uint16_t ii = 0 ; ii < read_data_length; ii++)     //iterate through buffer array
     {
-        read_data_buffer[ii] = oneWire_read();        //index pointer array and set to byte read
+        read_data_buffer[ii] = oneWire_read();              //index pointer array and set to byte read
     }
-    return ONE_WIRE_SUCCESS;     //return status
+    return ONE_WIRE_SUCCESS;                                //return status
 }
 
 //read ROM of connected device
@@ -129,12 +129,12 @@ int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_add
     */
 
 
-    oneWire_write(ROM_MATCH);                           //wite Choose ROM cmd
-    for (uint16_t ii = 0 ; ii < 8 ; ii++)               //loop for number of bytes (count)
+    oneWire_write(ROM_MATCH);                                   //wite Choose ROM cmd
+    for (uint16_t ii = 0 ; ii < 8 ; ii++)                       //loop for number of bytes (count = 8)
     {
-        device_rom_address->address[ii] = oneWire_read();        //index pointer array and set to byte read
+        device_rom_address->address[ii] = oneWire_read();       //index pointer array and set to byte read
     }
-    return ONE_WIRE_SUCCESS;                            //return status
+    return ONE_WIRE_SUCCESS;                                    //return status
 }
 
 //skip read ROM
@@ -167,12 +167,12 @@ int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_ad
     */
 
 
-    oneWire_write(ROM_MATCH);                       //wite Choose ROM cmd
-    for (uint16_t ii = 0 ; ii < 8 ; ii++)           //loop for number of bytes (count)
+    oneWire_write(ROM_MATCH);                               //wite Choose ROM cmd
+    for (uint16_t ii = 0 ; ii < 8 ; ii++)                   //loop for number of bytes (count)
     {
-        oneWire_write(device_rom_address->address[ii]);      //write rom bytes
+        oneWire_write(device_rom_address->address[ii]);     //write rom bytes
     }
-    return ONE_WIRE_SUCCESS;                        //return status
+    return ONE_WIRE_SUCCESS;                                //return status
 }
 
 //search for first device on 1-wire bus
@@ -199,11 +199,11 @@ int8_t one_wire_search_first_device(one_wire_t *obj, one_wire_rom_address_t *one
         rom_num[ii] = 0x00;
     }
 
-    if (oneWire_search(one_wire_device_list->address) == TRUE)
+    if (oneWire_search(one_wire_device_list->address) == TRUE)      //one wire ROM search
     {
-        return ONE_WIRE_SUCCESS;     //return status
+        return ONE_WIRE_SUCCESS;                                    //return status
     }   
-    return ONE_WIRE_ERROR;     //return status
+    return ONE_WIRE_ERROR;                                          //return status
 }
 
 //search for next device on 1-wire bus
@@ -219,14 +219,14 @@ int8_t one_wire_search_next_device(one_wire_t *obj, one_wire_rom_address_t *one_
     */
 
 
-   if (oneWire_search(one_wire_device_list->address) == TRUE)
+   if (oneWire_search(one_wire_device_list->address) == TRUE)       //one wire ROM search
     {
-        return ONE_WIRE_SUCCESS;     //return status
+        return ONE_WIRE_SUCCESS;                                    //return status
     }
-    return ONE_WIRE_ERROR;     //return status
+    return ONE_WIRE_ERROR;                                          //return status
 }
 
-//search device ROM
+//search device ROM function
 uint8_t oneWire_search(uint8_t *newAddr)
 {
     //local variables
@@ -234,129 +234,110 @@ uint8_t oneWire_search(uint8_t *newAddr)
     uint8_t last_zero = 0;
     uint8_t count = 0;
     uint8_t search_result = 0;
-    uint8_t id_bit, cmp_id_bit;
+    uint8_t id_bit; 
+    uint8_t cmp_id_bit;
     unsigned char rom_byte_mask = 1;
     unsigned char search_direction = 0;
 
     //if the last call was not the last one
     if (!LastDeviceFlag)
-    {
-        
+    {  
         if (!oneWire_reset())       //1-Wire reset
         {
             //reset the search global variables
             LastDiscrepancy = 0;
             LastDeviceFlag = FALSE;
             LastFamilyDiscrepancy = 0;
-            return FALSE;
+            return FALSE;       //return status
         }
 
         oneWire_write(ROM_SEARCH);      //issue the search command
 
-        // loop to do the search
+        //loop to do the search
         do
         {
-            // read a bit and its complement
-            id_bit = oneWire_read_bit();
-            cmp_id_bit = oneWire_read_bit();
+            id_bit = oneWire_read_bit();            //read a bit
+            cmp_id_bit = oneWire_read_bit();        //read its complement
 
-            // check for no devices on 1-wire
-            if ((id_bit == 1) && (cmp_id_bit == 1))
+            if ((id_bit == 1) && (cmp_id_bit == 1))     //check for no devices on 1-wire
             {
-                break;      //break from while loop since no devies are present
+                break;                                  //break from while loop since no devies are present
             }
-            else
-            {
-                // all devices coupled have 0 or 1
-                if (id_bit != cmp_id_bit)
+            
+            else        //device present on the bus
+            {        
+                if (id_bit != cmp_id_bit)           //all devices coupled have 0 or 1
                 {
-                    search_direction = id_bit;  // bit write value for search
+                    search_direction = id_bit;      //bit write value for search
                 }
                 else
                 {
-                    // if this discrepancy if before the Last Discrepancy
-                    // on a previous next then pick the same as last time
-                    if (id_bit_number < LastDiscrepancy)
+                    if (id_bit_number < LastDiscrepancy)                                //if this discepancy is before the previous
                     {
-                        search_direction = ((rom_num[count] & rom_byte_mask) > 0);
+                        search_direction = ((rom_num[count] & rom_byte_mask) > 0);      //pick same as last time
                     }
-                    else
-                    {
-                        // if equal to last pick 1, if not then pick 0
-                        search_direction = (id_bit_number == LastDiscrepancy);
+                    else                                                                //discepancy is after the previous                        
+                    { 
+                        search_direction = (id_bit_number == LastDiscrepancy);          //if equal to last pick 1, if not then pick 0
                     }
 
-                    // if 0 was picked then record its position in LastZero
-                    if (search_direction == 0)
+                    if (search_direction == 0)                      //if 0 was picked
                     {
-                        last_zero = id_bit_number;
-
-                        // check for Last discrepancy in family
-                        if (last_zero < 9)
+                        last_zero = id_bit_number;                  //record position in last_zero
+                        if (last_zero < 9)                          //check for Last discrepancy in family
                         {
-                            LastFamilyDiscrepancy = last_zero;
+                            LastFamilyDiscrepancy = last_zero;      //set last discrepancy flag 
                         }
                     }
                 }
 
-                // set or clear the bit in the ROM byte count
-                // with mask rom_byte_mask
-                if (search_direction == 1)
+                //set or clear the bit in the ROM byte count
+                if (search_direction == 1)              //if 1 was picked 
                 {
-                  rom_num[count] |= rom_byte_mask;
+                  rom_num[count] |= rom_byte_mask;      //set the bit 
                 }
-                else
+                else                                    //0 was picked
                 {
-                  rom_num[count] &= ~rom_byte_mask;
+                  rom_num[count] &= ~rom_byte_mask;     //clear the bit
                 }
 
-                // serial number search direction write bit
-                oneWire_write_bit(search_direction);
-
-                // increment the byte counter id_bit_number
-                // and shift the mask rom_byte_mask
-                id_bit_number++;
-                rom_byte_mask <<= 1;
-
-                // if the mask is 0 then go to new SerialNum byte count and reset mask
-                if (rom_byte_mask == 0)
+                //write search bit value
+                oneWire_write_bit(search_direction);        //serial number search direction write bit
+                id_bit_number++;                            //increment byte counter
+                rom_byte_mask <<= 1;                        //sift maks to the left by 1          
+                if (rom_byte_mask == 0)                     //if the mask is 0
                 {
-                    count++;
-                    rom_byte_mask = 1;
+                    count++;                                //increment the count
+                    rom_byte_mask = 1;                       //reset mask
                 }
             }
-        }
-        while(count < 8);  // loop until through all ROM bytes 0-7
+        }   while(count < 8);                       //loop until through all ROM bytes 0-7
+        
 
-        // if the search was successful then
-        if (!(id_bit_number < 65))
+        if (!(id_bit_number < 65))              //search was successful
         {
-            // search successful so set LastDiscrepancy,LastDeviceFlag,search_result
-            LastDiscrepancy = last_zero;
-
-            // check for last device
-            if (LastDiscrepancy == 0)
+            LastDiscrepancy = last_zero;        //set last discrepancy flag 
+            if (LastDiscrepancy == 0)           //check for last device
             {
-                LastDeviceFlag = TRUE;
+                LastDeviceFlag = TRUE;          //set last ROM flag
             }
-
-            search_result = TRUE;
+            search_result = TRUE;               //search was successful
         }
     }
-
-    // if no device found then reset counters so next 'search' will be like a first
-    if (!search_result || !rom_num[0])
+ 
+    if (!search_result || !rom_num[0])      //if no device found then reset counters
     {
+        //reset the search global variables
         LastDiscrepancy = 0;
         LastDeviceFlag = FALSE;
         LastFamilyDiscrepancy = 0;
-        search_result = FALSE;
+
+        search_result = FALSE;      //search result is fail
     }
 
-    for (int i = 0; i < 8; i++) 
+    for (int i = 0; i < 8; i++)     //iterate over 64 bits 
     {
-        newAddr[i] = rom_num[i];
-    }
-    
-    return search_result;
+        newAddr[i] = rom_num[i];        //set poitner function parameter to new ROM value
+    }  
+    return search_result;       //return search result status
 }

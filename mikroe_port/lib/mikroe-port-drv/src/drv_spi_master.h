@@ -19,7 +19,7 @@
 
 #include "mikro_port.h"
 
-//struct for SPI configuration
+//struct for SPI configuration, added for library port compatibility
 typedef struct
 {
     uint8_t         default_write_data;     //SPI Master default write data
@@ -30,7 +30,7 @@ typedef struct
     uint8_t         mode;                   //SPI mode
 } spi_master_config_t;
 
-//struc for spi master configuration
+//struc for spi master configuration, added for library port compatibility
 typedef struct
 {
     spi_master_config_t config;     //SPI Master Driver configuration structure

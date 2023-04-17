@@ -26,7 +26,7 @@ typedef enum
     I2C_MASTER_ERROR = (-1)     //Error
 } i2c_master_err_t;
 
-//enum for various clock frequencies
+//enum for various clock frequencies, added for library compatibility
 typedef enum
 {
     I2C_MASTER_SPEED_STANDARD = 0,      //standard clock frequency, 100kHz
@@ -34,7 +34,7 @@ typedef enum
     I2C_MASTER_SPEED_FAST = 2           //fast mode Plus clock frequency, 1MHz
 } i2c_master_speed_t;
 
-//struct for various I2C function parameters
+//struct for various I2C function parameters, added for library compatibility
 typedef struct
 {
     uint8_t addr;                       //client address
@@ -44,7 +44,7 @@ typedef struct
     uint16_t timeout_pass_count;        //timeout value , # of retries
 } i2c_master_config_t;
 
-//struc for i2c master configuration
+//struc for i2c master configuration, added for library compatibility
 typedef struct
 {
     i2c_master_config_t config;     //I2C configuration structure

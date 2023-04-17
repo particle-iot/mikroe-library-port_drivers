@@ -33,10 +33,6 @@ void pwm_configure_default(pwm_config_t *config)
     
     frequency = 0;              //set frequency to 0
     duty_cycle = 0;             //set duty cycle to OFF
-    
-    //todo, confirm these are not needed
-    //pin = config->pin;          //set global variable to parameter
-    //pinMode(pin, OUTPUT);       //set pin as output
 }
 
 //opens PWM driver on selected pin
@@ -84,14 +80,12 @@ int8_t pwm_set_freq(pwm_t *obj, uint32_t freq_hz)
 
     uint32_t maxFreq;                           //local variable for the max frequency
     maxFreq = analogWriteMaxFrequency(pin);     //returns max frequency for the pin
-
-    if(freq_hz <= maxFreq)      //check to make sure frequency is less than the max value for a pin
+    if(freq_hz <= maxFreq)                      //check to make sure frequency is less than the max value for a pin
     {
-        frequency = freq_hz;        //set new global variable value to function parameter
-        return PWM_SUCCESS;         //return status
+        frequency = freq_hz;                    //set new global variable value to function parameter
+        return PWM_SUCCESS;                     //return status
     }
-
-    return PWM_ERROR;     //return status
+    return PWM_ERROR;                           //return status
 }
 
 
@@ -109,14 +103,13 @@ int8_t pwm_set_duty(pwm_t *obj, float duty_ratio)
     */
 
 
-    uint32_t temp = (int)(pow(2,analogWriteResolution(pin)) + 1e-9) - 1;      //set max value for conversion (default is 8-bit, 255)
-    if((duty_ratio >= 0) || (duty_ratio <= 1))      //check for valid percentage passed
+    uint32_t temp = (int)(pow(2,analogWriteResolution(pin)) + 1e-9) - 1;        //set max value for conversion (default is 8-bit, 255)
+    if((duty_ratio >= 0) || (duty_ratio <= 1))                                  //check for valid percentage passed
     {
-        duty_cycle = duty_ratio * temp;     //convert from float % to uint32_t value (for analogWrite() function)   
-        return PWM_SUCCESS;                 //return status
+        duty_cycle = duty_ratio * temp;                                         //convert from float % to uint32_t value (for analogWrite() function)   
+        return PWM_SUCCESS;                                                     //return status
     }
-
-    return PWM_ERROR;       //return status
+    return PWM_ERROR;                                                           //return status
 }
 
 //start PWM module

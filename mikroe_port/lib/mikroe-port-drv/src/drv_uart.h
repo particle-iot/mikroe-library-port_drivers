@@ -26,7 +26,7 @@ typedef enum
     UART_ERROR = (-1)       //Error
 } uart_err_t;
 
-//enum for various data bits
+//enum for various data bits, added for library compatibility
 typedef enum
 {
     UART_DATA_BITS_7 = 0,                           //7 data bits
@@ -35,7 +35,7 @@ typedef enum
     UART_DATA_BITS_DEFAULT = UART_DATA_BITS_8       //Default (8 data bits)
 } uart_data_bits_t;
 
-//enum for various parity bits
+//enum for various parity bits, added for library compatibility
 typedef enum
 {
     UART_PARITY_NONE = 0,                       //No parity
@@ -45,7 +45,7 @@ typedef enum
 } uart_parity_t;
 
 
- //enum for various stop bits
+ //enum for various stop bits, added for library compatibility
 typedef enum
 {
     UART_STOP_BITS_HALF = 0,                        //Half stop bit
@@ -55,7 +55,7 @@ typedef enum
     UART_STOP_BITS_DEFAULT = UART_STOP_BITS_ONE     //Default (one stop bit)
 } uart_stop_bits_t;
 
-//struc for UART configuration
+//struc for UART configuration, added for library compatibility
 typedef struct
 {
     pin_name_t tx_pin;              //Tx pin
@@ -71,7 +71,7 @@ typedef struct
 } uart_config_t;
 
 
-//struct for various UART function parameters
+//struct for various UART function parameters, added for library compatibility
 typedef struct
 {
     uart_config_t config;           //UART configuration structure
@@ -93,11 +93,9 @@ int8_t uart_set_parity(uart_t *obj, uart_parity_t parity);
 int8_t uart_set_stop_bits(uart_t *obj, uart_stop_bits_t stop);
 int8_t uart_set_data_bits(uart_t *obj, uart_data_bits_t bits);
 void uart_set_blocking(uart_t *obj, bool blocking );
-//int8_t uart_write(uart_t *obj, uint8_t *buffer, size_t size);
 int8_t uart_write(uart_t *obj, char *buffer, size_t size);
 int8_t uart_print(uart_t *obj, char *text);
 int8_t uart_println(uart_t *obj, char *text);
-//int8_t uart_read(uart_t *obj, uint8_t *buffer, size_t size);
 int8_t uart_read(uart_t *obj, char *buffer, size_t size);
 size_t uart_bytes_available(uart_t *obj);
 void uart_clear(uart_t *obj);

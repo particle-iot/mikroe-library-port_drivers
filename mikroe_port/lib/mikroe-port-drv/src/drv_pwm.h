@@ -26,14 +26,14 @@ typedef enum
     PWM_ERROR = (-1)        //Error
 } pwm_err_t;
 
-//struct for various PWM function parameters
+//struct for various PWM function parameters, added for library compatibility
 typedef struct
 {
     pin_name_t pin;         //PWM pin
     uint32_t freq_hz;       //PWM Frequency in Hz
 } pwm_config_t;
 
-//struc for PWM configuration
+//struc for PWM configuration, added for library compatibility
 typedef struct
 {
     pwm_config_t config;        //PWM driver configuration structure

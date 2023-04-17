@@ -16,6 +16,7 @@
 
 #include "drv_spi_master.h"
 
+//global variable
 static uint8_t cs_polarity;        //CS polarity variable, static as previous value should be retained
 
 //Configures spi_master_config_t struct to default initialization values
@@ -96,7 +97,7 @@ void spi_master_set_chip_select_polarity(uint8_t polarity)
 
     if ((polarity == LOW) || (polarity == HIGH))        //check for valid function parameter
     {
-        cs_polarity = polarity;     //set new CS polarity
+        cs_polarity = polarity;                         //set new CS polarity
     }
 }
 
@@ -117,9 +118,9 @@ int8_t spi_master_set_speed(spi_master_t *obj, uint32_t speed)
 
     if(SPI.setClockSpeed(speed) == speed)       //set clock speed to function parameter and check to confirm it is set
     {
-        return SPI_MASTER_SUCCESS;      //return status
+        return SPI_MASTER_SUCCESS;              //return status
     }
-    return SPI_MASTER_ERROR;        //return status
+    return SPI_MASTER_ERROR;                    //return status
 }
 
 //Sets SPI Mode
@@ -139,10 +140,10 @@ int8_t spi_master_set_mode(spi_master_t *obj, uint8_t mode)
 
     if((mode >= SPI_MODE0) || (mode <= SPI_MODE3))      //check that paramter input is valid
     {
-        SPI.setDataMode(mode);          //set  spi mode to function parameter
-        return SPI_MASTER_SUCCESS;      //return status
+        SPI.setDataMode(mode);                          //set spi mode to function parameter
+        return SPI_MASTER_SUCCESS;                      //return status
     }
-    return SPI_MASTER_ERROR;        //return status
+    return SPI_MASTER_ERROR;                            //return status
 }
 
 //sets SPI default value, not implemented
@@ -182,10 +183,10 @@ int8_t spi_master_write(spi_master_t *obj, uint8_t *write_data_buffer, size_t wr
     #warning spi_master_write() assumes the fist element of write_data_buffer is the first byte to be transmitted, IE the opcode/register if required
     
     //create dummy array size of write fill with zeros
-    uint8_t write_dummy[write_data_length] = {0};     //required for SPI.transfer read/write arrays must be of same size
+    uint8_t write_dummy[write_data_length] = {0};       //required for SPI.transfer read/write arrays must be of same size
     if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
     {
-        return SPI_MASTER_ERROR;        //return status
+        return SPI_MASTER_ERROR;                        //return status
     }
     
     SPI.transfer(write_data_buffer, write_dummy, write_data_length, NULL);      //spi transaction for write (read = NULL)
@@ -215,7 +216,7 @@ int8_t spi_master_read(spi_master_t *obj, uint8_t *read_data_buffer, size_t read
 
     if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
     {
-        return SPI_MASTER_ERROR;        //return status
+        return SPI_MASTER_ERROR;                        //return status
     }
 
     SPI.transfer(read_dummy, read_data_buffer, read_data_length, NULL);     //spi transaction for read (write = NULL)
@@ -239,15 +240,13 @@ int8_t spi_master_write_then_read(spi_master_t *obj, uint8_t *write_data_buffer,
 
     #warning spi_master_write_then_read() assumes the fist element of write_data_buffer is the first byte to be transmitted, IE the opcode/register if required
 
-    //create dummy array size of write fill with zeros
-    uint8_t write_dummy[length_write_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
-
-    //create dummy array size of read fill with zeros
-    uint8_t read_dummy[length_read_data] = {0};     //required for SPI.transfer read/write arrays must be of same size  
+    //create dummy array size write/read and fill with zeros
+    uint8_t write_dummy[length_write_data] = {0};       //required for SPI.transfer read/write arrays must be of same size  
+    uint8_t read_dummy[length_read_data] = {0};         //required for SPI.transfer read/write arrays must be of same size  
 
     if(SPI.beginTransaction() == SPI_MASTER_ERROR)      //setup fail
     {
-        return SPI_MASTER_ERROR;        //return status
+        return SPI_MASTER_ERROR;                        //return status
     }
     
     SPI.transfer(write_data_buffer, write_dummy, length_write_data, NULL);      //spi transaction for write (read = NULL)

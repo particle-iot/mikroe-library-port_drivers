@@ -43,11 +43,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  19 .debug_macro  0002b89b  00000000  00000000  001c8c28  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_line   0004af19  00000000  00000000  001f44c3  2**0
+ 20 .debug_line   0004af0d  00000000  00000000  001f44c3  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_str    000cb9d2  00000000  00000000  0023f3dc  2**0
+ 21 .debug_str    000cb9d2  00000000  00000000  0023f3d0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_frame  000079d4  00000000  00000000  0030adb0  2**2
+ 22 .debug_frame  000079d4  00000000  00000000  0030ada4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -598,7 +598,7 @@ static uint8_t c1wireswitch_calculate_crc8 ( uint8_t *data_buf, uint8_t len )
  23fe648:	f7ff bfdf 	b.w	23fe60a <_Z22c1wireswitch_write_pioP14c1wireswitch_th>
 
 023fe64c <_Z15oneWire_set_pint>:
-*/
+uint16_t _pin;
 
 //sets pin for 1-wire interface
 void oneWire_set_pin(uint16_t pin)
@@ -1189,20 +1189,20 @@ int8_t i2c_master_write(i2c_master_t *obj, uint8_t *write_data_buf, size_t len_w
     */
 
 
-   //oneWire_set_pin(obj->data_pin);
+   #warning one_wire_configure_default() function does not do anything since there are no global variables that need to be set
 }
  23fe998:	4770      	bx	lr
 
 023fe99a <_Z13one_wire_openP10one_wire_t>:
 
-//as
+//open 1-wire on function parameter pin
 int8_t one_wire_open( one_wire_t *obj ) 
 {
  23fe99a:	b508      	push	{r3, lr}
-    } else {
         return ONE_WIRE_SUCCESS;
     }
     */
+
 
     oneWire_set_pin(obj->data_pin);
  23fe99c:	7800      	ldrb	r0, [r0, #0]
@@ -1213,10 +1213,10 @@ int8_t one_wire_open( one_wire_t *obj )
  23fe9a4:	bd08      	pop	{r3, pc}
 
 023fe9a6 <_Z19one_wire_write_byteP10one_wire_tPhj>:
-   return ONE_WIRE_ERROR;     //return status
+   return ONE_WIRE_ERROR;               //return status
 }
 
-//as
+//1-wire write operation
 int8_t one_wire_write_byte(one_wire_t *obj, uint8_t *write_data_buffer, size_t write_data_length) 
 {
  23fe9a6:	b570      	push	{r4, r5, r6, lr}
@@ -1228,29 +1228,29 @@ int8_t one_wire_write_byte(one_wire_t *obj, uint8_t *write_data_buffer, size_t w
     */
 
 
-    for (uint16_t ii = 0 ; ii < write_data_length ; ii++)
+    for (uint16_t ii = 0 ; ii < write_data_length ; ii++)       //iterate through buffer array
  23fe9ae:	b2ab      	uxth	r3, r5
  23fe9b0:	429e      	cmp	r6, r3
  23fe9b2:	f105 0501 	add.w	r5, r5, #1
  23fe9b6:	d904      	bls.n	23fe9c2 <_Z19one_wire_write_byteP10one_wire_tPhj+0x1c>
     {
-        oneWire_write(write_data_buffer[ii]);       //write rom bytes
+        oneWire_write(write_data_buffer[ii]);                   //write rom bytes
  23fe9b8:	2100      	movs	r1, #0
  23fe9ba:	5ce0      	ldrb	r0, [r4, r3]
  23fe9bc:	f7ff ff32 	bl	23fe824 <_Z13oneWire_writehb>
-    for (uint16_t ii = 0 ; ii < write_data_length ; ii++)
+    for (uint16_t ii = 0 ; ii < write_data_length ; ii++)       //iterate through buffer array
  23fe9c0:	e7f5      	b.n	23fe9ae <_Z19one_wire_write_byteP10one_wire_tPhj+0x8>
     }
-    return ONE_WIRE_SUCCESS;                        //return status
+    return ONE_WIRE_SUCCESS;                                    //return status
 }
  23fe9c2:	2000      	movs	r0, #0
  23fe9c4:	bd70      	pop	{r4, r5, r6, pc}
 
 023fe9c6 <_Z17one_wire_read_romP10one_wire_tP22one_wire_rom_address_t>:
-    return ONE_WIRE_SUCCESS;     //return status
+    return ONE_WIRE_SUCCESS;                                //return status
 }
 
-//as
+//read ROM of connected device
 int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address) 
 {
  23fe9c6:	b538      	push	{r3, r4, r5, lr}
@@ -1259,32 +1259,32 @@ int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_add
     */
 
 
-    oneWire_write(ROM_MATCH);                           //wite Choose ROM cmd
+    oneWire_write(ROM_MATCH);                                   //wite Choose ROM cmd
  23fe9c8:	2055      	movs	r0, #85	; 0x55
 {
  23fe9ca:	460c      	mov	r4, r1
-    oneWire_write(ROM_MATCH);                           //wite Choose ROM cmd
+    oneWire_write(ROM_MATCH);                                   //wite Choose ROM cmd
  23fe9cc:	2100      	movs	r1, #0
  23fe9ce:	f7ff ff29 	bl	23fe824 <_Z13oneWire_writehb>
-    for (uint16_t ii = 0 ; ii < 8 ; ii++)               //loop for number of bytes (count)
+    for (uint16_t ii = 0 ; ii < 8 ; ii++)                       //loop for number of bytes (count = 8)
  23fe9d2:	1e65      	subs	r5, r4, #1
  23fe9d4:	3407      	adds	r4, #7
     {
-        device_rom_address->address[ii] = oneWire_read();        //index pointer array and set to byte read
+        device_rom_address->address[ii] = oneWire_read();       //index pointer array and set to byte read
  23fe9d6:	f7ff ff7b 	bl	23fe8d0 <_Z12oneWire_readv>
  23fe9da:	f805 0f01 	strb.w	r0, [r5, #1]!
-    for (uint16_t ii = 0 ; ii < 8 ; ii++)               //loop for number of bytes (count)
+    for (uint16_t ii = 0 ; ii < 8 ; ii++)                       //loop for number of bytes (count = 8)
  23fe9de:	42a5      	cmp	r5, r4
  23fe9e0:	d1f9      	bne.n	23fe9d6 <_Z17one_wire_read_romP10one_wire_tP22one_wire_rom_address_t+0x10>
     }
-    return ONE_WIRE_SUCCESS;                            //return status
+    return ONE_WIRE_SUCCESS;                                    //return status
 }
  23fe9e2:	2000      	movs	r0, #0
  23fe9e4:	bd38      	pop	{r3, r4, r5, pc}
 
 023fe9e6 <_Z17one_wire_skip_romP10one_wire_t>:
 
-//as
+//skip read ROM
 int8_t one_wire_skip_rom(one_wire_t *obj) 
 {
  23fe9e6:	b508      	push	{r3, lr}
@@ -1304,7 +1304,7 @@ int8_t one_wire_skip_rom(one_wire_t *obj)
 
 023fe9f4 <_Z18one_wire_match_romP10one_wire_tP22one_wire_rom_address_t>:
 
-//as
+//MATCH ROM
 int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address)
 {
  23fe9f4:	b538      	push	{r3, r4, r5, lr}
@@ -1313,26 +1313,26 @@ int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_ad
     */
 
 
-    oneWire_write(ROM_MATCH);                       //wite Choose ROM cmd
+    oneWire_write(ROM_MATCH);                               //wite Choose ROM cmd
  23fe9f6:	2055      	movs	r0, #85	; 0x55
 {
  23fe9f8:	460c      	mov	r4, r1
-    oneWire_write(ROM_MATCH);                       //wite Choose ROM cmd
+    oneWire_write(ROM_MATCH);                               //wite Choose ROM cmd
  23fe9fa:	2100      	movs	r1, #0
  23fe9fc:	f7ff ff12 	bl	23fe824 <_Z13oneWire_writehb>
-    for (uint16_t ii = 0 ; ii < 8 ; ii++)           //loop for number of bytes (count)
+    for (uint16_t ii = 0 ; ii < 8 ; ii++)                   //loop for number of bytes (count)
  23fea00:	1e65      	subs	r5, r4, #1
  23fea02:	3407      	adds	r4, #7
     {
-        oneWire_write(device_rom_address->address[ii]);      //write rom bytes
+        oneWire_write(device_rom_address->address[ii]);     //write rom bytes
  23fea04:	f815 0f01 	ldrb.w	r0, [r5, #1]!
  23fea08:	2100      	movs	r1, #0
  23fea0a:	f7ff ff0b 	bl	23fe824 <_Z13oneWire_writehb>
-    for (uint16_t ii = 0 ; ii < 8 ; ii++)           //loop for number of bytes (count)
+    for (uint16_t ii = 0 ; ii < 8 ; ii++)                   //loop for number of bytes (count)
  23fea0e:	42a5      	cmp	r5, r4
  23fea10:	d1f8      	bne.n	23fea04 <_Z18one_wire_match_romP10one_wire_tP22one_wire_rom_address_t+0x10>
     }
-    return ONE_WIRE_SUCCESS;                        //return status
+    return ONE_WIRE_SUCCESS;                                //return status
 }
  23fea12:	2000      	movs	r0, #0
  23fea14:	bd38      	pop	{r3, r4, r5, pc}

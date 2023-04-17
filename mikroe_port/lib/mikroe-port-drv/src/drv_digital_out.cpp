@@ -33,12 +33,12 @@ int8_t digital_out_init(digital_out_t *out, uint8_t mode)
 
     if (mode == OUTPUT)
     {
-        pinMode(out->pin, static_cast<PinMode>(mode));
-        return DIGITAL_OUT_SUCCESS;     //return status
+        pinMode(out->pin, static_cast<PinMode>(mode));      //static cast mode and set pin as output
+        return DIGITAL_OUT_SUCCESS;                         //return status
     }
     else
     {
-        return DIGITAL_OUT_UNSUPPORTED_PIN;       //return status
+        return DIGITAL_OUT_UNSUPPORTED_PIN;                 //return status
     }
 }
 
@@ -54,7 +54,7 @@ void digital_out_high(digital_out_t *out)
     */
 
     
-    digitalWrite(out->pin, HIGH);
+    digitalWrite(out->pin, HIGH);       //write pin to logic 1
 }
 
 //function for setting pin LOW
@@ -69,7 +69,7 @@ void digital_out_low(digital_out_t *out)
     */
 
     
-    digitalWrite(out->pin, LOW);
+    digitalWrite(out->pin, LOW);        //write pin to logic 0
 }
 
 //function for toggling pin
@@ -84,8 +84,8 @@ void digital_out_toggle(digital_out_t *out)
     */
 
     
-    int32_t value = digitalRead(out->pin);
-    digitalWrite(out->pin, !value);
+    int32_t value = digitalRead(out->pin);      //read current value of pin
+    digitalWrite(out->pin, !value);             //write opposite value 
 }
 
 //function for writing pin state
@@ -100,5 +100,5 @@ void digital_out_write(digital_out_t *out, uint8_t value)
     */
 
     
-    digitalWrite(out->pin, value);
+    digitalWrite(out->pin, value);      //write pin state to function parameter value
 }

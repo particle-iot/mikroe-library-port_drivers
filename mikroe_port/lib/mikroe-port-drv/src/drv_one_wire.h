@@ -33,12 +33,12 @@
     ONE_WIRE_ERROR = (-1)       //Error
  } one_wire_error_t;
 
-//struc for the 1-wire address
+//struc for the 1-wire address, added for library compatibility
 typedef struct {
     uint8_t address[8];     //address buffer
 } one_wire_rom_address_t;
 
-//struc for 1-wire configuration
+//struc for 1-wire configuration, added for library compatibility
 typedef struct {
     pin_name_t data_pin;        //defines 1-wire pin
     bool state;                 //State of the 1-wire pin. NOTE must not be altered

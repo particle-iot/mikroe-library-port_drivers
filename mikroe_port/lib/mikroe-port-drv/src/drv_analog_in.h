@@ -19,10 +19,6 @@
 
 #include "mikro_port.h"
 
-//todo, remove
-//#include "drv_name.h"
-//#include "hal_adc.h"
-
 //enum for status codes, added for library compatibility
 typedef enum
 {
@@ -30,14 +26,14 @@ typedef enum
     ADC_ERROR = (-1)        //Error
 } analog_in_err_t;
 
-//enum for reference voltag
+//enum for reference voltage, added for library compatibility
 typedef enum
 {
     ANALOG_IN_VREF_EXTERNAL = 0,        //External reference
     ANALOG_IN_VREF_INTERNAL = 1         //Internal reference
 } analog_in_vref_t;
 
-//enum for the various resolutions
+//enum for the various resolutions, added for library compatibility
 typedef enum
 {
     ANALOG_IN_RESOLUTION_NOT_SET = 0,                               //Resolution not set
@@ -50,7 +46,7 @@ typedef enum
     ANALOG_IN_RESOLUTION_DEFAULT = ANALOG_IN_RESOLUTION_12_BIT      //Default resolution
 } analog_in_resolution_t;
 
-//struct for various analog in function parameters
+//struct for various analog in function parameters, added for library compatibility
 typedef struct
 {
     pin_name_t input_pin;                   //Analog input pin
@@ -59,10 +55,9 @@ typedef struct
     float vref_value;                       //Voltage reference value
 } analog_in_config_t;
 
-//struc for analog in configuration
+//struc for analog in configuration, added for library compatibility
 typedef struct
 {
-   // handle_t handle;                //Analog in handle
     analog_in_config_t config;      //Analog in configuration structure
 } analog_in_t;
 

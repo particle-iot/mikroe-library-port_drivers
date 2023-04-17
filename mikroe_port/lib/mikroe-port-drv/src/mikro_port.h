@@ -156,7 +156,7 @@ inline void Delay_ms(unsigned long ms) {delay(ms);}
 #define MIKROBUS(index, pinout) MIKROBUS_IMPL(index, pinout)
 #define MIKROBUS_IMPL(index, pinout) MIKROBUS_##index##_##pinout
 
-//typedef for various parameters passed through libraries
+//typedef for various parameters passed through libraries, added for library compatibility
 typedef uint8_t pin_name_t;             //GPIO pin name
 typedef uint8_t port_name_t;            //GPIO port name
 typedef uint8_t port_size_t;            //GPIO port size

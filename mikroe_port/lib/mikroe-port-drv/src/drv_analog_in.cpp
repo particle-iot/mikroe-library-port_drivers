@@ -103,7 +103,6 @@ int8_t analog_in_set_vref_input(analog_in_t *obj, analog_in_vref_t vref)
 
    #warning analog_in_set_vref_input() function is not implemented
    return ADC_SUCCESS;      //return status
-
 }
 
 //set vref value, not implemented
@@ -121,9 +120,9 @@ int8_t analog_in_set_vref_value(analog_in_t *obj, float vref_value)
     }
     */
 
+
     #warning analog_in_set_vref_value() function is not implemented
     return ADC_SUCCESS;      //return status
-
 }
 
 //read analog input
@@ -175,7 +174,7 @@ int8_t analog_in_read(analog_in_t *obj, uint16_t *readDatabuf)
             return ADC_SUCCESS;                                         //return status
 
          default:      
-            return ADC_ERROR;      //return status
+            return ADC_ERROR;                                           //return status
     }
 }
 
@@ -194,9 +193,9 @@ int8_t analog_in_read_voltage(analog_in_t *obj, float *readDatabuf)
     */
 
 
-    int32_t val = analogRead(global_pin);                   //analog read from set pin               
-    *readDatabuf = (float) (val * 0.0008);     //convert value to voltage and set to function parameter           
-    return ADC_SUCCESS;      //return status
+    int32_t val = analogRead(global_pin);       //analog read from set pin               
+    *readDatabuf = (float) (val * 0.0008);      //convert value to voltage and set to function parameter           
+    return ADC_SUCCESS;                         //return status
 }
 
 //close/clear analog input
@@ -215,5 +214,4 @@ void analog_in_close(analog_in_t *obj)
 
 
    pinMode(global_pin, INPUT);        //set pin to be input, clear/close analog input
-
 }

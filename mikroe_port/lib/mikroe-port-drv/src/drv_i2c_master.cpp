@@ -130,13 +130,13 @@ int8_t i2c_master_write(i2c_master_t *obj, uint8_t *write_data_buf, size_t len_w
     */
 
     
-    Wire.beginTransmission(addr);                       //send device address byte using 7-bit client address
-    Wire.write(write_data_buf, len_write_data);
-    if (Wire.endTransmission(TRUE) == TRUE)     //send stop condition (true)
+    Wire.beginTransmission(addr);                   //send device address byte using 7-bit client address
+    Wire.write(write_data_buf, len_write_data);     //write function parameter data and legnth to i2c bus
+    if (Wire.endTransmission(TRUE) == TRUE)         //send stop condition (true)
     {
-        return I2C_MASTER_SUCCESS;      //return status
+        return I2C_MASTER_SUCCESS;                  //return status
     }
-    return I2C_MASTER_ERROR;        //return status    
+    return I2C_MASTER_ERROR;                        //return status    
 }
 
 //i2c read operation, R/W = 1
@@ -152,20 +152,22 @@ int8_t i2c_master_read(i2c_master_t *obj, uint8_t *read_data_buf, size_t len_rea
     }
     */
     
+    //local variable 
+    uint8_t temp;       //variable for determining error
 
-    uint8_t temp;     //variable for determining error
+    //read data from I2C bus
     temp = Wire.requestFrom(addr, len_read_data, true);     //true signals send stop after read
     for(uint8_t ii = 0; ii < len_read_data; ii++)           //unpack pointer function parameter
     {
-        read_data_buf[ii] = Wire.read();        //write pointer function parameter
+        read_data_buf[ii] = Wire.read();                    //write pointer function parameter
     }
     
     //logic for successful transfer
-    if(temp != 0)     //requestFrom() returns 0 if timeout occurs
+    if(temp != 0)                       //requestFrom() returns 0 if timeout occurs
     {
         return I2C_MASTER_SUCCESS;      //return status
     }
-    return I2C_MASTER_ERROR;        //return status
+    return I2C_MASTER_ERROR;            //return status
 }
 
 //i2c write (dummy write) then read operation
@@ -187,23 +189,23 @@ int8_t i2c_master_write_then_read(i2c_master_t *obj, uint8_t *write_data_buf, si
     uint8_t temp;     //variable for determining error
 
     //write
-    Wire.beginTransmission(addr);                       //send device address byte using 7-bit client address
-    Wire.write(write_data_buf, len_write_data);
-    Wire.endTransmission(FALSE);                         //send restart condition (false)
+    Wire.beginTransmission(addr);                   //send device address byte using 7-bit client address
+    Wire.write(write_data_buf, len_write_data);     //write function parameter data and legnth to i2c bus
+    Wire.endTransmission(FALSE);                    //send restart condition (false)
 
     //read
-    temp = Wire.requestFrom(addr, len_read_data, true);       //true signals send stop after read
-    for(uint8_t ii = 0; ii < len_read_data; ii++)                   //unpack pointer function parameter
+    temp = Wire.requestFrom(addr, len_read_data, true);     //true signals send stop after read
+    for(uint8_t ii = 0; ii < len_read_data; ii++)           //unpack pointer function parameter
     {
-        read_data_buf[ii] = Wire.read();        //write pointer function parameter
+        read_data_buf[ii] = Wire.read();                    //write pointer function parameter
     }
 
     //logic for successful transfer
-    if(temp != 0)       //requestFrom() returns 0 if timeout occurs
+    if(temp != 0)                       //requestFrom() returns 0 if timeout occurs
     {
         return I2C_MASTER_SUCCESS;      //return status
     }
-    return I2C_MASTER_ERROR;        //return status
+    return I2C_MASTER_ERROR;            //return status
 }
 
 //Closes I2C Master Driver context object
