@@ -33,8 +33,10 @@ void pwm_configure_default(pwm_config_t *config)
     
     frequency = 0;              //set frequency to 0
     duty_cycle = 0;             //set duty cycle to OFF
-    pin = config->pin;          //set global variable to parameter
-    pinMode(pin, OUTPUT);       //set pin as output
+    
+    //todo, confirm these are not needed
+    //pin = config->pin;          //set global variable to parameter
+    //pinMode(pin, OUTPUT);       //set pin as output
 }
 
 //opens PWM driver on selected pin

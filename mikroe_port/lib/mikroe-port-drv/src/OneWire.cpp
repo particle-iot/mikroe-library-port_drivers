@@ -1,488 +1,356 @@
 /*
-
-Particle Verison of OneWire Libary
-
-Hotaman 2/1/2016
-Bit and Byte write functions have been changed to only drive the bus high at the end of a byte when requested.
-They no longer drive the bus for High bits when outputting to avoid a holy war.
-Some folks just can't accept that a 10K resistor works just fine when the calculation calls for 10,042.769 ohms.
-Bit and Byte writes are now 100% compliant with specs and app notes.
-
-Support for P1 and Electron added by Hotaman 11/30/2015
-
-Support for Photon added by Brendan Albano and cdrodriguez
-- Brendan Albano 2015-06-10
-
-I made monor tweeks to allow use in the web builder and created this repository for
-use in the contributed libs list.
-
-6/2014 - Hotaman 
-
-I've taken the code that Spark Forum user tidwelltimj posted 
-split it back into separte code and header files and put back in the 
-credits and comments and got it compiling on the command line within SparkCore core-firmware
-
-
-Justin Maynard 2013
-
-Original Comments follow
-
-Copyright (c) 2007, Jim Studt  (original old version - many contributors since)
-
-The latest version of this library may be found at:
-  http://www.pjrc.com/teensy/td_libs_OneWire.html
-
-OneWire has been maintained by Paul Stoffregen (paul@pjrc.com) since
-January 2010.  At the time, it was in need of many bug fixes, but had
-been abandoned the original author (Jim Studt).  None of the known
-contributors were interested in maintaining OneWire.  Paul typically
-works on OneWire every 6 to 12 months.  Patches usually wait that
-long.  If anyone is interested in more actively maintaining OneWire,
-please contact Paul.
-
-Version 2.2:
-  Teensy 3.0 compatibility, Paul Stoffregen, paul@pjrc.com
-  Arduino Due compatibility, http://arduino.cc/forum/index.php?topic=141030
-  Fix DS18B20 example negative temperature
-  Fix DS18B20 example's low res modes, Ken Butcher
-  Improve reset timing, Mark Tillotson
-  Add const qualifiers, Bertrik Sikken
-  Add initial value input to crc16, Bertrik Sikken
-  Add target_search() function, Scott Roberts
-
-Version 2.1:
-  Arduino 1.0 compatibility, Paul Stoffregen
-  Improve temperature example, Paul Stoffregen
-  DS250x_PROM example, Guillermo Lovato
-  PIC32 (chipKit) compatibility, Jason Dangel, dangel.jason AT gmail.com
-  Improvements from Glenn Trewitt:
-  - crc16() now works
-  - check_crc16() does all of calculation/checking work.
-  - Added read_bytes() and write_bytes(), to reduce tedious loops.
-  - Added ds2408 example.
-  Delete very old, out-of-date readme file (info is here)
-
-Version 2.0: Modifications by Paul Stoffregen, January 2010:
-http://www.pjrc.com/teensy/td_libs_OneWire.html
-  Search fix from Robin James
-    http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1238032295/27#27
-  Use direct optimized I/O in all cases
-  Disable interrupts during timing critical sections
-    (this solves many random communication errors)
-  Disable interrupts during read-modify-write I/O
-  Reduce RAM consumption by eliminating unnecessary
-    variables and trimming many to 8 bits
-  Optimize both crc8 - table version moved to flash
-
-Modified to work with larger numbers of devices - avoids loop.
-Tested in Arduino 11 alpha with 12 sensors.
-26 Sept 2008 -- Robin James
-http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1238032295/27#27
-
-Updated to work with arduino-0008 and to include skip() as of
-2007/07/06. --RJL20
-
-Modified to calculate the 8-bit CRC directly, avoiding the need for
-the 256-byte lookup table to be loaded in RAM.  Tested in arduino-0010
--- Tom Pollard, Jan 23, 2008
-
-Jim Studt's original library was modified by Josh Larios.
-
-Tom Pollard, pollard@alum.mit.edu, contributed around May 20, 2008
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Much of the code was inspired by Derek Yerger's code, though I don't
-think much of that remains.  In any event that was..
-    (copyleft) 2006 by Derek Yerger - Free to distribute freely.
-
-The CRC code was excerpted and inspired by the Dallas Semiconductor
-sample code bearing this copyright.
-//---------------------------------------------------------------------------
-// Copyright (C) 2000 Dallas Semiconductor Corporation, All Rights Reserved.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY,  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL DALLAS SEMICONDUCTOR BE LIABLE FOR ANY CLAIM, DAMAGES
-// OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-// OTHER DEALINGS IN THE SOFTWARE.
-//
-// Except as contained in this notice, the name of Dallas Semiconductor
-// shall not be used except as stated in the Dallas Semiconductor
-// Branding Policy.
-//--------------------------------------------------------------------------
-*/
+ * Copyright (c) 2023 Particle Industries, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #include "OneWire.h"
 #include "application.h"
 
-OneWire::OneWire(uint16_t pin)
+//global variables 
+uint16_t _pin;
+/*
+unsigned char rom_num[8];
+uint8_t LastDiscrepancy;
+uint8_t LastFamilyDiscrepancy;
+uint8_t LastDeviceFlag;
+*/
+
+//sets pin for 1-wire interface
+void oneWire_set_pin(uint16_t pin)
 {
-    pinMode(pin, INPUT);
-    _pin = pin;
-}
-// Perform the onewire reset function.  We will wait up to 250uS for
-// the bus to come high, if it doesn't then it is broken or shorted
-// and we return a 0;
-//
-// Returns 1 if a device asserted a presence pulse, 0 otherwise.
-//
-uint8_t OneWire::reset(void)
-{
-    uint8_t r;
-    uint8_t retries = 125;
-
-    noInterrupts();
-    pinModeFastInput();
-    interrupts();
-    // wait until the wire is high... just in case
-    do {
-        if (--retries == 0) return 0;
-
-        delayMicroseconds(2);
-    } while ( !digitalReadFast());
-
-    noInterrupts();
-
-    digitalWriteFastLow();
-    pinModeFastOutput();   // drive output low
-
-    interrupts();
-    delayMicroseconds(480);
-    noInterrupts();
-
-    pinModeFastInput();    // allow it to float
-
-    delayMicroseconds(70);
-
-    r =! digitalReadFast();
-
-    interrupts();
-
-    delayMicroseconds(410);
-
-    return r;
+    _pin = pin;                  //set global variable equal to pin
+    pinMode(_pin, INPUT);        //set pin as input, hal calls pin as output during low-level functions
 }
 
-void OneWire::write_bit(uint8_t v)
+//1-wire reset
+uint8_t oneWire_reset(void)
 {
-    if (v & 1) {
-        noInterrupts();
+    uint8_t temp;                       //local variable for the temp wire value
+    uint8_t count = 250;                //local variable for the timeout counter before reset
 
-        digitalWriteFastLow();
-        pinModeFastOutput();   // drive output low
+    noInterrupts();                     //turn off interrupts
+    HAL_Pin_Mode(_pin, INPUT);          //set pin as input, let signal float
+    interrupts();                       //turn on interrupts
+    do 
+    {
+        if (count <= 0)                 //check for counter timeout   
+        {
+            return FALSE;               //return error
+        }
+        count--;                        //decrement the count
+        delayMicroseconds(1);           //delay       
+    }   while (!pinReadFast(_pin));     //wait until wire goes high before reset sequence
 
-        delayMicroseconds(10);
+    noInterrupts();                     //turn off interrupts
+    pinResetFast(_pin);                 //set pin low
+    HAL_Pin_Mode(_pin, OUTPUT);         //set pin as output
+    interrupts();                       //turn on interrupts
+    delayMicroseconds(512);             //delay for tRSTL = 512us
 
-        pinModeFastInput();    // float high
+    noInterrupts();                     //turn off interrupts
+    HAL_Pin_Mode(_pin, INPUT);          //set pin as input, let signal float
+    delayMicroseconds(70);              //delay
+    temp =! pinReadFast(_pin);          //read value, test for shorts/interrupts
+    interrupts();                       //turn on interrupts
 
-        interrupts();
+    delayMicroseconds(442);             //delay for remainder of period, tFILL = 512us
+    return temp;                        //return wire value
+}
 
-        delayMicroseconds(55);
-    } else {
-        noInterrupts();
+//write a bit
+void oneWire_write_bit(uint8_t value)
+{
+    if ((value & 1) == 1)               //write logic 1
+    {
+        noInterrupts();                 //turn off interrupts
+        pinResetFast(_pin);             //set pin low
+        HAL_Pin_Mode(_pin, OUTPUT);     //set pin as output
+        delayMicroseconds(8);          //dealy for tLOW1
 
-        digitalWriteFastLow();
-        pinModeFastOutput();   // drive output low
+        HAL_Pin_Mode(_pin, INPUT);      //set pin as input, let signal float
+        interrupts();                   //turn on interrupts
 
-        delayMicroseconds(65);
+        delayMicroseconds(52);          //delay for remainder of tSLOT
+    } 
+    else                                //write logic 0
+    {
+        noInterrupts();                 //turn off interrupts
+        pinResetFast(_pin);             //set pin low
+        HAL_Pin_Mode(_pin, OUTPUT);     //set pin as output
+        delayMicroseconds(57);          //delay for tLOW0
 
-        pinModeFastInput();    // float high
+        HAL_Pin_Mode(_pin, INPUT);      //set pin as input, let signal float
+        interrupts();                   //turn on interrupts
 
-        interrupts();
-
-        delayMicroseconds(5);
+        delayMicroseconds(3);           //delay for remainder of tSLOT
     }
 }
 
-//
-// Read a bit. Port and bit is used to cut lookup time and provide
-// more certain timing.
-//
-uint8_t OneWire::read_bit(void)
+//read a bit
+uint8_t oneWire_read_bit()
 {
-    uint8_t r;
+    uint8_t temp;                   //local variable for the temp bit value
 
-    noInterrupts();
+    noInterrupts();                 //turn off interrupts
+    pinResetFast(_pin);             //set pin low
+    HAL_Pin_Mode(_pin, OUTPUT);     //set pin as output
+    delayMicroseconds(8);           //delay for tLOW1
 
-    digitalWriteFastLow();
-    pinModeFastOutput();
+    HAL_Pin_Mode(_pin, INPUT);      //set pin as input, let signal float
+    delayMicroseconds(3);           //delay for tDSO
+    temp = pinReadFast(_pin);       //read bit value
+    interrupts();                   //turn on interrupts
 
-    delayMicroseconds(3);
+    delayMicroseconds(49);          //delay for remainder of tSLOT
 
-    pinModeFastInput();    // let pin float, pull up will raise
-
-    delayMicroseconds(10);
-
-    r = digitalReadFast();
-
-    interrupts();
-    delayMicroseconds(53);
-
-    return r;
+    return temp;                    //return temp bit value
 }
 
-//
-// Write a byte. The writing code uses the active drivers to raise the
-// pin high, if you need power after the write (e.g. DS18S20 in
-// parasite power mode) then set 'power' to 1, otherwise the pin will
-// go tri-state at the end of the write to avoid heating in a short or
-// other mishap.
-//
-void OneWire::write(uint8_t v, uint8_t power /* = 0 */) 
+//write a byte
+void oneWire_write(uint8_t value, bool pulse) 
 {
-    uint8_t bitMask;
-
-    for (bitMask = 0x01; bitMask; bitMask <<= 1) {
-        OneWire::write_bit( (bitMask & v)?1:0);
+    for (uint8_t bitMask = 0x01; bitMask; bitMask <<= 1)        //for loop for bit shifting 
+    {
+        if((bitMask & value) == TRUE)       //if bit is a logic 1
+        {
+            oneWire_write_bit(TRUE);        //write logic 1
+        }
+        else                                //value is a logic 0
+        {
+            oneWire_write_bit(FALSE);       //write logic 0
+        }
     }
 
-    if ( power) {
-        noInterrupts();
-
-        digitalWriteFastHigh();
-        pinModeFastOutput();        // Drive pin High when power is True
-
-        interrupts();
+    //wire may need to remain high after write, ex write cycle of eeprom 
+    if (pulse == TRUE)                  
+    {
+        noInterrupts();                 //turn off interrupts
+        pinSetFast(_pin);               //set pin high
+        HAL_Pin_Mode(_pin, OUTPUT);     //set pin as output
+        interrupts();                   //turn on interrupts        
     }
 }
 
-void OneWire::write_bytes(const uint8_t *buf, uint16_t count, bool power /* = 0 */) 
+//read a byte
+uint8_t oneWire_read() 
 {
-    for (uint16_t i = 0 ; i < count ; i++)
-        write(buf[i]);
+    uint8_t temp = 0;                                           //local variable for the various bit values
+    for (uint8_t bitMask = 0x01; bitMask; bitMask <<= 1)        //for loop for bit shifting
+    {
+        if (oneWire_read_bit() == TRUE)                         //if bit = logic 1 
+        {
+            temp |= bitMask;                                    //or bitmask with temp variable
+        }
+    }
+    return temp;                                                //return byte read
+}
 
-    if (power) {
-        noInterrupts();
+//todo, remove
+//de-power 1-wire device, low-level
+/*
+void oneWire_depower()
+{
+    noInterrupts();                 //turn off interrupts
+    HAL_Pin_Mode(_pin, INPUT);      //set pin as input, let signal float
+    interrupts();                   //turn on interrupts
+}
 
-        digitalWriteFastHigh();
-        pinModeFastOutput();        // Drive pin High when power is True
+//read ROM 
+void oneWire_rom_read (uint8_t *buffer)
+{
+    oneWire_write(ROM_MATCH);           //wite Choose ROM cmd
+    oneWire_read_bytes(buffer, 8);      //read 8 ROM bytes
+}
 
-        interrupts();
+//select ROM
+void oneWire_rom_select(const uint8_t *buffer)
+{
+    oneWire_write(ROM_MATCH);           //wite Choose ROM cmd
+    oneWire_write_bytes(buffer, 8);        //write rom bytes
+
+}
+
+//skip ROM
+void oneWire_rom_skip()
+{
+    oneWire_write(ROM_SKIP);        //write Skip ROM cmd
+}
+
+
+//write multiple bytes
+void oneWire_write_bytes(const uint8_t *buffer, uint16_t count, bool pulse) 
+{
+    for (uint16_t ii = 0 ; ii < count ; ii++)       //loop for number of bytes (count) to be written
+    {
+        oneWire_write(buffer[ii]);                  //write bytes by indexing pointer array
+    }     
+
+    //wire may need to remain high after write, ex write cycle of eeprom
+    if (pulse == TRUE)                  
+    {
+        noInterrupts();                 //turn off interrupts
+        pinSetFast(_pin);               //set pin high
+        HAL_Pin_Mode(_pin, OUTPUT);     //set pin as output
+        interrupts();                   //turn on interrupts
     }
 }
 
-//
-// Read a byte
-//
-uint8_t OneWire::read() 
+//read mutliple bytes
+void oneWire_read_bytes(uint8_t *buffer, uint16_t count) 
 {
-    uint8_t bitMask;
-    uint8_t r = 0;
-
-    for (bitMask = 0x01; bitMask; bitMask <<= 1) {
-        if ( OneWire::read_bit()) r |= bitMask;
+    for (uint16_t ii = 0 ; ii < count ; ii++)       //loop for number of bytes (count)
+    {
+        buffer[ii] = oneWire_read();                //index pointer array and set to byte read
     }
-
-    return r;
 }
 
-void OneWire::read_bytes(uint8_t *buf, uint16_t count) 
-{
-    for (uint16_t i = 0 ; i < count ; i++)
-        buf[i] = read();
-}
 
-//
-// Do a ROM select
-//
-void OneWire::select(const uint8_t rom[8])
-{
-    uint8_t i;
-
-    write(0x55);           // Choose ROM
-
-    for (i = 0; i < 8; i++) write(rom[i]);
-}
-
-//
-// Do a ROM skip
-//
-void OneWire::skip()
-{
-    write(0xCC);           // Skip ROM
-}
-
-void OneWire::depower()
-{
-    noInterrupts();
-
-    pinModeFastInput();
-
-    interrupts();
-}
-
-#if ONEWIRE_SEARCH
-
-//
-// You need to use this function to start a search again from the beginning.
-// You do not need to do it for the first search, though you could.
-//
-void OneWire::reset_search()
+//reset search for device
+void oneWire_reset_search()
 {
     // reset the search state
     LastDiscrepancy = 0;
     LastDeviceFlag = FALSE;
     LastFamilyDiscrepancy = 0;
 
-    for(int i = 7; ; i--) {
-        ROM_NO[i] = 0;
-        if ( i == 0) break;
+    //zero out the array for the ROM address
+    for(uint8_t ii = 0; ii < 8; ii++) 
+    {
+        rom_num[ii] = 0x00;
     }
 }
 
-// Setup the search to find the device type 'family_code' on the next call
-// to search(*newAddr) if it is present.
-//
-void OneWire::target_search(uint8_t family_code)
-{
-   // set the search state to find SearchFamily type devices
 
-   ROM_NO[0] = family_code;
+//search for target device
+void oneWire_target_search(uint8_t family_code)
+{
+
+   rom_num[0] = family_code;
 
    for (uint8_t i = 1; i < 8; i++)
-      ROM_NO[i] = 0;
+   {
+      rom_num[i] = 0;
+   }
 
    LastDiscrepancy = 64;
    LastFamilyDiscrepancy = 0;
    LastDeviceFlag = FALSE;
 }
 
-//
-// Perform a search. If this function returns a '1' then it has
-// enumerated the next device and you may retrieve the ROM from the
-// OneWire::address variable. If there are no devices, no further
-// devices, or something horrible happens in the middle of the
-// enumeration then a 0 is returned.  If a new device is found then
-// its address is copied to newAddr.  Use OneWire::reset_search() to
-// start over.
-//
-// --- Replaced by the one from the Dallas Semiconductor web site ---
-//--------------------------------------------------------------------------
-// Perform the 1-Wire Search Algorithm on the 1-Wire bus using the existing
-// search state.
-// Return TRUE  : device found, ROM number in ROM_NO buffer
-//        FALSE : device not found, end of search
-//
-uint8_t OneWire::search(uint8_t *newAddr)
+
+//search device ROM
+uint8_t oneWire_search(uint8_t *newAddr)
 {
-    uint8_t id_bit_number;
-    uint8_t last_zero, rom_byte_number, search_result;
+    //local variables
+    uint8_t id_bit_number = 1;
+    uint8_t last_zero = 0;
+    uint8_t count = 0;
+    uint8_t search_result = 0;
     uint8_t id_bit, cmp_id_bit;
+    unsigned char rom_byte_mask = 1;
+    unsigned char search_direction = 0;
 
-    unsigned char rom_byte_mask, search_direction;
-
-    // initialize for search
-    id_bit_number = 1;
-    last_zero = 0;
-    rom_byte_number = 0;
-    rom_byte_mask = 1;
-    search_result = 0;
-
-    // if the last call was not the last one
+    //if the last call was not the last one
     if (!LastDeviceFlag)
     {
-        // 1-Wire reset
-        if (!reset()){
-            // reset the search
+        
+        if (!oneWire_reset())       //1-Wire reset
+        {
+            //reset the search global variables
             LastDiscrepancy = 0;
             LastDeviceFlag = FALSE;
             LastFamilyDiscrepancy = 0;
-
             return FALSE;
         }
 
-        // issue the search command
-        write(0xF0);
+        //todo, move to #define value
+        oneWire_write(0xF0);      //issue the search command
 
         // loop to do the search
         do
         {
             // read a bit and its complement
-            id_bit = read_bit();
-            cmp_id_bit = read_bit();
+            id_bit = oneWire_read_bit();
+            cmp_id_bit = oneWire_read_bit();
 
             // check for no devices on 1-wire
-            if ((id_bit == 1) && (cmp_id_bit == 1)){
-                break;
+            if ((id_bit == 1) && (cmp_id_bit == 1))
+            {
+                break;      //break from while loop since no devies are present
             }
             else
             {
                 // all devices coupled have 0 or 1
-                if (id_bit != cmp_id_bit){
+                if (id_bit != cmp_id_bit)
+                {
                     search_direction = id_bit;  // bit write value for search
                 }
-                else{
+                else
+                {
                     // if this discrepancy if before the Last Discrepancy
                     // on a previous next then pick the same as last time
                     if (id_bit_number < LastDiscrepancy)
-                        search_direction = ((ROM_NO[rom_byte_number] & rom_byte_mask) > 0);
+                    {
+                        search_direction = ((rom_num[count] & rom_byte_mask) > 0);
+                    }
                     else
+                    {
                         // if equal to last pick 1, if not then pick 0
                         search_direction = (id_bit_number == LastDiscrepancy);
+                    }
 
                     // if 0 was picked then record its position in LastZero
-                    if (search_direction == 0){
+                    if (search_direction == 0)
+                    {
                         last_zero = id_bit_number;
 
                         // check for Last discrepancy in family
                         if (last_zero < 9)
+                        {
                             LastFamilyDiscrepancy = last_zero;
+                        }
                     }
                 }
 
-                // set or clear the bit in the ROM byte rom_byte_number
+                // set or clear the bit in the ROM byte count
                 // with mask rom_byte_mask
                 if (search_direction == 1)
-                  ROM_NO[rom_byte_number] |= rom_byte_mask;
+                {
+                  rom_num[count] |= rom_byte_mask;
+                }
                 else
-                  ROM_NO[rom_byte_number] &= ~rom_byte_mask;
+                {
+                  rom_num[count] &= ~rom_byte_mask;
+                }
 
                 // serial number search direction write bit
-                write_bit(search_direction);
+                oneWire_write_bit(search_direction);
 
                 // increment the byte counter id_bit_number
                 // and shift the mask rom_byte_mask
                 id_bit_number++;
                 rom_byte_mask <<= 1;
 
-                // if the mask is 0 then go to new SerialNum byte rom_byte_number and reset mask
+                // if the mask is 0 then go to new SerialNum byte count and reset mask
                 if (rom_byte_mask == 0)
                 {
-                    rom_byte_number++;
+                    count++;
                     rom_byte_mask = 1;
                 }
             }
-        }while(rom_byte_number < 8);  // loop until through all ROM bytes 0-7
+        }
+        while(count < 8);  // loop until through all ROM bytes 0-7
 
         // if the search was successful then
         if (!(id_bit_number < 65))
@@ -492,44 +360,44 @@ uint8_t OneWire::search(uint8_t *newAddr)
 
             // check for last device
             if (LastDiscrepancy == 0)
+            {
                 LastDeviceFlag = TRUE;
+            }
 
             search_result = TRUE;
         }
     }
 
     // if no device found then reset counters so next 'search' will be like a first
-    if (!search_result || !ROM_NO[0]){
+    if (!search_result || !rom_num[0])
+    {
         LastDiscrepancy = 0;
         LastDeviceFlag = FALSE;
         LastFamilyDiscrepancy = 0;
         search_result = FALSE;
     }
 
-    for (int i = 0; i < 8; i++) newAddr[i] = ROM_NO[i];
-
+    for (int i = 0; i < 8; i++) 
+    {
+        newAddr[i] = rom_num[i];
+    }
+    
     return search_result;
 }
+*/
 
-#endif
-
-#if ONEWIRE_CRC
-// The 1-Wire CRC scheme is described in Maxim Application Note 27:
-// "Understanding and Using Cyclic Redundancy Checks with Maxim iButton Products"
-//
-
-
-//
-// Compute a Dallas Semiconductor 8 bit CRC directly.
-// this is much slower, but much smaller, than the lookup table.
-//
-uint8_t OneWire::crc8( uint8_t *addr, uint8_t len)
+//todo, remove
+/*
+//calculate 8-bit CRC
+uint8_t oneWire_crc8( uint8_t *addr, uint8_t len)
 {
     uint8_t crc = 0;
 
-    while (len--) {
+    while (len--) 
+    {
         uint8_t inbyte = *addr++;
-        for (uint8_t i = 8; i; i--) {
+        for (uint8_t i = 8; i; i--) 
+        {
             uint8_t mix = (crc ^ inbyte) & 0x01;
             crc >>= 1;
             if (mix) crc ^= 0x8C;
@@ -539,22 +407,15 @@ uint8_t OneWire::crc8( uint8_t *addr, uint8_t len)
 
     return crc;
 }
-#endif
 
-#if ONEWIRE_CRC16
-bool OneWire::check_crc16(const uint8_t* input, uint16_t len, const uint8_t* inverted_crc, uint16_t crc)
-{
-    crc = ~crc16(input, len, crc);
-
-    return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
-}
-
-uint16_t OneWire::crc16(const uint8_t* input, uint16_t len, uint16_t crc)
+//check 16-bit CRC
+uint16_t oneWire_crc16(const uint8_t* input, uint16_t len, uint16_t crc)
 {
     static const uint8_t oddparity[16] =
         { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 };
 
-    for (uint16_t i = 0 ; i < len ; i++) {
+    for (uint16_t i = 0 ; i < len ; i++) 
+    {
         // Even though we're just copying a byte from the input,
         // we'll be doing 16-bit computation with it.
         uint16_t cdata = input[i];
@@ -562,7 +423,9 @@ uint16_t OneWire::crc16(const uint8_t* input, uint16_t len, uint16_t crc)
         crc >>= 8;
 
         if (oddparity[cdata & 0x0F] ^ oddparity[cdata >> 4])
+        {
             crc ^= 0xC001;
+        }
 
         cdata <<= 6;
         crc ^= cdata;
@@ -572,4 +435,11 @@ uint16_t OneWire::crc16(const uint8_t* input, uint16_t len, uint16_t crc)
 
     return crc;
 }
-#endif
+
+//calculate 16-bit CRC
+bool oneWire_check_crc16(const uint8_t* input, uint16_t len, const uint8_t* inverted_crc, uint16_t crc)
+{
+    crc = ~oneWire_crc16(input, len, crc);
+    return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
+}
+*/

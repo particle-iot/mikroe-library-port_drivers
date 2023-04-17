@@ -5,18 +5,21 @@
 #include "rs232.h"
 #include "pwmdriver.h"
 #include "current4.h"
+#include "c1wireswitch.h"
 
 
 SYSTEM_MODE(AUTOMATIC);
 SYSTEM_THREAD(ENABLED);
 
 //static tempdefs from libraries
-static accurrent_t accurrent;   //from accurrent main.c
-static eeprom7_t eeprom7;       //from eeprom7 main.c
-static temphum13_t temphum13;   //from temphum13 main.c
-static rs232_t rs232;           //from rs232 main.c
-static pwmdriver_t pwmdriver;   //from pwmdriver main.c
-static current4_t current4;     //from current4 main.c
+static accurrent_t accurrent;         //from accurrent main.c
+static eeprom7_t eeprom7;             //from eeprom7 main.c
+static temphum13_t temphum13;         //from temphum13 main.c
+static rs232_t rs232;                 //from rs232 main.c
+static pwmdriver_t pwmdriver;         //from pwmdriver main.c
+static current4_t current4;           //from current4 main.c
+static c1wireswitch_t c1wireswitch;   //from 1wiresetich main.c
+       
 
 //defines from rs232 main.c
 #define PROCESS_RX_BUFFER_SIZE 500
@@ -73,10 +76,22 @@ void setup()
 */  
 
   //from current4
+/*
   current4_cfg_t current4_cfg;
   current4_cfg_setup( &current4_cfg );
   CURRENT4_MAP_MIKROBUS( current4_cfg, MIKROBUS_1 );
   current4_init( &current4, &current4_cfg );
+*/
+
+  //from 1wireswitch
+  c1wireswitch_cfg_t c1wireswitch_cfg;
+  c1wireswitch_cfg_setup( &c1wireswitch_cfg );
+  C1WIRESWITCH_MAP_MIKROBUS( c1wireswitch_cfg, MIKROBUS_1 );
+  c1wireswitch_init( &c1wireswitch, &c1wireswitch_cfg );
+  c1wireswitch_default_cfg ( &c1wireswitch );
+
+  
+
 }
 
 // loop() runs over and over again, as quickly as it can execute.
@@ -99,8 +114,11 @@ void loop() {
 //pwmdriver_main();
 //delay(1000);
 
-current4_main();
-delay(5000);
+//current4_main();
+//delay(5000);
+
+c1wireswitch_set_pio_state( &c1wireswitch, C1WIRESWITCH_PIOA_OFF, C1WIRESWITCH_PIOB_ON );
+delay(1000);
 
 
 }

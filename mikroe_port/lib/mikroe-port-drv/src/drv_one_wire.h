@@ -20,9 +20,12 @@
 #include "mikro_port.h"
 #include "OneWire.h"
 
-//todo, remove
-//#include "hal_one_wire.h"
-//#include "drv_name.h"
+//#defines for various 1-wire commands
+#define ROM_READ 0x33
+#define ROM_SKIP 0xCC
+#define ROM_MATCH 0x55
+#define ROM_SEARCH 0xF0
+#define READ_LEGACY 0x0F
 
 //enum for status codes, added for library compatibility
  typedef enum {
@@ -45,12 +48,17 @@ typedef struct {
 void one_wire_configure_default(one_wire_t *obj);
 int8_t one_wire_open(one_wire_t *obj);
 int8_t one_wire_reset(one_wire_t *obj);
-int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address);
-int8_t one_wire_skip_rom(one_wire_t *obj);
-int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address);
-int8_t one_wire_search_first_device(one_wire_t *obj, one_wire_rom_address_t *one_wire_device_list);
-int8_t one_wire_search_next_device(one_wire_t *obj, one_wire_rom_address_t *one_wire_device_list);
 int8_t one_wire_write_byte(one_wire_t *obj, uint8_t *write_data_buffer, size_t write_data_length);
 int8_t one_wire_read_byte(one_wire_t *obj, uint8_t *read_data_buffer, size_t read_data_length);
+
+//1-wire rom functions
+int8_t one_wire_skip_rom(one_wire_t *obj);
+int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address);
+int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address);
+
+//1-wire rom search functions
+int8_t one_wire_search_first_device(one_wire_t *obj, one_wire_rom_address_t *one_wire_device_list);
+int8_t one_wire_search_next_device(one_wire_t *obj, one_wire_rom_address_t *one_wire_device_list);
+uint8_t oneWire_search(uint8_t *newAddr);
 
 #endif // _DRV_ONE_WIRE_H_
