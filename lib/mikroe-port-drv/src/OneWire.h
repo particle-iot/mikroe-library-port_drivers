@@ -18,7 +18,7 @@
 #define OneWire_h
 
 #include <inttypes.h>
-#include "application.h"    //needed for hal level functions
+#include "application.h"    //needed for dvos hal level functions
 
 //1-wire low-level functions
   void oneWire_set_pin(uint16_t pin);

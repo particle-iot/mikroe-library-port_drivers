@@ -25,51 +25,19 @@ uint8_t LastDeviceFlag;
 //set defaul config for 1-wire
 void one_wire_configure_default(one_wire_t *obj) 
 {
-    //original from MikroE
-    /*
-    obj->data_pin = 0xFFFFFFFF;
-    obj->state = false;
-    */
-
-
    #warning one_wire_configure_default() function does not do anything since there are no global variables that need to be set
 }
 
 //open 1-wire on function parameter pin
 int8_t one_wire_open( one_wire_t *obj ) 
 {
-    //original from MikroE
-    /*
-    if ( HAL_PIN_NC == obj->data_pin || obj->state ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    if ( ONE_WIRE_SUCCESS != hal_one_wire_open( obj ) ) {
-        return ONE_WIRE_ERROR;
-    } else {
-        return ONE_WIRE_SUCCESS;
-    }
-    */
-
-
     oneWire_set_pin(obj->data_pin);
     return ONE_WIRE_SUCCESS;     //return status 
 }
 
 //1-wire reset
 int8_t one_wire_reset(one_wire_t *obj) 
-{
-    //original from MikroE
-    /*
-    if ( hal_one_wire_reset( obj ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
-   if(oneWire_reset() == TRUE)          //function returns a 1 if device is present, 0 otherwise
+{   if(oneWire_reset() == TRUE)          //function returns a 1 if device is present, 0 otherwise
    {
         return ONE_WIRE_SUCCESS;        //return status
    }
@@ -79,16 +47,6 @@ int8_t one_wire_reset(one_wire_t *obj)
 //1-wire write operation
 int8_t one_wire_write_byte(one_wire_t *obj, uint8_t *write_data_buffer, size_t write_data_length) 
 {
-    //original from MikroE
-    /*
-    if ( hal_one_wire_write_byte( obj, write_data_buffer, write_data_length ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
     for (uint16_t ii = 0 ; ii < write_data_length ; ii++)       //iterate through buffer array
     {
         oneWire_write(write_data_buffer[ii]);                   //write rom bytes
@@ -99,16 +57,6 @@ int8_t one_wire_write_byte(one_wire_t *obj, uint8_t *write_data_buffer, size_t w
 //1-wire read operation
 int8_t one_wire_read_byte(one_wire_t *obj, uint8_t *read_data_buffer, size_t read_data_length) 
 {
-    //original from MikroE
-    /* 
-    if ( hal_one_wire_read_byte( obj, read_data_buffer, read_data_length ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
     for (uint16_t ii = 0 ; ii < read_data_length; ii++)     //iterate through buffer array
     {
         read_data_buffer[ii] = oneWire_read();              //index pointer array and set to byte read
@@ -119,16 +67,6 @@ int8_t one_wire_read_byte(one_wire_t *obj, uint8_t *read_data_buffer, size_t rea
 //read ROM of connected device
 int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address) 
 {
-    //original from MikroE
-    /*
-    if ( hal_one_wire_read_rom( obj, device_rom_address ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
     oneWire_write(ROM_MATCH);                                   //wite Choose ROM cmd
     for (uint16_t ii = 0 ; ii < 8 ; ii++)                       //loop for number of bytes (count = 8)
     {
@@ -140,16 +78,6 @@ int8_t one_wire_read_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_add
 //skip read ROM
 int8_t one_wire_skip_rom(one_wire_t *obj) 
 {
-    //original from MikroE
-    /*
-    if ( hal_one_wire_skip_rom( obj ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
     oneWire_write(ROM_SKIP);        //write Skip ROM cmd
     return ONE_WIRE_SUCCESS;        //return status
 }
@@ -157,16 +85,6 @@ int8_t one_wire_skip_rom(one_wire_t *obj)
 //MATCH ROM
 int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_address)
 {
-    //original from MikroE
-    /*
-    if ( hal_one_wire_match_rom( obj, device_rom_address ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
     oneWire_write(ROM_MATCH);                               //wite Choose ROM cmd
     for (uint16_t ii = 0 ; ii < 8 ; ii++)                   //loop for number of bytes (count)
     {
@@ -178,16 +96,6 @@ int8_t one_wire_match_rom(one_wire_t *obj, one_wire_rom_address_t *device_rom_ad
 //search for first device on 1-wire bus
 int8_t one_wire_search_first_device(one_wire_t *obj, one_wire_rom_address_t *one_wire_device_list) 
 {
-    //original from MikroE
-    /*
-    if ( hal_one_wire_search_first_device( obj, one_wire_device_list ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
     //reset the search state
     LastDiscrepancy = 0;
     LastDeviceFlag = FALSE;
@@ -209,16 +117,6 @@ int8_t one_wire_search_first_device(one_wire_t *obj, one_wire_rom_address_t *one
 //search for next device on 1-wire bus
 int8_t one_wire_search_next_device(one_wire_t *obj, one_wire_rom_address_t *one_wire_device_list) 
 {
-    //original from MikroE
-    /*
-    if ( hal_one_wire_search_next_device( obj, one_wire_device_list ) ) {
-        return ONE_WIRE_ERROR;
-    }
-
-    return ONE_WIRE_SUCCESS;
-    */
-
-
    if (oneWire_search(one_wire_device_list->address) == TRUE)       //one wire ROM search
     {
         return ONE_WIRE_SUCCESS;                                    //return status
