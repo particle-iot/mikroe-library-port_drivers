@@ -23,10 +23,10 @@ static uint8_t cs_polarity;        //CS polarity variable, static as previous va
 void spi_master_configure_default(spi_master_config_t *config) 
 {
     //set default values for pins (CS)
-    pinMode(SS, OUTPUT);            //set SS sginal mikroBUS1 as output
-    pinMode(SS1, OUTPUT);           //set SS1 sginal mikroBUS2 as output
-    digitalWrite(SS, HIGH);         //set SS HIGH
-    digitalWrite(SS1, HIGH);        //set SS1 HIGH
+    pinMode(MIKROBUS_1_CS_PIN, OUTPUT);         //set CS sginal mikroBUS1 as output
+    pinMode(MIKROBUS_2_CS_PIN, OUTPUT);         //set CS sginal mikroBUS2 as output
+    digitalWrite(MIKROBUS_1_CS_PIN, HIGH);      //set CS HIGH
+    digitalWrite(MIKROBUS_2_CS_PIN, HIGH);      //set CS HIGH
     cs_polarity = LOW;              //set CS active low          
 
     //set default values for spi mode and speed
@@ -39,10 +39,10 @@ void spi_master_configure_default(spi_master_config_t *config)
 int8_t spi_master_open(spi_master_t *obj, spi_master_config_t *config) 
 {   
     #warning spi_master_open() assumes SPI peripheral will not get stolen by other threads
-    pinMode(SS, OUTPUT);                            //set SS sginal mikroBUS1 as output
-    pinMode(SS1, OUTPUT);                           //set SS1 sginal mikroBUS2 as output
-    digitalWrite(SS, HIGH);                         //set SS HIGH
-    digitalWrite(SS1, HIGH);                        //set SS1 HIGH
+    pinMode(MIKROBUS_1_CS_PIN, OUTPUT);             //set CS sginal mikroBUS1 as output
+    pinMode(MIKROBUS_2_CS_PIN, OUTPUT);             //set CS sginal mikroBUS2 as output
+    digitalWrite(MIKROBUS_1_CS_PIN, HIGH);          //set CS HIGH
+    digitalWrite(MIKROBUS_2_CS_PIN, HIGH);          //set CS HIGH
     SPI.begin(SPI_MODE_MASTER, PIN_INVALID);        //begin SPI transaction, not selecting CS pin
     return SPI_MASTER_SUCCESS;                      //return status
 }

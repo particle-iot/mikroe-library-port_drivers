@@ -20,7 +20,6 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <math.h>
-#include "pinmap_defines.h"
 #include "Particle.h"
 
 //used in libraries for pin selection
