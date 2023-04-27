@@ -43,32 +43,9 @@ int8_t uart_open(uart_t *obj, uart_config_t *config)
 //function for setting uart baud rate
 int8_t uart_set_baud(uart_t *obj, uint32_t baud)
 {
-    switch (baud)
-    {
-        //valid inputs
-        case 1200:
-        case 2400:
-        case 4800:
-        case 9600:
-        case 19200:
-        case 28800:
-        case 38400:
-        case 57600:
-        case 76800:
-        case 115200:
-        case 230400:
-        case 250000:
-        case 460800:
-        case 921600:
-        case 1000000:
-                global_baud = baud;         //set global variable to function parameter
-                Serial1.begin(baud);        //set new baud rate
-            return UART_SUCCESS;            //return status
-
-        //invalid input
-        default:
-            return UART_ERROR;              //return status
-    }
+    global_baud = baud;         //set global variable to function parameter
+    Serial1.begin(baud);        //set new baud rate
+    return UART_SUCCESS;            //return status
 }
 
 //function for setting uart parity bits
