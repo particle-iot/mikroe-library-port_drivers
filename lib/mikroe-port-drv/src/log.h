@@ -17,13 +17,8 @@
 #ifndef _LOG_H_
 #define _LOG_H_
 
-//#include "drv_uart.h"
 #include "mikro_port.h"
 #include <stdarg.h>
-
-//external variables
-extern uint8_t loggerBus;
-//uint8_t loggerBus;
 
 //enum for logger level values
 typedef enum
@@ -38,7 +33,6 @@ typedef enum
 //logger context structure
 typedef struct
 {
-    //uart_t uart;
     log_level_t log_level;
 } log_t;
 
@@ -56,18 +50,15 @@ typedef struct
     cfg.rx_pin = HAL_PIN_NC; \
     cfg.tx_pin = HAL_PIN_NC; \
     cfg.baud = 115200; \
-    cfg.level = LOG_LEVEL_DEBUG; \
-    loggerBus = FALSE;      //set bus to Serial (USB)      
-    
+    cfg.level = LOG_LEVEL_DEBUG; 
 
 //#define for log map to mikrobus config
+#warning LOG_MAP_MIKROBUS is not implemented and only USB can be used
 #define LOG_MAP_MIKROBUS(cfg, mikrobus) \
     cfg.rx_pin = MIKROBUS(mikrobus, MIKROBUS_RX); \
     cfg.tx_pin = MIKROBUS(mikrobus, MIKROBUS_TX); \
     cfg.baud = 9600; \
-    cfg.level = LOG_LEVEL_DEBUG; \
-    loggerBus = TRUE;       //set bus to serial1 (RX,TX)     
-    
+    cfg.level = LOG_LEVEL_DEBUG;
 
 //logger functions
 void log_init ( log_t *log, log_cfg_t *cfg );

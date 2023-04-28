@@ -16,28 +16,14 @@
 
 #include "log.h"
 
-//extern variables
-//extern uint8_t loggerBus;
-
 //global variables
-static uint32_t global_baud;        //baud rate variable
 static LogLevel global_level;       //logger level variable
-uint8_t loggerBus;                  //global variable for which bus is selected for logger
 
-//loggerBus = TRUE;
-
-//#if for which logger bus will be used
-#if loggerBus
-    Serial1LogHandler logHandler(global_baud, global_level);      //select serial1 logger
-#else
-    SerialLogHandler logHandler(global_level);       //select serial (USB) logger
-#endif
+SerialLogHandler logHandler(global_level);       //select serial (USB) logger
 
 //initializes log driver
 void log_init (log_t *log, log_cfg_t *cfg)
 {
-    global_baud = cfg->baud;        //set baud rate global variable to function parameter 
-    
     //switch on the incoming logger level to map to particle equivalent
     switch (cfg->level)                             
     {
@@ -76,43 +62,21 @@ void log_printf (log_t *log, const char *buffer,...)
 //discard input/output logger buffers
 void log_clear (log_t *log)
 {
-    if(loggerBus == FALSE)      //USB (serial) selected
-    {
-        Serial.flush();         //flush buffers
-    }
-    else                        //serial1 selected
-    {
-        Serial1.flush();        //flush buffers
-    }
+     Serial.flush();         //flush buffers
 }
 
 //read bytes from logger buffer
 int8_t log_read (log_t *log, uint8_t *rx_data_buf, uint8_t max_len)
 {
-    if(loggerBus == FALSE)                                  //USB (serial) selected
+    if (Serial.available() > 0)                         //if uart is available 
     {
-        if (Serial.available() > 0)                         //if uart is available 
+        for (uint8_t ii = 0; ii < max_len; ii++)        //for loop for iterating over array
         {
-            for (uint8_t ii = 0; ii < max_len; ii++)        //for loop for iterating over array
-            {
-                rx_data_buf[ii] = Serial.read();            //set pointer parameter to byte read from uart
-            }
-            return max_len;                                 //return # of bytes read
+            rx_data_buf[ii] = Serial.read();            //set pointer parameter to byte read from uart
         }
-        return -1;                                          //return error
+        return max_len;                                 //return # of bytes read
     }
-    else                                                    //serial1 selected
-    {
-        if (Serial1.available() > 0)                        //if uart is available 
-        {
-            for (uint8_t ii = 0; ii < max_len; ii++)        //for loop for iterating over array
-            {
-                rx_data_buf[ii] = Serial1.read();           //set pointer parameter to byte read from uart
-            }
-            return max_len;                                 //return # of bytes read
-        }
-        return -1;                                          //return error
-    }
+    return -1;    
 }
 
 //logger INFO level printf function
@@ -130,7 +94,7 @@ void log_error (log_t *log, const char *buffer,...)
 //logger FATAL level printf function
 void log_fatal (log_t *log, const char *buffer,...)
 {
-    #warning Particle Logger does not have a Fatal level, error level is used instead
+    #warning Particle Logger does not have a FATAL level, ERROR level is used instead
     Log.error(buffer);      //use particle logging function
 }
 
