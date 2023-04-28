@@ -50,7 +50,7 @@ typedef struct
     cfg.rx_pin = HAL_PIN_NC; \
     cfg.tx_pin = HAL_PIN_NC; \
     cfg.baud = 115200; \
-    cfg.level = LOG_LEVEL_DEBUG; 
+    cfg.level = LOG_LEVEL_ALL; 
 
 //#define for log map to mikrobus config
 #warning LOG_MAP_MIKROBUS is not implemented and only USB can be used
@@ -58,7 +58,7 @@ typedef struct
     cfg.rx_pin = MIKROBUS(mikrobus, MIKROBUS_RX); \
     cfg.tx_pin = MIKROBUS(mikrobus, MIKROBUS_TX); \
     cfg.baud = 9600; \
-    cfg.level = LOG_LEVEL_DEBUG;
+    cfg.level = LOG_LEVEL_ALL;
 
 //logger functions
 void log_init ( log_t *log, log_cfg_t *cfg );

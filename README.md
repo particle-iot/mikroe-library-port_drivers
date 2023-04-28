@@ -68,7 +68,11 @@ Before you begin, make sure you have the following:
    ```
    #include "example-library.h"
    ```  
-2. Add the application specific code, leveraging the application example created by MikroE (`main.c`).  
+2. Add the application specific code, leveraging the application example created by MikroE (`main.c`). 
+   1.  Do not include `board.h` as a header file
+   2.  Declare `typedef` and other global variables before the `void setup()` loop
+   3. Copy+Paste `void main (void)` into `void loop()`
+   4. Copy+Paste `void application_init (void)` and `void application_task (void)` directly into `.ino` file
 3. Compile project. If there are any compile errors related to the ported library, modify the library to get rid of the errors. This may involve changing data types, rewriting function calls, or adding new code to handle specific tasks.  
 4. Test the library code. Once you have modified the library code, test it on your Particle device to make sure it works as expected. You may need to make additional modifications based on your testing results.  
 
