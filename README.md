@@ -69,7 +69,7 @@ Before you begin, make sure you have the following:
    #include "example-library.h"
    ```  
 2. Add the application specific code, leveraging the application example created by MikroE (`main.c`). 
-   1.  Do not include `board.h` as a header file
+   1.  Add header files inlcuded in example, except do not inlcude `board.h` as a header file
    2.  Declare `typedef` and other global variables before the `void setup()` loop
    3. Copy+Paste `void main (void)` into `void loop()`
    4. Copy+Paste `void application_init (void)` and `void application_task (void)` directly into `.ino` file
