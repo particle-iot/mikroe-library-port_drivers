@@ -66,11 +66,11 @@ void log_printf (log_t *log, const char *buffer,...)
 {
     if(loggerBus == FALSE)      //USB (serial) selected
     {
-        Serial.print(buffer);     //check to make sure all bytes were written
+        Serial.printf(buffer);     //check to make sure all bytes were written
     }
     else        //serial1 selected
     {
-        Serial1.print(buffer);     //check to make sure all bytes were written
+        Serial1.printf(buffer);     //check to make sure all bytes were written
     }
 }
 
