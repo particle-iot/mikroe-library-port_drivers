@@ -17,11 +17,9 @@ Before you begin, make sure you have the following:
 ## Porting Procedure
 
 ### Download MikroE Click Example 
-1. Navigate to the [MikroE Click Board](https://www.mikroe.com/click) site you want to port.
-2. Under the Downloads section, click the example on Libstock.
-3. Some older libraries use `mikroSDK 1.0.0.0` and in these, you will want to use the newer 2.0.0.0 version by selecting the `mikroSDK Library 2.0.0.0` tab. Download the zip folder and decompress/unpack.
-   ![](/docs/tab.png)
-   > **Note:**  Some libraries use the older mikroSDK Library 1.0.0.0 and these are not compatible. By default the Libstock page may default to this older version.
+1. Navigate to the [MikroE Click Library](https://github.com/MikroElektronika/mikrosdk_click_v2) GitHub repo and select the library you want to port.
+2. Download the zip folder and decompress/unpack.
+   > **Note:**  Some libraries use the older mikroSDK Library 1.0.0.0 and these are not compatible. By default the GitHub repo should only show MikroSDK 2.0.
 4. In the library directory, navigate to Examples/example and copy the source(`.c`) and header(`.h`) files. These files will need to be copied into the Particle Project.
    > **Note:**  Many libraries examples contain an example, and this example can be used a a reference for interfacing with the library. This is typically the `main.c` file.  
 
