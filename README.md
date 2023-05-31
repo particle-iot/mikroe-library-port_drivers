@@ -19,7 +19,7 @@ Before you begin, make sure you have the following:
 ### Download MikroE Click Example 
 1. Navigate to the [MikroE Click Library](https://github.com/MikroElektronika/mikrosdk_click_v2) GitHub repo and select the library you want to port.
 2. Download the zip folder and decompress/unpack.
-   > **Note:**  Some libraries use the older mikroSDK Library 1.0.0.0 and these are not compatible. By default the GitHub repo should only show MikroSDK 2.0.
+   > **Note:**  Some libraries use the older mikroSDK 1.0 and these are not compatible. By default the GitHub repo should only show MikroSDK 2.0, but confirm the library downloaded is indeed the MikroSDK 2.0 version.
 4. In the library directory, navigate to Examples/example and copy the source(`.c`) and header(`.h`) files. These files will need to be copied into the Particle Project.
    > **Note:**  Many libraries examples contain an example, and this example can be used a a reference for interfacing with the library. This is typically the `main.c` file.  
 
